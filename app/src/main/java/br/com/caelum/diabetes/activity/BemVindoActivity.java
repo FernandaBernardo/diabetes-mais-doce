@@ -46,30 +46,31 @@ public class BemVindoActivity extends Activity {
 			Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
 			intent.putExtra("paciente", pacienteBanco);
 			startActivity(intent);
-		}
-		
-		Button botao = (Button) findViewById(R.id.botao_proximo);
-		botao.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				EditText nomePessoa = (EditText) findViewById(R.id.nome_pessoa);
-				Paciente paciente = new Paciente();
-				paciente.setNome(nomePessoa.getText().toString());
-				dao.salva(paciente);
-				Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
-				intent.putExtra("paciente", paciente);
-				startActivity(intent);
-			}
-		});
+		} else {
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                populaBanco(R.raw.insert);
-            }
-        });
+            Button botao = (Button) findViewById(R.id.botao_proximo);
+            botao.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View arg0) {
+                    EditText nomePessoa = (EditText) findViewById(R.id.nome_pessoa);
+                    Paciente paciente = new Paciente();
+                    paciente.setNome(nomePessoa.getText().toString());
+                    dao.salva(paciente);
+                    Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
+                    intent.putExtra("paciente", paciente);
+                    startActivity(intent);
+                }
+            });
 
-        thread.run();
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    populaBanco(R.raw.insert);
+                }
+            });
+
+            thread.run();
+        }
     }
 	
 	@Override
