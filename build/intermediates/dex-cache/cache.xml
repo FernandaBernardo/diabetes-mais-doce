@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\libs\ormlite-android-4.48.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="afa06f539a4026c10b247386312aa67404b80a16">
+        <dex dex="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\build\intermediates\pre-dexed\debug\ormlite-android-4.48-b1047bc5038238904d3e150f8562bdc1bc4926dd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Fê\.gradle\caches\modules-2\files-2.1\joda-time\joda-time\2.3\56498efd17752898cfcc3868c1b6211a07b12b8f\joda-time-2.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="56498efd17752898cfcc3868c1b6211a07b12b8f">
+        <dex dex="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\build\intermediates\pre-dexed\debug\joda-time-2.3-e63a02fde8929edc5272e259df1562d038965e8d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Fê\AppData\Local\Android\sdk2\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-61d442dc250278374779fdc5b6884a688b3d563a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\libs\ormlite-core-4.48.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
+        <dex dex="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\build\intermediates\pre-dexed\debug\ormlite-core-4.48-a2f50dea3ebec6d58c19c1d11c5005e674448674.jar" />
+    </item>
+
+</items>

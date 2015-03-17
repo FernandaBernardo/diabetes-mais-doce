@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:weightSum="1"
+    android:orientation="vertical" >
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight=".1"
+        android:weightSum="1"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">    
+	    <Button
+	        android:id="@+id/novo_alimento"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight=".5"
+	        android:textColor="#fff"
+	        android:drawableLeft="@drawable/more"
+	        android:layout_marginRight="20dp"
+	        android:drawablePadding="-5dp"
+	        android:paddingLeft="5dp"
+	        android:background="@drawable/botao_claro"
+	        android:text="@string/novo_alimento" />
+	    <Button
+	        android:id="@+id/salvar_refeicao"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight=".5"
+	        android:textColor="#fff"
+	        android:background="@drawable/botao_escuro"
+	        android:text="@string/salvar" />
+	</LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight=".1"
+        android:layout_marginTop="20dp">
+	    <TextClock
+	        android:id="@+id/data_refeicao"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginRight="30dp"
+		    android:drawableLeft="@drawable/calendar"
+		    android:drawablePadding="10dp"
+		    android:format24Hour="dd/MM/yyyy"
+		    android:gravity="center_vertical"
+		    tools:ignore="NewApi" />
+    
+	    <TextClock
+	        android:id="@+id/hora_refeicao"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:format24Hour="k:mm"
+	        android:drawablePadding="10dp"
+	        android:gravity="center_vertical"
+	        android:drawableLeft="@drawable/clock"
+	        tools:ignore="NewApi"/>	
+	
+	</LinearLayout>
+
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_weight=".1"
+        android:gravity="center">
+	    <Spinner
+	        android:id="@+id/tipo_refeicao"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="5dp"
+	        android:background="@drawable/botao_select"
+	        android:entries="@array/refeicoes_array" />
+	</LinearLayout>
+	
+	<ListView
+        android:id="@+id/lista_alimentos"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:scrollbarStyle="insideInset"
+        android:layout_weight=".6"
+        android:layout_height="0dp" />
+
+	<LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight=".1"
+        android:weightSum="1"
+        android:layout_margin="20dp">
+	    <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:layout_weight=".5"
+	        android:layout_marginRight="10dp"
+	        android:gravity="center">
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/total_de_carboidrato" />
+		    <EditText
+		        android:id="@+id/totalCHO"
+		        android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/botao_edit"
+		        android:enabled="false"
+		        android:text="0.0"
+		        android:gravity="center"
+		        android:textColor="#000"
+		        android:layout_marginTop="10dp"/>
+		</LinearLayout>
+		<LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:layout_weight=".5"
+	        android:layout_marginLeft="10dp"
+	        android:gravity="center">
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/total_insulina" />
+		    <EditText
+		        android:id="@+id/totalInsulina"
+		         android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/botao_edit"
+		        android:enabled="false"
+		        android:gravity="center"
+		        android:textColor="#000"
+		        android:layout_marginTop="10dp"
+		        android:text="0.0" />
+		</LinearLayout>
+    </LinearLayout>
+</LinearLayout><!-- From: file:/C:/Users/Fê/AndroidstudioProjects/diabetes-mobile/app/src/main/res/layout/nova_refeicao.xml -->

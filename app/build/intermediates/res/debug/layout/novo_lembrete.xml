@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="30dp" >
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+        
+        <TextClock 
+        	android:id="@+id/hora_lembrete"
+        	android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="30dp"
+	        android:format24Hour="k:mm"
+	        android:drawablePadding="10dp"
+	        android:gravity="center_vertical"
+	        android:drawableLeft="@drawable/clock"
+	        tools:ignore="NewApi"/>
+        
+        <TextClock
+	    	android:id="@+id/data_lembrete"
+	    	android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:drawableLeft="@drawable/calendar"
+		    android:drawablePadding="10dp"
+		    android:format24Hour="dd/MM/yyyy"
+		    android:gravity="center_vertical"
+		    tools:ignore="NewApi"
+	    	 />
+        
+    </LinearLayout> 
+    
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lembrete:" 
+        />
+    
+    
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/atividade_lembrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:hint="@string/exemplo"
+        android:inputType="textCapSentences"
+        android:background="@drawable/botao_edit"
+        />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/anotacoes" />
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/anotacoes_lembrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:inputType="textCapSentences"
+        android:background="@drawable/botao_edit"
+        android:layout_gravity="center"
+      />
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/salvar_lembrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/salvar" 
+        android:background="@drawable/botao_escuro"
+        android:textColor="#fff"/>
+    
+    
+
+</LinearLayout>
+<!-- From: file:/C:/Users/Fê/AndroidstudioProjects/diabetes-mobile/app/src/main/res/layout/novo_lembrete.xml -->
