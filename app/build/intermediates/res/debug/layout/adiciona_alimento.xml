@@ -9,17 +9,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText" />
-
-    <AutoCompleteTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/botao_edit"
-        android:id="@+id/busca"
-        android:completionThreshold="1"
-        android:hint="@string/nome"/>
+        android:id="@+id/busca_alimento" />
 
     <ListView
         android:layout_width="match_parent"

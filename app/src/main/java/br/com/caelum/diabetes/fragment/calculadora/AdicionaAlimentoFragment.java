@@ -33,7 +33,7 @@ public class AdicionaAlimentoFragment extends Fragment {
 	private Refeicao refeicao;
 	private DbHelper helper;
 	private AutoCompleteTextView buscaAlimento;
-    private ArrayAdapter<AlimentoFisico> adapter;
+    private BuscaAdapter adapter;
 
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,7 +51,8 @@ public class AdicionaAlimentoFragment extends Fragment {
 		
 		helper.close();
 		
-		adapter = new ArrayAdapter<AlimentoFisico>(getActivity(), android.R.layout.simple_list_item_1, alimentos);
+		//adapter = new ArrayAdapter<AlimentoFisico>(getActivity(), android.R.layout.simple_list_item_1, alimentos);
+        adapter = new BuscaAdapter(alimentos, getActivity());
         EditText edit = (EditText) view.findViewById(R.id.busca_alimento);
         edit.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
