@@ -14,6 +14,8 @@ public class AlimentoFisico implements Serializable{
 	private double carboidrato;
 	@DatabaseField
 	private String unidadeDeMedida;
+
+    private boolean check;
 	
 	public AlimentoFisico() {
 	}
@@ -22,6 +24,7 @@ public class AlimentoFisico implements Serializable{
 		this.nome = nome;
 		this.carboidrato = carboidrato;
 		this.unidadeDeMedida = unidadeDeMedida;
+        this.check = false;
 	}
 	
 	public double getCarboidratoPorValor(double valor) {
@@ -61,4 +64,12 @@ public class AlimentoFisico implements Serializable{
 	public void setUnidadeDeMedida(String unidadeDeMedida) {
 		this.unidadeDeMedida = unidadeDeMedida;
 	}
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
 }

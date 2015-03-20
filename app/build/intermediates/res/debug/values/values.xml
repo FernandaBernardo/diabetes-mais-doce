@@ -33,9 +33,11 @@
     <string name="bolus">Valores Correção (Bolus)</string>
     <string name="cafe_da_manha">Café da Manhã</string>
     <string name="calculadora">Calculadora</string>
+    <string name="cancelar">Cancela</string>
     <string name="cancelar_dados_medicos">Não, quero continuar a utilizar o aplicativo</string>
     <string name="carboidrato">Carboidrato</string>
     <string name="ceia">Ceia</string>
+    <string name="concluido">Concluído</string>
     <string name="configurar_glicemia_alvo">Configurar Glicemia Alvo</string>
     <string name="configurar_insulina_continua">Configurar Insulina Continua</string>
     <string name="configurar_insulina_correcao">Configurar Insulina Correção</string>
@@ -84,6 +86,7 @@
     <string name="novo_lembrete">Novo Lembrete</string>
     <string name="perfil">Perfil</string>
     <string name="peso">Peso(kg)</string>
+    <string name="porcao">Porção</string>
     <string name="proximo">Próximo</string>
     <string name="quantidade">Quantidade</string>
     <string name="quantidade_de_carboidrato">Quantidade de Carboidrato</string>

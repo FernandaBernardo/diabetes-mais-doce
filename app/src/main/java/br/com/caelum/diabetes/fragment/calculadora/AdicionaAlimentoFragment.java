@@ -1,9 +1,11 @@
 package br.com.caelum.diabetes.fragment.calculadora;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -28,12 +30,13 @@ import br.com.caelum.diabetes.util.ValidatorUtils;
 
 public class AdicionaAlimentoFragment extends Fragment {
 
-	private AlimentoFisico alimentoAtual;
 	private AlimentoFisicoDao alimentoDao;
 	private Refeicao refeicao;
 	private DbHelper helper;
 	private AutoCompleteTextView buscaAlimento;
     private BuscaAdapter adapter;
+    private List<AlimentoFisico> alimentos;
+    private ArrayList<AlimentoFisico> alimentosSelecionados;
 
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,11 +50,10 @@ public class AdicionaAlimentoFragment extends Fragment {
 		helper = new DbHelper(getActivity());
 		alimentoDao = new AlimentoFisicoDao(helper);
 
-		final List<AlimentoFisico> alimentos = alimentoDao.getAlimentos();
+		alimentos = alimentoDao.getAlimentos();
 		
 		helper.close();
-		
-		//adapter = new ArrayAdapter<AlimentoFisico>(getActivity(), android.R.layout.simple_list_item_1, alimentos);
+
         adapter = new BuscaAdapter(alimentos, getActivity());
         EditText edit = (EditText) view.findViewById(R.id.busca_alimento);
         edit.addTextChangedListener(new TextWatcher() {
@@ -64,6 +66,29 @@ public class AdicionaAlimentoFragment extends Fragment {
         });
         ListView listView = (ListView) view.findViewById(R.id.lista_busca_alimentos);
         listView.setAdapter(adapter);
+
+        alimentosSelecionados = new ArrayList<AlimentoFisico>();
+
+        Button conclui = (Button) view.findViewById(R.id.conclui_alimentos);
+        conclui.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(AlimentoFisico alimento: alimentos) {
+                    if (alimento.isCheck()) alimentosSelecionados.add(alimento);
+                }
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("alimentosSelecionados", alimentosSelecionados);
+
+                Fragment fragment = new SelecionaQtdAlimentosFragment();
+                fragment.setArguments(bundle);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_view, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
 
 //		adicionarAlimento.setOnClickListener(new OnClickListener() {

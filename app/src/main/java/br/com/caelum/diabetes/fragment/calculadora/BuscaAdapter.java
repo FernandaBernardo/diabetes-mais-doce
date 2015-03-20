@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
@@ -40,6 +41,10 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
         return alimentos.get(pos);
     }
 
+    public void setItem (int pos, AlimentoFisico alimento) {
+        alimentos.set(pos, alimento);
+    }
+
     @Override
     public long getItemId(int pos) {
         return alimentos.get(pos).getId();
@@ -47,6 +52,7 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public View getView(int pos, View view, ViewGroup viewGroup) {
+        final int position = pos;
         View vi = view;
         LayoutInflater inflater = activity.getLayoutInflater();
 
@@ -61,6 +67,19 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
 
         TextView campoCho = (TextView) vi.findViewById(R.id.alimento_cho);
         campoCho.setText(alimento.getUnidadeDeMedida() + ": " + alimento.getCarboidrato() + "g");
+
+        final CheckBox checkbox = (CheckBox) vi.findViewById(R.id.check_alimento);
+        if (alimento.isCheck()) checkbox.setChecked(true);
+        else checkbox.setChecked(false);
+
+        checkbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CheckBox box = (CheckBox) view;
+                alimentos.get(position).setCheck(!alimentos.get(position).isCheck());
+                notifyDataSetChanged();
+            }
+        });
 
         return vi;
     }

@@ -99,5 +99,8 @@
     <string name="ex_colher_de_cha_concha_unidade">Ex: colher de chá, concha, unidade</string>
     <string name="quantidade_de_gramas_de_cho">quantidade de gramas de CHO</string>
     <string name="novo_alimento_refeicao">Novo Alimento - Refeição</string>
+    <string name="cancelar">Cancela</string>
+    <string name="concluido">Concluído</string>
+    <string name="porcao">Porção</string>
 
 </resources>
