@@ -93,6 +93,14 @@ public class AdicionaAlimentoFragment extends Fragment {
             }
         });
 
-		return view;
+        Button cancela = (Button) view.findViewById(R.id.cancelar_alimentos);
+        cancela.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
+        return view;
 	}
 }
