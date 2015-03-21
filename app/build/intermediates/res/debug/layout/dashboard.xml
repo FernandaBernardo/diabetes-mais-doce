@@ -1,9 +1,0 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/home_root"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-    <include layout="@layout/dashboard_layout"/>   
-                      
-</LinearLayout><!-- From: file:/C:/Users/Fê/AndroidstudioProjects/diabetes-mobile/app/src/main/res/layout/dashboard.xml -->
