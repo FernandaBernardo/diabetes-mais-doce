@@ -17,8 +17,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
@@ -79,6 +81,7 @@ public class AdicionaAlimentoFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("alimentosSelecionados", alimentosSelecionados);
+                bundle.putSerializable("refeicao", refeicao);
 
                 Fragment fragment = new SelecionaQtdAlimentosFragment();
                 fragment.setArguments(bundle);
@@ -89,22 +92,6 @@ public class AdicionaAlimentoFragment extends Fragment {
                 transaction.commit();
             }
         });
-
-
-//		adicionarAlimento.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				AlimentoVirtual alimentoVirtual = new AlimentoVirtual(
-//						alimentoAtual, Double.parseDouble(valor.getText()
-//								.toString()), refeicao);
-//				refeicao.adicionaAlimento(alimentoVirtual);
-//
-//				Bundle args = new Bundle();
-//				args.putSerializable("refeicao", refeicao);
-//
-//				getFragmentManager().popBackStack();
-//			}
-//		});
 
 		return view;
 	}

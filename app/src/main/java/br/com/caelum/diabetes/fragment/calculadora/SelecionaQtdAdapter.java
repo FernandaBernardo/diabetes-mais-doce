@@ -18,13 +18,14 @@ import br.com.caelum.diabetes.model.AlimentoVirtual;
  * Created by Fê on 19/03/2015.
  */
 public class SelecionaQtdAdapter extends BaseAdapter {
-    private final List<AlimentoFisico> alimentos;
+    private final List<AlimentoVirtual> alimentos;
     private final FragmentActivity activity;
 
-    public SelecionaQtdAdapter(List<AlimentoFisico> alimentos, FragmentActivity activity) {
+    public SelecionaQtdAdapter(List<AlimentoVirtual> alimentos, FragmentActivity activity) {
         this.alimentos = alimentos;
         this.activity = activity;
     }
+
     @Override
     public int getCount() {
         return alimentos.size();
@@ -45,13 +46,24 @@ public class SelecionaQtdAdapter extends BaseAdapter {
         LayoutInflater inflater = activity.getLayoutInflater();
         View item = inflater.inflate(R.layout.item_alimento_qtd, null);
 
-        AlimentoFisico alimento = alimentos.get(pos);
+        final AlimentoVirtual alimento = alimentos.get(pos);
 
         TextView nome = (TextView) item.findViewById(R.id.alimento_qtd);
-        nome.setText(alimento.getNome());
+        nome.setText(alimento.getAlimento().getNome());
 
         EditText porcao = (EditText) item.findViewById(R.id.porcao_qtd);
-        porcao.setText(alimento.getUnidadeDeMedida());
+        porcao.setText(alimento.getAlimento().getUnidadeDeMedida());
+
+        EditText qtd = (EditText) item.findViewById(R.id.qtd_cho);
+        qtd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (!hasFocus) {
+                    EditText qtd = (EditText) view.findViewById(R.id.qtd_cho);
+                    alimento.setQuantidade(Double.parseDouble(qtd.getText().toString()));
+                }
+            }
+        });
 
         return item;
     }

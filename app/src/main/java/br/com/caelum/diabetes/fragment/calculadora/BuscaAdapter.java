@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
     private List<AlimentoFisico> alimentos;
     private Activity activity;
     private List<AlimentoFisico> alimentosTemporario;
+    private View view;
 
     public BuscaAdapter(List<AlimentoFisico> alimentos, Activity activity) {
         this.alimentos = alimentos;
@@ -51,37 +53,49 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
     }
 
     @Override
-    public View getView(int pos, View view, ViewGroup viewGroup) {
+    public View getView(final int pos, View v, ViewGroup viewGroup) {
         final int position = pos;
-        View vi = view;
+        view = v;
         LayoutInflater inflater = activity.getLayoutInflater();
 
-        if (view == null) {
-            vi = inflater.inflate(R.layout.item_busca_alimento, null);
+        if (v == null) {
+            view = inflater.inflate(R.layout.item_busca_alimento, null);
         }
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CheckBox checkbox = (CheckBox) view.findViewById(R.id.check_alimento);
+                checkbox.setChecked(!checkbox.isChecked());
+                onClickCheckbox(pos);
+            }
+        });
 
         AlimentoFisico alimento = alimentos.get(pos);
 
-        TextView campoNome = (TextView) vi.findViewById(R.id.alimento_nome);
+        TextView campoNome = (TextView) view.findViewById(R.id.alimento_nome);
         campoNome.setText(alimento.getNome());
 
-        TextView campoCho = (TextView) vi.findViewById(R.id.alimento_cho);
+        TextView campoCho = (TextView) view.findViewById(R.id.alimento_cho);
         campoCho.setText(alimento.getUnidadeDeMedida() + ": " + alimento.getCarboidrato() + "g");
 
-        final CheckBox checkbox = (CheckBox) vi.findViewById(R.id.check_alimento);
+        final CheckBox checkbox = (CheckBox) view.findViewById(R.id.check_alimento);
         if (alimento.isCheck()) checkbox.setChecked(true);
         else checkbox.setChecked(false);
 
         checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CheckBox box = (CheckBox) view;
-                alimentos.get(position).setCheck(!alimentos.get(position).isCheck());
-                notifyDataSetChanged();
+                onClickCheckbox(pos);
             }
         });
 
-        return vi;
+        return view;
+    }
+
+    public void onClickCheckbox(int position) {
+        alimentos.get(position).setCheck(!alimentos.get(position).isCheck());
+        notifyDataSetChanged();
     }
 
     @Override

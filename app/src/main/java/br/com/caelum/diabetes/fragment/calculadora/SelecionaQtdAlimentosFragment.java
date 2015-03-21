@@ -2,22 +2,31 @@ package br.com.caelum.diabetes.fragment.calculadora;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.model.AlimentoFisico;
+import br.com.caelum.diabetes.model.AlimentoVirtual;
+import br.com.caelum.diabetes.model.Refeicao;
 
 /**
  * Created by Fê on 19/03/2015.
  */
 public class SelecionaQtdAlimentosFragment extends Fragment {
     private List<AlimentoFisico> alimentos;
+    private Refeicao refeicao;
+    private SelecionaQtdAdapter adapter;
+    private ListView list;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,25 +35,41 @@ public class SelecionaQtdAlimentosFragment extends Fragment {
         Bundle bundle = this.getArguments();
 
         alimentos = (List<AlimentoFisico>) bundle.getSerializable("alimentosSelecionados");
+        refeicao = (Refeicao) bundle.getSerializable("refeicao");
 
-        SelecionaQtdAdapter adapter = new SelecionaQtdAdapter(alimentos, getActivity());
+        for(AlimentoFisico aux: alimentos) {
+            refeicao.adicionaAlimento(new AlimentoVirtual(aux, 1.0, refeicao));
+        }
 
-        ListView list = (ListView) view.findViewById(R.id.lista_qtd_alimentos);
+        adapter = new SelecionaQtdAdapter(refeicao.getAlimentos(), getActivity());
+
+        list = (ListView) view.findViewById(R.id.lista_qtd_alimentos);
         list.setAdapter(adapter);
+
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                EditText qtd = (EditText) view.findViewById(R.id.qtd_cho);
+                refeicao.getAlimentos().get(i).setQuantidade(Double.parseDouble(qtd.getText().toString()));
+            }
+        });
 
         Button button = (Button) view.findViewById(R.id.conclui_qtd);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlimentoVirtual alimentoVirtual = new AlimentoVirtual(
-/						alimentoAtual, Double.parseDouble(valor.getText()
-								.toString()), refeicao);
-				refeicao.adicionaAlimento(alimentoVirtual);
+                List<AlimentoVirtual> listAux = new ArrayList<AlimentoVirtual>();
+                for(int i = 0; i < list.getAdapter().getCount(); i++) {
+                    AlimentoVirtual aux = (AlimentoVirtual) list.getAdapter().getItem(i);
+                    listAux.add(aux);
+                }
+                refeicao.setAlimentos(listAux);
 
 				Bundle args = new Bundle();
 				args.putSerializable("refeicao", refeicao);
 
-				getFragmentManager().popBackStack();
+				getFragmentManager().popBackStack("novarefeicao", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 

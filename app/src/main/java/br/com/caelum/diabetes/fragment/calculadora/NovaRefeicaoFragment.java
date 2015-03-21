@@ -200,7 +200,7 @@ public class NovaRefeicaoFragment extends Fragment{
 				
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, fragment);
-				transaction.addToBackStack(null);
+				transaction.addToBackStack("novarefeicao");
 				transaction.commit();
 			}
 		});
