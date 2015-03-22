@@ -78,4 +78,5 @@ public class Refeicao implements Serializable{
 				" - " + data.getHourOfDay() + ":" + data.getMinuteOfHour() + " - " + 
 				tipoRefeicao; 
 	}
+
 }

@@ -1,5 +1,7 @@
 package br.com.caelum.diabetes.fragment.calculadora;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.os.Bundle;
@@ -56,6 +58,13 @@ public class ListaRefeicaoFragment extends Fragment{
 		refeicoes = dao.getRefeicoes();
 		
 		helper.close();
+
+        Collections.sort(refeicoes, new Comparator<Refeicao>() {
+            @Override
+            public int compare(Refeicao refeicao, Refeicao refeicao2) {
+                return refeicao2.getData().toDate().compareTo(refeicao.getData().toDate());
+            }
+        });
 		
 		adapter = new ListaRefeicaoAdapter(refeicoes, getActivity());
 		listaRefeicoes.setAdapter(adapter);
