@@ -12,23 +12,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.model.AlimentoFisico;
-import br.com.caelum.diabetes.model.AlimentoVirtual;
 import br.com.caelum.diabetes.model.Refeicao;
-import br.com.caelum.diabetes.util.ValidatorUtils;
 
 public class AdicionaAlimentoFragment extends Fragment {
 
@@ -43,7 +37,7 @@ public class AdicionaAlimentoFragment extends Fragment {
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.adiciona_alimento, null);
+		View view = inflater.inflate(R.layout.lista_busca_alimento, null);
 
 		Bundle bundle = this.getArguments();
 
@@ -70,6 +64,17 @@ public class AdicionaAlimentoFragment extends Fragment {
         listView.setAdapter(adapter);
 
         alimentosSelecionados = new ArrayList<AlimentoFisico>();
+
+        TextView cadastra = (TextView) view.findViewById(R.id.cadastrar_alimento);
+        cadastra.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_view, new NovoAlimentoDiferenteFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
         Button conclui = (Button) view.findViewById(R.id.conclui_alimentos);
         conclui.setOnClickListener(new OnClickListener() {

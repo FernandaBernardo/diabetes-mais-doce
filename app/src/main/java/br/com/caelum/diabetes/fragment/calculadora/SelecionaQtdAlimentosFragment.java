@@ -55,21 +55,21 @@ public class SelecionaQtdAlimentosFragment extends Fragment {
             }
         });
 
-        Button button = (Button) view.findViewById(R.id.conclui_qtd);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button concluir = (Button) view.findViewById(R.id.conclui_qtd);
+        concluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 List<AlimentoVirtual> listAux = new ArrayList<AlimentoVirtual>();
-                for(int i = 0; i < list.getAdapter().getCount(); i++) {
+                for (int i = 0; i < list.getAdapter().getCount(); i++) {
                     AlimentoVirtual aux = (AlimentoVirtual) list.getAdapter().getItem(i);
                     listAux.add(aux);
                 }
                 refeicao.setAlimentos(listAux);
 
-				Bundle args = new Bundle();
-				args.putSerializable("refeicao", refeicao);
+                Bundle args = new Bundle();
+                args.putSerializable("refeicao", refeicao);
 
-				getFragmentManager().popBackStack("novarefeicao", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                getFragmentManager().popBackStack("novarefeicao", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 
