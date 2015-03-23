@@ -24,7 +24,7 @@ public class ListarTodosLembretesFragment extends Fragment {
 
 	private ListView listaLembretes;
 	private List<Lembrete> lembretes;
-	private ArrayAdapter<Lembrete> adapter;
+	private ListaLembreteAdapter adapter;
 	protected Lembrete lembreteSelecionado;
 
 	@Override
@@ -58,8 +58,8 @@ public class ListarTodosLembretesFragment extends Fragment {
 		lembretes = dao.getLembretes();
 		
 		helper.close();
-		
-		adapter = new ArrayAdapter<Lembrete>(getActivity(), android.R.layout.simple_list_item_1, lembretes);
+
+        adapter = new ListaLembreteAdapter(lembretes, getActivity());
 		listaLembretes.setAdapter(adapter);
 	}
 	

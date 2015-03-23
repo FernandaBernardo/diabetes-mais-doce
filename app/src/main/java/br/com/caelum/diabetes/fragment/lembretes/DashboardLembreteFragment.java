@@ -56,9 +56,9 @@ public class DashboardLembreteFragment extends Fragment {
 
 		helper.close();
 
-		ArrayAdapter<Lembrete> adapter = new ArrayAdapter<Lembrete>(getActivity(), android.R.layout.simple_list_item_1, lembretes);
+        ListaLembreteAdapter adapter = new ListaLembreteAdapter(lembretes, getActivity());
 
-		ListView listaLembretes = (ListView) view.findViewById(R.id.list_lembretes_proximos);
+        ListView listaLembretes = (ListView) view.findViewById(R.id.list_lembretes_proximos);
 		listaLembretes.setAdapter(adapter);
 	}
 
