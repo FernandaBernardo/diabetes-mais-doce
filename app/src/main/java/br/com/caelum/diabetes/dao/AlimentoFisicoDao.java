@@ -68,7 +68,7 @@ public class AlimentoFisicoDao{
         dao.executeRaw(insert);
     }
 
-    public void importData(final ArrayList<String> inserts) {
+    public void importarAlimentos(final ArrayList<String> inserts) {
         try {
             TransactionManager.callInTransaction(helper.connectionSource, new Callable<Void>() {
                 @Override

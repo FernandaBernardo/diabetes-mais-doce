@@ -3,8 +3,6 @@ package br.com.caelum.diabetes.dao;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 
-import com.j256.ormlite.misc.TransactionManager;
-
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -48,7 +46,7 @@ public class PopulaAlimento extends AsyncTask<String,Void,Boolean> {
                 inserts.add(line);
             }
             inputStream.close();
-            alimentoFisicoDao.importData(inserts);
+            alimentoFisicoDao.importarAlimentos(inserts);
             success = true;
         } catch (IOException e) {
             e.printStackTrace();
