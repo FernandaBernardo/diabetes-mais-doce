@@ -20,6 +20,7 @@ import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
+import br.com.caelum.diabetes.dao.PopulaAlimento;
 import br.com.caelum.diabetes.model.Paciente;
 
 public class BemVindoActivity extends Activity {
@@ -62,14 +63,7 @@ public class BemVindoActivity extends Activity {
                 }
             });
 
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    populaBanco(R.raw.insert);
-                }
-            });
-
-            thread.run();
+            new PopulaAlimento(helper, getResources()).execute();
         }
     }
 	
@@ -78,20 +72,4 @@ public class BemVindoActivity extends Activity {
 		super.onPause();
 		finish();
 	}
-
-    public void populaBanco(int arquivo){
-        try {
-            InputStream insert = getResources().openRawResource(arquivo);
-            DataInputStream inputStream = new DataInputStream(insert);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            AlimentoFisicoDao alimentoFisicoDao = new AlimentoFisicoDao(helper);
-            while ((line = bufferedReader.readLine()) != null) {
-                alimentoFisicoDao.executaInsert(line);
-            }
-            inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

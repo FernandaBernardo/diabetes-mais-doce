@@ -1,13 +1,16 @@
 package br.com.caelum.diabetes.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import br.com.caelum.diabetes.exception.TratadorExcecao;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
 
 import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.misc.TransactionManager;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.table.TableUtils;
@@ -63,5 +66,21 @@ public class AlimentoFisicoDao{
 
     public void executaInsert(String insert) {
         dao.executeRaw(insert);
+    }
+
+    public void importData(final ArrayList<String> inserts) {
+        try {
+            TransactionManager.callInTransaction(helper.connectionSource, new Callable<Void>() {
+                @Override
+                public Void call() throws Exception {
+                    for(String insert: inserts) {
+                        executaInsert(insert);
+                    }
+                    return null;
+                }
+            });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

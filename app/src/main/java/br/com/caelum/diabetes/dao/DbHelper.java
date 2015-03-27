@@ -25,6 +25,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper{
 	AlimentoFisicoDao alimentoFisicoDao;
 
 	public Context context;
+    public ConnectionSource connectionSource;
 
 	public DbHelper(Context context) {
 		super(context, DATABASE, null, 1);
@@ -33,6 +34,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
+        this.connectionSource = connectionSource;
 		try {
 			TableUtils.createTable(connectionSource, Paciente.class);
 			TableUtils.createTable(connectionSource, DadosMedicos.class);
@@ -49,6 +51,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper{
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
+        this.connectionSource = connectionSource;
 		try {
 			TableUtils.dropTable(connectionSource, Paciente.class, true);
 			onCreate(db, connectionSource);
