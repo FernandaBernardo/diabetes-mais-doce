@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.model.Refeicao;
@@ -52,7 +53,29 @@ public class ListaRefeicaoAdapter extends BaseAdapter{
 		TextView campoDia = (TextView) item.findViewById(R.id.refeicao_dia);
 		DateTime data = refeicao.getData();
 		campoDia.setText(data.getDayOfMonth() + "/" + data.getMonthOfYear() + "/" + data.getYear());
-		
-		return item;
+
+        ImageView imagem = (ImageView) item.findViewById(R.id.refeicao_imagem);
+        switch (refeicao.getTipoRefeicao()) {
+            case CAFE_DA_MANHA:
+                imagem.setImageResource(R.drawable.refeicao_cafe_da_manha);
+                break;
+            case LANCHE_DA_MANHA:
+                imagem.setImageResource(R.drawable.refeicao_lanche_da_manha);
+                break;
+            case ALMOCO:
+                imagem.setImageResource(R.drawable.refeicao_almoco);
+                break;
+            case LANCHE_DA_TARDE:
+                imagem.setImageResource(R.drawable.refeicao_lanche_da_tarde);
+                break;
+            case JANTAR:
+                imagem.setImageResource(R.drawable.refeicao_jantar);
+                break;
+            case CEIA:
+                imagem.setImageResource(R.drawable.refeicao_ceia);
+                break;
+        }
+
+        return item;
 	}
 }
