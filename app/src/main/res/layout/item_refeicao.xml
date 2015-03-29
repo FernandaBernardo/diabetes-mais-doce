@@ -26,8 +26,11 @@
 	        android:layout_height="wrap_content"
 	        android:id="@+id/refeicao_total_cho"
 	        android:textColor="@color/blue"
-	        android:layout_toRightOf="@id/refeicao_tipo_refeicao"
-            android:layout_marginLeft="10dp"/>
+	        android:layout_toLeftOf="@+id/refeicao_imagem"
+            android:layout_toRightOf="@id/refeicao_tipo_refeicao"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="10dp"
+            />
 	    
 	    <ImageView
 	        android:layout_width="wrap_content"
