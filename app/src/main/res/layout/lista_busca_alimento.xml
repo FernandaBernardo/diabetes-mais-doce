@@ -12,6 +12,8 @@
         android:layout_weight="1"
         android:background="@drawable/botao_edit"
         android:id="@+id/busca_alimento"
+        android:padding="10dp"
+        android:hint="Digite os alimentos da refeição"
         />
 
     <TextView
