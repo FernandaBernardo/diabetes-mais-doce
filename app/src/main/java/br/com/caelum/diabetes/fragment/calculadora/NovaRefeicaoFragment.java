@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextClock;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.calculos.CalculaInsulina;
@@ -78,6 +79,9 @@ public class NovaRefeicaoFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.nova_refeicao, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Nova Refeição");
 		
 		totalCHO = (EditText) view.findViewById(R.id.totalCHO);
 		totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);

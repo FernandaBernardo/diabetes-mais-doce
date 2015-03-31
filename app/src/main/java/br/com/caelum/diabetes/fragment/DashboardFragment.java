@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
@@ -34,6 +36,10 @@ public class DashboardFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.dashboard, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Diabetes Mais Doce");
+
 		Button calculadora = (Button) view.findViewById(R.id.main_calculadora);
 		calculadora.setOnClickListener(new OnClickListener() {
 			@Override
@@ -86,6 +92,6 @@ public class DashboardFragment extends Fragment {
 			}
 		});
 
-		return view;
+        return view;
 	}
 }

@@ -20,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextClock;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.calculos.DescobreTipoRefeicao;
@@ -43,6 +44,9 @@ public class NovaGlicemiaFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.nova_glicemia, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Nova Glicemia");
 
 		DateTime dataAgora = new DateTime();
 

@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,9 @@ public class SelecionaQtdAlimentosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.seleciona_qtd_alimentos, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Quantidade Alimentos");
 
         Bundle bundle = this.getArguments();
 

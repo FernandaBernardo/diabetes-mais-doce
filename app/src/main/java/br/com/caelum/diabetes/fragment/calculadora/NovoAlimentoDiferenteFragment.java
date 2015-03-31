@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
 import br.com.caelum.diabetes.dao.DbHelper;
@@ -30,6 +32,9 @@ public class NovoAlimentoDiferenteFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.novo_alimento_diferente, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Adicionar Novo Alimento");
 
 		nomeAlimento = (EditText) view.findViewById(R.id.nome_alimento);
 		unidadeMedida = (AutoCompleteTextView) view

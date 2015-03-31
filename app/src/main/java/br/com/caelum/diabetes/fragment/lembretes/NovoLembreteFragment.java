@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextClock;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
@@ -39,6 +40,10 @@ public class NovoLembreteFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.novo_lembrete, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Novo Lembrete");
+
 		DateTime dataAgora = new DateTime();
 		final TextClock horario = (TextClock) view.findViewById(R.id.hora_lembrete);
 

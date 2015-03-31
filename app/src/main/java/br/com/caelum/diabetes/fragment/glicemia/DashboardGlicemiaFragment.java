@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.calculos.CalculaMediaGlicemia;
 
@@ -16,6 +18,9 @@ public class DashboardGlicemiaFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.dashboard_glicemia, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Glicemia");
 		
 		Button novaMedicao = (Button) view.findViewById(R.id.nova_medicao);
 		

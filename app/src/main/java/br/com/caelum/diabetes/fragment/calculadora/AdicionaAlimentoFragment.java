@@ -39,6 +39,9 @@ public class AdicionaAlimentoFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.lista_busca_alimento, null);
 
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Escolher Alimentos");
+
 		Bundle bundle = this.getArguments();
 
 		refeicao = (Refeicao) bundle.getSerializable("refeicao");

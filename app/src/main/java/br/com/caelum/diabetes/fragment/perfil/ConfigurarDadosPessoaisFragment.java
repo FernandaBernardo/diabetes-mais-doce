@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
+
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
@@ -33,6 +35,10 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.configurar_dados, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Dados Pessoais");
+
 		initializeComponents(view);
 		DbHelper helper = new DbHelper(getActivity());
 		dao = new PacienteDao(helper);

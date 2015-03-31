@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.RefeicaoDao;
@@ -30,6 +32,9 @@ public class ListaRefeicaoFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.lista_refeicao, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Refeições");
 		
 		listaRefeicoes = (ListView) view.findViewById(R.id.lista_refeicoes);
 		listaRefeicoes.setOnItemLongClickListener(new OnItemLongClickListener() {

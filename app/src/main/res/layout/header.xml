@@ -2,10 +2,22 @@
     style="@style/actionbar_compat" >
 
     <Button
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:drawableTop="@drawable/logo"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:drawableTop="@drawable/menu"
         android:id="@+id/logo"
+        android:gravity="center_vertical"
+        android:layout_margin="5dp"
         android:background="@null" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/titulo"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:gravity="center_vertical"
+        android:layout_toRightOf="@id/logo"
+        android:layout_marginLeft="10dp"/>
  
 </RelativeLayout>

@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
 import br.com.caelum.diabetes.R;
 
 public class ConfigurarPerfilFragment extends Fragment{
@@ -16,6 +18,9 @@ public class ConfigurarPerfilFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.configurar_perfil, null);
+
+        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
+        titulo.setText("Perfil");
 		
 		Button botaoDados = (Button) view.findViewById(R.id.perfil_dados);
 		Button botaoBasal = (Button) view.findViewById(R.id.perfil_basal);
