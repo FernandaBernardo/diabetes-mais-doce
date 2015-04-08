@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -59,16 +60,16 @@ public class DashboardFragment extends Fragment {
 			}
 		});
 
-		Button perfil = (Button) view.findViewById(R.id.main_perfil);
-		perfil.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.main_view, new ConfigurarPerfilFragment());
-				transaction.addToBackStack(null);
-				transaction.commit();
-			}
-		});
+//		Button perfil = (Button) view.findViewById(R.id.main_perfil);
+//		perfil.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//				transaction.replace(R.id.main_view, new ConfigurarPerfilFragment());
+//				transaction.addToBackStack(null);
+//				transaction.commit();
+//			}
+//		});
 
 		Button medicao = (Button) view.findViewById(R.id.main_glicemia);
 		medicao.setOnClickListener(new OnClickListener() {
@@ -92,6 +93,19 @@ public class DashboardFragment extends Fragment {
 			}
 		});
 
+        Button exames = (Button) view.findViewById(R.id.main_exames);
+        Button estatisticas = (Button) view.findViewById(R.id.main_estatisticas);
+
+        calculadora.setText(Html.fromHtml("<b><big>" + "Calculadora" + "</big></b>" + "<br />" +
+                "<small>" + "Calcule os carboidratos consumidos" + "</small>"));
+        lembrete.setText(Html.fromHtml("<b><big>" + "Lembretes" + "</big></b>" + "<br />" +
+                "<small>" + "Não esqueça de se alimentar de 3 em 3 horas" + "</small>"));
+        medicao.setText(Html.fromHtml("<b><big>" + "Glicemia" + "</big></b>" + "<br />" +
+                "<small>" + "Agora ficou fácil monitorar sua glicemia no decorrer do mês" + "</small>"));
+        exames.setText(Html.fromHtml("<b><big>" + "Exames (logo)" + "</big></b>" + "<br />" +
+                "<small>" + "Lembre-se de todos os seus exames" + "</small>"));
+        estatisticas.setText(Html.fromHtml("<b><big>" + "Estatísticas (logo)" + "</big></b>" + "<br />" +
+                "<small>" + "Acompanhe a evolução dos seus níveis glicêmicos" + "</small>"));
         return view;
 	}
 }

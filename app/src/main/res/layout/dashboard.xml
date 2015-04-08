@@ -1,9 +1,40 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/home_root"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/home_root"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-    <include layout="@layout/dashboard_layout"/>   
-                      
-</LinearLayout>
+        <Button
+            style="@style/new_dashboard_button"
+            android:drawableLeft="@drawable/calculadora"
+            android:id="@+id/main_calculadora"/>
+
+        <Button
+            style="@style/new_dashboard_button"
+            android:drawableLeft="@drawable/medicao"
+            android:id="@+id/main_glicemia"/>
+
+        <Button
+            style="@style/new_dashboard_button"
+            android:drawableLeft="@drawable/lembretes"
+            android:id="@+id/main_lembretes"/>
+
+
+        <Button
+            style="@style/new_dashboard_button"
+            android:drawableLeft="@drawable/exames"
+            android:id="@+id/main_exames"/>
+
+        <Button
+            style="@style/new_dashboard_button"
+            android:drawableLeft="@drawable/estatistica"
+            android:id="@+id/main_estatisticas"/>
+
+        <!--<Button-->
+            <!--style="@style/new_dashboard_button"-->
+            <!--android:drawableLeft="@drawable/perfil"-->
+            <!--android:id="@+id/main_perfil"/>-->
+
+    </LinearLayout>
+</ScrollView>
