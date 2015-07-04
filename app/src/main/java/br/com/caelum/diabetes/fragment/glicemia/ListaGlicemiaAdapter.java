@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.fragment.glicemia;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -50,8 +51,8 @@ public class ListaGlicemiaAdapter extends BaseAdapter{
 		campoTipoRefeicao.setText(glicemia.getTipoRefeicao().getText());
 		
 		TextView campoDia = (TextView) item.findViewById(R.id.glicemia_dia);
-		DateTime data = glicemia.getData();
-		campoDia.setText(data.getDayOfMonth() + "/" + data.getMonthOfYear() + "/" + data.getYear());
+		Calendar data = glicemia.getData();
+		campoDia.setText(data.get(Calendar.DAY_OF_MONTH) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR));
 		
 		TextView campoValor = (TextView) item.findViewById(R.id.glicemia_valor);
 		int valorGlicemia = glicemia.getValorGlicemia();

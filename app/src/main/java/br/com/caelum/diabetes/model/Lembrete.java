@@ -1,17 +1,19 @@
 package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import org.joda.time.DateTime;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 
 @SuppressWarnings("serial")
 public class Lembrete implements Serializable {
 	@DatabaseField(generatedId=true)
 	int id;
-	@DatabaseField
-	DateTime data;
+    @DatabaseField(dataType = DataType.SERIALIZABLE)
+	Calendar data;
 	@DatabaseField
 	String atividade;
 	@DatabaseField
@@ -28,11 +30,11 @@ public class Lembrete implements Serializable {
 		this.id = id;
 	}
 
-	public DateTime getData() {
+	public Calendar getData() {
 		return data;
 	}
 
-	public void setData(DateTime data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 
@@ -54,9 +56,8 @@ public class Lembrete implements Serializable {
 
 	@Override
 	public String toString() {
-		return data.getDayOfMonth() + "/" + data.getMonthOfYear() + "/"
-				+ data.getYear() + " - " + data.getHourOfDay() + ":"
-				+ data.getMinuteOfHour() + " - " + atividade + " - "
+		return data.get(Calendar.DAY_OF_MONTH) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR) +
+                " - " + data.get(Calendar.HOUR_OF_DAY) + ":" + data.get(Calendar.MINUTE) + " - " + atividade + " - "
 				+ anotacoes;
 	}
 }

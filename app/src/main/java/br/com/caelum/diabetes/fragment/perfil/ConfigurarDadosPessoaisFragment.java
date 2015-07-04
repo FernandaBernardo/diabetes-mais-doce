@@ -16,6 +16,7 @@ import android.widget.TextView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
+import br.com.caelum.diabetes.extras.ValidaCampos;
 import br.com.caelum.diabetes.model.Paciente;
 import br.com.caelum.diabetes.util.ValidatorUtils;
 
@@ -44,13 +45,14 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 		dao = new PacienteDao(helper);
 		paciente = dao.getPaciente();
 
-		validateEditText(idade);
-		validateEditText(peso);
-		validateEditText(altura);
+        salvar = (Button) view.findViewById(R.id.salvar_dados);
 
-		setValues();
+        ValidaCampos.validateEditText(idade, salvar);
+        ValidaCampos.validateEditText(peso, salvar);
+        ValidaCampos.validateEditText(altura, salvar);
 
-		salvar = (Button) view.findViewById(R.id.salvar_dados);
+        setValues();
+
 		salvar.setEnabled(ValidatorUtils.checkIfIsValidWithHint(idade, peso, altura));
 
 		salvar.setOnClickListener(new OnClickListener() {
@@ -93,24 +95,6 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 		});
 
 		return view;
-	}
-
-	private void validateEditText(final EditText editText) {
-		editText.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void afterTextChanged(Editable s) {
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				salvar.setEnabled(ValidatorUtils.checkIfIsValidWithHint(idade, peso, altura));
-				ValidatorUtils.checkIfOnError(editText);
-			}
-		});
 	}
 
 	private void initializeComponents(View view) {

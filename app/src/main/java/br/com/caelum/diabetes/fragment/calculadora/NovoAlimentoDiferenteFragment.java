@@ -19,6 +19,7 @@ import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.extras.UnidadeMedidaAlimento;
+import br.com.caelum.diabetes.extras.ValidaCampos;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.util.ValidatorUtils;
 
@@ -42,7 +43,7 @@ public class NovoAlimentoDiferenteFragment extends Fragment {
 		carboidrato = (EditText) view
 				.findViewById(R.id.carboidrato_novo_alimento);
 		salvarAlimento = (Button) view.findViewById(R.id.salvar_alimento);
-		validateEditText(nomeAlimento);
+		ValidaCampos.validateEditText(nomeAlimento, salvarAlimento);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_dropdown_item_1line,
 				UnidadeMedidaAlimento.getAll());
@@ -66,33 +67,5 @@ public class NovoAlimentoDiferenteFragment extends Fragment {
 		});
 
 		return view;
-	}
-
-	private void validateEditText(final EditText editText) {
-
-		editText.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void afterTextChanged(Editable arg0) {
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1,
-					int arg2, int arg3) {
-
-			}
-
-			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-					int arg3) {
-				salvarAlimento.setEnabled(ValidatorUtils
-						.checkEmptyEditText(nomeAlimento));
-				ValidatorUtils.checkIfOnError(editText);
-
-			}
-
-		});
-
 	}
 }

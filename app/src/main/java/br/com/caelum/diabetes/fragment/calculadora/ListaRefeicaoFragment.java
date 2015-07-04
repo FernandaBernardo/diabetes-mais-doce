@@ -67,7 +67,7 @@ public class ListaRefeicaoFragment extends Fragment{
         Collections.sort(refeicoes, new Comparator<Refeicao>() {
             @Override
             public int compare(Refeicao refeicao, Refeicao refeicao2) {
-                return refeicao2.getData().toDate().compareTo(refeicao.getData().toDate());
+                return refeicao2.getData().compareTo(refeicao.getData());
             }
         });
 		

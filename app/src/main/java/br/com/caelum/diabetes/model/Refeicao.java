@@ -2,11 +2,13 @@ package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
 import org.joda.time.DateTime;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 
@@ -20,12 +22,12 @@ public class Refeicao implements Serializable{
 	private Collection<AlimentoVirtual> alimentos;
 	@DatabaseField
 	private TipoRefeicao tipoRefeicao;
-	@DatabaseField
-	private DateTime data;
+	@DatabaseField(dataType = DataType.SERIALIZABLE)
+	private Calendar data;
 	
 	public Refeicao() {
 		this.alimentos = new ArrayList<AlimentoVirtual>();
-		this.data = new DateTime();
+		this.data = Calendar.getInstance();
 	}
 	
 	public void adicionaAlimento(AlimentoVirtual alimento) {
@@ -64,19 +66,18 @@ public class Refeicao implements Serializable{
 		this.tipoRefeicao = tipoRefeicao;
 	}
 
-	public DateTime getData() {
+	public Calendar getData() {
 		return data;
 	}
 
-	public void setData(DateTime data) {
-		this.data = data;
+	public void setData(Calendar data) {
+        this.data = data;
 	}
 	
 	@Override
 	public String toString() {
-		return data.getDayOfMonth() + "/" + data.getMonthOfYear() + "/" + data.getYear() + 
-				" - " + data.getHourOfDay() + ":" + data.getMinuteOfHour() + " - " + 
-				tipoRefeicao; 
+		return data.get(Calendar.DAY_OF_MONTH) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR) +
+				" - " + data.get(Calendar.HOUR_OF_DAY) + ":" + data.get(Calendar.MINUTE) + " - " +
+				tipoRefeicao;
 	}
-
 }

@@ -2,32 +2,60 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\libs\ormlite-android-4.48.jar"
+        jar="C:\Users\Fernanda\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-5e0585d487fddf3c84739f71b1593f6aff610524.jar" />
+    </item>
+    <item
+        jar="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\libs\ormlite-android-4.48.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="afa06f539a4026c10b247386312aa67404b80a16">
-        <dex dex="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\build\intermediates\pre-dexed\debug\ormlite-android-4.48-b1047bc5038238904d3e150f8562bdc1bc4926dd.jar" />
+        <dex dex="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\pre-dexed\debug\ormlite-android-4.48-e5d75cf10d189f87e4f53ff89de1fa1caf0298eb.jar" />
     </item>
     <item
-        jar="C:\Users\Fê\.gradle\caches\modules-2\files-2.1\joda-time\joda-time\2.3\56498efd17752898cfcc3868c1b6211a07b12b8f\joda-time-2.3.jar"
+        jar="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-da0fe9503b59152cad868e2ee6d49cdb06776469.jar" />
+    </item>
+    <item
+        jar="C:\Users\Fernanda\.gradle\caches\modules-2\files-2.1\joda-time\joda-time\2.3\56498efd17752898cfcc3868c1b6211a07b12b8f\joda-time-2.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="56498efd17752898cfcc3868c1b6211a07b12b8f">
-        <dex dex="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\build\intermediates\pre-dexed\debug\joda-time-2.3-e63a02fde8929edc5272e259df1562d038965e8d.jar" />
+        <dex dex="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\pre-dexed\debug\joda-time-2.3-193fdd226f8e46fcf785d0a6f3f92497da4faf9e.jar" />
     </item>
     <item
-        jar="C:\Users\Fê\AppData\Local\Android\sdk2\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jar="C:\Users\Fernanda\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-61d442dc250278374779fdc5b6884a688b3d563a.jar" />
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\pre-dexed\debug\library-2.4.0-bf1514f626bc9adba5baf598bd875a49934e4e0f.jar" />
     </item>
     <item
-        jar="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\libs\ormlite-core-4.48.jar"
+        jar="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\pre-dexed\debug\classes-83c191a4d69d966e733d2800909b687f04f8c064.jar" />
+    </item>
+    <item
+        jar="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\libs\ormlite-core-4.48.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
-        <dex dex="C:\Users\Fê\AndroidstudioProjects\diabetes-mobile\app\build\intermediates\pre-dexed\debug\ormlite-core-4.48-a2f50dea3ebec6d58c19c1d11c5005e674448674.jar" />
+        <dex dex="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\pre-dexed\debug\ormlite-core-4.48-7de100687860ee775883d686ddbf469cf1bb6df6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\exploded-aar\com.github.flavienlaurent\datetimepicker\0f5d399995\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6f9321b2d2115a122dad6a61ccf2a3e7d64eb034">
+        <dex dex="C:\Users\Fernanda\Desktop\diabetes-mais-doce\app\build\intermediates\pre-dexed\debug\classes-d25c24924faf0757db9e177248bd56abc95b5047.jar" />
     </item>
 
 </items>

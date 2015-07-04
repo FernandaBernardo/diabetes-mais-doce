@@ -1,9 +1,11 @@
 package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import org.joda.time.DateTime;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 
 import br.com.caelum.diabetes.extras.TipoRefeicao;
@@ -12,15 +14,15 @@ import br.com.caelum.diabetes.extras.TipoRefeicao;
 public class Glicemia implements Serializable{
 	@DatabaseField(generatedId=true)
 	private int id;
-	@DatabaseField
-	private DateTime data;
+    @DatabaseField(dataType = DataType.SERIALIZABLE)
+	private Calendar data;
 	@DatabaseField
 	private TipoRefeicao tipoRefeicao;
 	@DatabaseField
 	private int valorGlicemia;
 	
 	public Glicemia() {
-		this.data = new DateTime();
+		this.data = Calendar.getInstance();
 	}
 	
 	public int getId() {
@@ -29,10 +31,10 @@ public class Glicemia implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public DateTime getData() {
+	public Calendar getData() {
 		return data;
 	}
-	public void setData(DateTime data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 	public TipoRefeicao getTipoRefeicao() {
@@ -50,8 +52,8 @@ public class Glicemia implements Serializable{
 	
 	@Override
 	public String toString() {
-		return data.getDayOfMonth() + "/" + data.getMonthOfYear() + "/" + data.getYear() + 
-				" - " + data.getHourOfDay() + ":" + data.getMinuteOfHour() + " - " + 
+		return data.get(Calendar.DAY_OF_MONTH) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR) +
+                " - " + data.get(Calendar.HOUR_OF_DAY) + ":" + data.get(Calendar.MINUTE) + " - " +
 				tipoRefeicao + " - " + valorGlicemia; 
 	}
 }

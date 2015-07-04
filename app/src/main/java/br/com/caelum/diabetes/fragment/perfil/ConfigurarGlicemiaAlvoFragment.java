@@ -15,6 +15,7 @@ import android.widget.TextView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.extras.ValidaCampos;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
 import br.com.caelum.diabetes.util.ValidatorUtils;
@@ -35,9 +36,10 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 
 		getValoresGlobais();
 		settarTextos();
-		validateEditText(cafe);
-		validateEditText(almoco);
-		validateEditText(jantar);
+
+		ValidaCampos.validateEditText(cafe, salvar);
+        ValidaCampos.validateEditText(almoco, salvar);
+        ValidaCampos.validateEditText(jantar, salvar);
 
 		salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar));
 		salvar.setOnClickListener(new OnClickListener() {
@@ -60,24 +62,6 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 		});
 
 		return view;
-	}
-
-	private void validateEditText(final EditText editText) {
-		editText.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void afterTextChanged(Editable arg0) {
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-			}
-
-			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar));
-				ValidatorUtils.checkIfOnError(editText);
-			}
-		});
 	}
 
 	private void settarTextos() {

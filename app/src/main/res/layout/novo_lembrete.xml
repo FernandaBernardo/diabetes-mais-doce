@@ -14,26 +14,23 @@
         android:gravity="center"
         android:layout_marginTop="20dp">
         
-        <TextClock 
+        <TextView
         	android:id="@+id/hora_lembrete"
         	android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginRight="30dp"
-	        android:format24Hour="k:mm"
 	        android:drawablePadding="10dp"
 	        android:gravity="center_vertical"
 	        android:drawableLeft="@drawable/clock"
-	        tools:ignore="NewApi"/>
+	        />
         
-        <TextClock
+        <TextView
 	    	android:id="@+id/data_lembrete"
 	    	android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:drawableLeft="@drawable/calendar"
 		    android:drawablePadding="10dp"
-		    android:format24Hour="dd/MM/yyyy"
 		    android:gravity="center_vertical"
-		    tools:ignore="NewApi"
 	    	 />
         
     </LinearLayout> 

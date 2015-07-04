@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.fragment.calculadora;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -51,8 +52,8 @@ public class ListaRefeicaoAdapter extends BaseAdapter{
 		campoTotalCho.setText(refeicao.getTotalCHO()+"g CHO");
 		
 		TextView campoDia = (TextView) item.findViewById(R.id.refeicao_dia);
-		DateTime data = refeicao.getData();
-		campoDia.setText(data.getDayOfMonth() + "/" + data.getMonthOfYear() + "/" + data.getYear());
+		Calendar data = refeicao.getData();
+		campoDia.setText(data.get(Calendar.DAY_OF_MONTH) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR));
 
         ImageView imagem = (ImageView) item.findViewById(R.id.refeicao_imagem);
         switch (refeicao.getTipoRefeicao()) {

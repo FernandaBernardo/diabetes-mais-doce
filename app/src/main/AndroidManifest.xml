@@ -27,4 +27,6 @@
             android:name="br.com.caelum.diabetes.activity.MainActivity"
             android:screenOrientation="portrait" />
     </application>
+
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
 </manifest>

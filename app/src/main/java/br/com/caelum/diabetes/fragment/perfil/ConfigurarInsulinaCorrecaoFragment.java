@@ -15,6 +15,7 @@ import android.widget.TextView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.extras.ValidaCampos;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
 import br.com.caelum.diabetes.util.ValidatorUtils;
@@ -38,12 +39,12 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 
 		getValoresGlobais();
 		settarTextos();
-		validateEditText(cafe);
-		validateEditText(almoco);
-		validateEditText(jantar);
-		validateEditText(lancheManha);
-		validateEditText(lancheTarde);
-		validateEditText(ceia);
+		ValidaCampos.validateEditText(cafe, salvar);
+        ValidaCampos.validateEditText(almoco, salvar);
+        ValidaCampos.validateEditText(jantar, salvar);
+        ValidaCampos.validateEditText(lancheManha, salvar);
+        ValidaCampos.validateEditText(lancheTarde, salvar);
+        ValidaCampos.validateEditText(ceia, salvar);
 
 		salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar, lancheManha, lancheTarde, ceia));
 		salvar.setOnClickListener(new OnClickListener() {
@@ -69,24 +70,6 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 		});
 
 		return view;
-	}
-
-	private void validateEditText(final EditText editText) {
-		editText.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void afterTextChanged(Editable s) {
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar, ceia, lancheManha, lancheTarde));
-				ValidatorUtils.checkIfOnError(editText);
-			}
-		});
 	}
 
 	private void settarTextos() {

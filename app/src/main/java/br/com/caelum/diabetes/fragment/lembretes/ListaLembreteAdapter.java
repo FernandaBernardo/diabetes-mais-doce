@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import org.joda.time.DateTime;
 
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.diabetes.R;
@@ -50,9 +51,9 @@ public class ListaLembreteAdapter extends BaseAdapter {
         View item = inflater.inflate(R.layout.item_lembrete, null);
 
         Lembrete lembrete = lembretes.get(pos);
-        String dataAux = lembrete.getData().getDayOfMonth() + "/" + lembrete.getData().getMonthOfYear() + "/"
-                + lembrete.getData().getYear() + " - " + lembrete.getData().getHourOfDay() + ":"
-                + lembrete.getData().getMinuteOfHour();
+        String dataAux = lembrete.getData().get(Calendar.DAY_OF_MONTH) + "/" + lembrete.getData().get(Calendar.MONTH) + "/"
+                + lembrete.getData().get(Calendar.YEAR) + " - " + lembrete.getData().get(Calendar.HOUR_OF_DAY) + ":"
+                + lembrete.getData().get(Calendar.MINUTE);
         TextView data = (TextView) item.findViewById(R.id.lembrete_data);
         data.setText(dataAux);
         TextView atividade = (TextView) item.findViewById(R.id.lembrete_nome);

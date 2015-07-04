@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.calculos;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -20,13 +21,13 @@ public class CalculaMediaGlicemia {
 	}
 	
 	public int getMediaDoDia() {
-		DateTime data = new DateTime();
-		int dia = data.getDayOfYear();
-		int ano = data.getYear(); 
+		Calendar data = Calendar.getInstance();
+		int dia = data.get(Calendar.DAY_OF_YEAR);
+		int ano = data.get(Calendar.YEAR);
 		int contador = 0;
 		int media = 0;
 		for (Glicemia glicemia : glicemias) {
-			if(glicemia.getData().getDayOfYear() == dia && glicemia.getData().getYear() == ano) {
+			if(glicemia.getData().get(Calendar.DAY_OF_YEAR) == dia && glicemia.getData().get(Calendar.YEAR) == ano) {
 				media += glicemia.getValorGlicemia();
 				contador++;
 			}
@@ -37,13 +38,13 @@ public class CalculaMediaGlicemia {
 	}
 	
 	public int getMediaDaSemana() {
-		DateTime data = new DateTime();
-		int semana = data.getWeekyear();
-		int ano = data.getYear();
+		Calendar data = Calendar.getInstance();
+		int semana = data.get(Calendar.WEEK_OF_YEAR);
+		int ano = data.get(Calendar.YEAR);
 		int contador = 0;
 		int media = 0;
 		for (Glicemia glicemia : glicemias) {
-			if(glicemia.getData().getWeekyear() == semana && glicemia.getData().getYear() == ano) {
+			if(glicemia.getData().get(Calendar.WEEK_OF_YEAR) == semana && glicemia.getData().get(Calendar.YEAR) == ano) {
 				media += glicemia.getValorGlicemia();
 				contador++;
 			}
@@ -54,13 +55,13 @@ public class CalculaMediaGlicemia {
 	}
 	
 	public int getMediaDoMes() {
-		DateTime data = new DateTime();
-		int mes = data.getMonthOfYear();
-		int ano = data.getYear();
+		Calendar data = Calendar.getInstance();
+		int mes = data.get(Calendar.MONTH);
+		int ano = data.get(Calendar.YEAR);
 		int contador = 0;
 		int media = 0;
 		for (Glicemia glicemia : glicemias) {
-			if(glicemia.getData().getMonthOfYear() == mes && glicemia.getData().getYear() == ano) {
+			if(glicemia.getData().get(Calendar.MONTH) == mes && glicemia.getData().get(Calendar.YEAR) == ano) {
 				media += glicemia.getValorGlicemia();
 				contador++;
 			}
