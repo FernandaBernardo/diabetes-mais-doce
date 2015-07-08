@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.fragment.perfil;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.extras.ValidaCampos;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
@@ -64,6 +66,11 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 				dadosDao.salva(dadosMedicos);
 
 				helper.close();
+
+                SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("calculoInsulina", true);
+                editor.commit();
 
 				getFragmentManager().popBackStack();
 			}

@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.dialog;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -10,7 +11,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.fragment.DashboardFragment;
+import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 
 public class PreencherDadosMedicosDialog extends DialogFragment {
@@ -37,7 +40,12 @@ public class PreencherDadosMedicosDialog extends DialogFragment {
 		cancelarButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				setTransaction(R.id.main_view, new DashboardFragment());
+                SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("calculoInsulina", false);
+                editor.commit();
+
+				setTransaction(R.id.main_view, new DashboardCalculadoraFragment());
 				getDialog().dismiss();
 			}
 		});

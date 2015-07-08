@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,7 @@ import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dialog.PreencherDadosMedicosDialog;
+import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
 import br.com.caelum.diabetes.fragment.glicemia.DashboardGlicemiaFragment;
 import br.com.caelum.diabetes.fragment.lembretes.DashboardLembreteFragment;
@@ -23,14 +25,12 @@ import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 import br.com.caelum.diabetes.model.Paciente;
 
 public class DashboardFragment extends Fragment {
+    private Paciente paciente;
 
-	private PacienteDao dao;
-	private Paciente paciente;
-
-	private void getPaciente() {
+    private void getPaciente() {
 		DbHelper helper = new DbHelper(getActivity());
-		dao = new PacienteDao(helper);
-		paciente = dao.getPaciente();
+        PacienteDao dao = new PacienteDao(helper);
+        paciente = dao.getPaciente();
 	}
 
 	@Override
@@ -41,13 +41,16 @@ public class DashboardFragment extends Fragment {
         TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
         titulo.setText("Diabetes Mais Doce");
 
-		Button calculadora = (Button) view.findViewById(R.id.main_calculadora);
+        SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
+        final boolean calculoInsulina = settings.getBoolean("calculoInsulina", true);
+
+        Button calculadora = (Button) view.findViewById(R.id.main_calculadora);
 		calculadora.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				getPaciente();
 
-				if (!paciente.temValorCorrecao()) {
+				if (!paciente.temValorCorrecao() && calculoInsulina) {
 					PreencherDadosMedicosDialog dadosMedicosDialog = new PreencherDadosMedicosDialog();
 					FragmentManager fm = getFragmentManager();
 					dadosMedicosDialog.show(fm, "dashboard_fragment");
@@ -59,17 +62,6 @@ public class DashboardFragment extends Fragment {
 				}
 			}
 		});
-
-//		Button perfil = (Button) view.findViewById(R.id.main_perfil);
-//		perfil.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//				transaction.replace(R.id.main_view, new ConfigurarPerfilFragment());
-//				transaction.addToBackStack(null);
-//				transaction.commit();
-//			}
-//		});
 
 		Button medicao = (Button) view.findViewById(R.id.main_glicemia);
 		medicao.setOnClickListener(new OnClickListener() {

@@ -54,12 +54,9 @@
     <string name="configurar_insulina_continua">Configurar Insulina Continua</string>
     <string name="configurar_glicemia_alvo">Configurar Glicemia Alvo</string>
     <string name="novo_alimento">Novo Alimento</string>
-    <string name="dados_medicos_aviso">Você não pode usar esta funcionalidade enquanto
-        não cadastrar seus dados médicos, mas pode usar o restante do aplicativo.
-        Deseja cadastrar agora? Lembre-se: se você cadastrar os dados médicos, você
-        nos ajudará! =)</string>
-    <string name="confirmar_dados_medicos">Sim, quero preencher os dados</string>
-    <string name="cancelar_dados_medicos">Não, quero continuar a utilizar o aplicativo</string>
+    <string name="dados_medicos_aviso">Se quiser usar o cálculo de insulina cadastre os valores de correção</string>
+    <string name="confirmar_dados_medicos">Preencher os dados</string>
+    <string name="cancelar_dados_medicos">Não quero usar esse cálculo</string>
     <string name="dado_incorreto_ok">OK</string>
     <string name="dado_incorreto_texto">Dados Inválidos. Preencha novamente!</string>
     <string name="adicionar_novo_alimento">Adicionar Novo Alimento</string>

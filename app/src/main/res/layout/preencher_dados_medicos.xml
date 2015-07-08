@@ -6,18 +6,14 @@
     android:orientation="vertical"
     android:padding="30dp" 
     android:background="@color/blue">
-    
-   
-       
+
     <ScrollView
-            android:id="@+id/dados_medicos_scrollView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fillViewport="true">
             
             <TextView
-                android:id="@+id/dados_medicos_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" 
                 android:text="@string/dados_medicos_aviso"
@@ -59,8 +55,4 @@
         	android:textColor="#DEDEDE"
         />    
     </LinearLayout>
-    
-    
-    
-
 </LinearLayout>

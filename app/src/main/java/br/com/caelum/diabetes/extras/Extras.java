@@ -26,4 +26,6 @@ public class Extras {
 	public static final String ESCUMADEIRA = "Escumadeira";
 	public static final String XICARA = "Xícara";
 	public static final String COPO = "Copo";
+
+    public static final String PREFS_NAME = "CalculoInsulina";
 }

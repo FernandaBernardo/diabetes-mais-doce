@@ -1,6 +1,7 @@
 package br.com.caelum.diabetes.fragment.calculadora;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -61,10 +62,19 @@ public class NovaRefeicaoFragment extends Fragment {
 	
 	private void atualizaDadosTotais() {
 		totalCHO.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
-		
-		double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
-		
-		totalInsulina.setText(String.valueOf(valorInsulina) + " U");
+
+        SharedPreferences settings = getActivity().getSharedPreferences("CalculoInsulina", 0);
+        final boolean calculoInsulina = settings.getBoolean("calculoInsulina", false);
+
+        if (calculoInsulina) {
+            double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
+
+            totalInsulina.setText(String.valueOf(valorInsulina) + " U");
+        } else {
+            TextView texto = (TextView) view.findViewById(R.id.textoTotalInsulina);
+            texto.setVisibility(View.INVISIBLE);
+            totalInsulina.setVisibility(View.INVISIBLE);
+        }
 	}
 
 	@Override
