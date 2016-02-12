@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -87,9 +88,9 @@ public class NovaRefeicaoFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.nova_refeicao, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Nova Refeição");
-		
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Nova Refeição");
+
 		totalCHO = (EditText) view.findViewById(R.id.totalCHO);
 		totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);
 		

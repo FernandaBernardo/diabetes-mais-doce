@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -38,8 +39,9 @@ public class NovoLembreteFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.novo_lembrete, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Novo Lembrete");
+
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Novo Lembrete");
 
 		TextView horario = (TextView) view.findViewById(R.id.hora_lembrete);
 		TextView data = (TextView) view.findViewById(R.id.data_lembrete);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -33,9 +34,9 @@ public class ListaGlicemiaFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.lista_glicemia, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Glicemias");
-		
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Glicemias");
+
 		listaGlicemias = (ListView) view.findViewById(R.id.glicemias);
 		
 		listaGlicemias.setOnItemClickListener(new OnItemClickListener() {

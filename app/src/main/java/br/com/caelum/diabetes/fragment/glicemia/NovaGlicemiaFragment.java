@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -42,8 +43,8 @@ public class NovaGlicemiaFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.nova_glicemia, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Nova Glicemia");
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Nova Glicemia");
 
 		final TextView horario = (TextView) view.findViewById(R.id.hora_glicemia);
 		final TextView data = (TextView) view.findViewById(R.id.data_glicemia);

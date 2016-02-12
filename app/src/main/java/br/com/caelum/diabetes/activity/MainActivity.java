@@ -1,17 +1,15 @@
 package br.com.caelum.diabetes.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.fragment.DashboardFragment;
@@ -23,23 +21,26 @@ import br.com.caelum.diabetes.fragment.perfil.ConfigurarGlicemiaAlvoFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarInsulinaContinuaFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarInsulinaCorrecaoFragment;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends AppCompatActivity{
 	  private DrawerLayout menuLateral;
 	  private ListView listaMenuLateral;
-	  
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-	                                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		
+
+	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 		setContentView(R.layout.main);
-		
-		String[] titulos = {"Home", "Novo Alimento", "Nova Refeição", "Nova Glicemia", 
+
+		Toolbar header = (Toolbar) findViewById(R.id.header);
+        header.setTitle("Diabetes Mais Doce");
+		setSupportActionBar(header);
+
+		String[] titulos = {"Home", "Novo Alimento", "Nova Refeição", "Nova Glicemia",
 				"Configurações Pessoais", "Configurar Basal", "Configurar Bolus", "Configurar Glicemia Alvo"};
-		
+
         menuLateral = (DrawerLayout) findViewById(R.id.menu_lateral);
         listaMenuLateral = (ListView) findViewById(R.id.lista_menu_lateral);
 
@@ -79,18 +80,18 @@ public class MainActivity extends FragmentActivity{
 				menuLateral.closeDrawer(listaMenuLateral);
 			}
 		});
-        
-        Button logo = (Button) findViewById(R.id.logo);
-        logo.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				menuLateral.openDrawer(listaMenuLateral);
-			}
-		});		
-		
+
+//        Button logo = (Button) findViewById(R.id.logo);
+//        logo.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View arg0) {
+//				menuLateral.openDrawer(listaMenuLateral);
+//			}
+//		});
+
 		DashboardFragment fragment = new DashboardFragment();
 		fragment.setArguments(getIntent().getExtras());
-		
+
 		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 		transaction.replace(R.id.main_view, fragment);
 		transaction.addToBackStack(null);

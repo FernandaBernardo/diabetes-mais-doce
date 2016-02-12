@@ -3,6 +3,7 @@ package br.com.caelum.diabetes.fragment.calculadora;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +34,8 @@ public class SelecionaQtdAlimentosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.seleciona_qtd_alimentos, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Quantidade Alimentos");
+        Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+        header.setTitle("Quantidade Alimentos");
 
         Bundle bundle = this.getArguments();
 

@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -33,9 +34,9 @@ public class ListaRefeicaoFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.lista_refeicao, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Refeições");
-		
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Refeições");
+
 		listaRefeicoes = (ListView) view.findViewById(R.id.lista_refeicoes);
 		listaRefeicoes.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override

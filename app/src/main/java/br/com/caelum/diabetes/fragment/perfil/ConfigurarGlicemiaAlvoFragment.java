@@ -2,6 +2,7 @@ package br.com.caelum.diabetes.fragment.perfil;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -31,8 +32,8 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.configurar_glicemia, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Glicemia Alvo");
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Glicemia Alvo");
 
 		getValoresGlobais();
 		settarTextos();

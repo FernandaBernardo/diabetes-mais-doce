@@ -3,6 +3,7 @@ package br.com.caelum.diabetes.fragment.perfil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,9 +20,9 @@ public class ConfigurarPerfilFragment extends Fragment{
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.configurar_perfil, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Perfil");
-		
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Perfil");
+
 		Button botaoDados = (Button) view.findViewById(R.id.perfil_dados);
 		Button botaoBasal = (Button) view.findViewById(R.id.perfil_basal);
 		Button botaoBolus = (Button) view.findViewById(R.id.perfil_bolus);

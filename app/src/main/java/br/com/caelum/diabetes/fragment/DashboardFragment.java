@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,9 +38,6 @@ public class DashboardFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.dashboard, null);
-
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Diabetes Mais Doce");
 
         SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
         final boolean calculoInsulina = settings.getBoolean("calculoInsulina", true);

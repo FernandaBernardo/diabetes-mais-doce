@@ -6,6 +6,7 @@ import java.util.List;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -39,8 +40,8 @@ public class AdicionaAlimentoFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.lista_busca_alimento, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Escolher Alimentos");
+        Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+        header.setTitle("Escolher Alimentos");
 
 		Bundle bundle = this.getArguments();
 

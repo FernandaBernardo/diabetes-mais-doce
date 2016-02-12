@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -33,8 +34,8 @@ public class ListarTodosLembretesFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.listar_lembretes, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Lembretes");
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Lembretes");
 
 		listaLembretes = (ListView) view.findViewById(R.id.list_lembretes_all);
 		listaLembretes.setOnItemLongClickListener(new OnItemLongClickListener() {

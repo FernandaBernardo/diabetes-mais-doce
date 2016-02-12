@@ -3,6 +3,7 @@ package br.com.caelum.diabetes.fragment.calculadora;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,9 +19,9 @@ public class DashboardCalculadoraFragment extends Fragment{
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.dashboard_calculadora, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Calculadora");
-		
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Calculadora");
+
 		Button novaRefeicao = (Button) view.findViewById(R.id.nova_refeicao);
 		Button listarRefeicoes = (Button) view.findViewById(R.id.listar_refeicoes);
 		Button adicionarNovoAlimento = (Button) view.findViewById(R.id.adicionar_novo_alimento);

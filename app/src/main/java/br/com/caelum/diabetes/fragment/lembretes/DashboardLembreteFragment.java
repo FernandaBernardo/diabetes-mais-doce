@@ -5,6 +5,7 @@ import java.util.List;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,8 +28,8 @@ public class DashboardLembreteFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.dashboard_lembrete, null);
 
-        TextView titulo = (TextView) getActivity().findViewById(R.id.titulo);
-        titulo.setText("Lembrete");
+		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
+		header.setTitle("Lembrete");
 
 		listarTodosLembretes = (Button) view.findViewById(R.id.ultimos_lembretes);
 
