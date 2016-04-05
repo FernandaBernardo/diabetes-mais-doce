@@ -9,9 +9,9 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/dark_blue"
+        android:background="@color/primary_dark"
         android:elevation="4dp"
-        app:titleTextColor="@color/white"
+        app:titleTextColor="@color/icons"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 

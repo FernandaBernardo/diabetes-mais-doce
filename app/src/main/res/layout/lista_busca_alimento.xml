@@ -23,7 +23,7 @@
         android:gravity="center"
         android:text="Não conseguiu encontrar um alimento? Cadastre no aplicativo!"
         android:layout_marginTop="10dp"
-        android:textColor="@color/blue"
+        android:textColor="@color/primary"
         android:background="@drawable/list_item_style"
         android:id="@+id/cadastrar_alimento"
         />
@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:id="@+id/cancelar_alimentos"
             android:background="@drawable/botao_escuro"
-            android:textColor="@color/white"
+            android:textColor="@color/icons"
             android:layout_marginRight="20dp"
             android:drawablePadding="-5dp"
             android:paddingLeft="5dp"
@@ -59,7 +59,7 @@
             android:layout_weight="1"
             android:id="@+id/conclui_alimentos"
             android:background="@drawable/botao_escuro"
-            android:textColor="@color/white"
+            android:textColor="@color/icons"
             android:text="@string/concluido"/>
     </LinearLayout>
 

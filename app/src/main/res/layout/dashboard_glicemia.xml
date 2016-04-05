@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:layout_weight="1"
-    android:background="@color/blue"
+    android:background="@color/primary"
     android:gravity="center_horizontal">
     
     <TextView
@@ -69,14 +69,14 @@
 		    android:layout_height="60dp"
 		    android:background="@drawable/botao"
 		    android:id="@+id/media_glicemia_hoje"
-		    android:textColor="@color/blue"
+		    android:textColor="@color/primary"
 		    android:layout_marginRight="30dp"/>
 		<Button
 		    android:layout_width="60dp"
 		    android:layout_height="60dp"
 		    android:background="@drawable/botao"
 		    android:id="@+id/media_glicemia_semana"
-		    android:textColor="@color/blue"
+		    android:textColor="@color/primary"
 		    android:layout_marginRight="30dp"
 		    android:layout_marginLeft="30dp"/>
 		<Button
@@ -84,7 +84,7 @@
 		    android:layout_height="60dp"
 		    android:background="@drawable/botao"
 		    android:id="@+id/media_glicemia_mes"
-		    android:textColor="@color/blue"
+		    android:textColor="@color/primary"
 		    android:layout_marginLeft="30dp"/>
 	</LinearLayout>
 	

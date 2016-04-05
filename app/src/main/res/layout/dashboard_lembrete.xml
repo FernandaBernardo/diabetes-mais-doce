@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:layout_weight="1"
-    android:background="@color/blue" >
+    android:background="@color/primary" >
     
     <Button
         android:layout_marginTop="40dp"

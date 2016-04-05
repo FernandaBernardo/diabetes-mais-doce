@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="30dp" 
-    android:background="@color/blue">
+    android:background="@color/primary">
 
     <ScrollView
             android:layout_width="fill_parent"

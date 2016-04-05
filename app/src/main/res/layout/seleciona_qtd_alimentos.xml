@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/concluido"
         android:id="@+id/conclui_qtd"
-        android:textColor="@color/white"
+        android:textColor="@color/icons"
         android:layout_marginTop="10dp"
         android:background="@drawable/botao_escuro"/>
 
