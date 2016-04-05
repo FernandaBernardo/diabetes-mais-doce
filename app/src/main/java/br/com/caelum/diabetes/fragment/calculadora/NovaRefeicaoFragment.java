@@ -29,6 +29,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.calculos.CalculaInsulina;
 import br.com.caelum.diabetes.calculos.DescobreTipoRefeicao;
 import br.com.caelum.diabetes.dao.DbHelper;
@@ -52,44 +53,17 @@ public class NovaRefeicaoFragment extends Fragment {
     private TextView horaRefeicao;
     private PickerDialog pickerDialog;
 
-    void carregaBundle(){
-		if(null == refeicao){
-			refeicao = new Refeicao();
-		} else {
-			carregaLista();
-			atualizaDadosTotais();
-		}
-	}
-	
-	private void atualizaDadosTotais() {
-		totalCHO.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
-
-        SharedPreferences settings = getActivity().getSharedPreferences("CalculoInsulina", 0);
-        final boolean calculoInsulina = settings.getBoolean("calculoInsulina", false);
-
-        if (calculoInsulina) {
-            double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
-
-            totalInsulina.setText(String.valueOf(valorInsulina) + " U");
-        } else {
-            TextView texto = (TextView) view.findViewById(R.id.textoTotalInsulina);
-            texto.setVisibility(View.INVISIBLE);
-            totalInsulina.setVisibility(View.INVISIBLE);
-        }
-	}
-
 	@Override
 	public void onResume() {
 		super.onResume();
 		carregaBundle();
+        ((MainActivity) getActivity()).setTitleHeader("Nova Refeição");
+        ((MainActivity) getActivity()).setBackArrowIcon();
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.nova_refeicao, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Nova Refeição");
 
 		totalCHO = (EditText) view.findViewById(R.id.totalCHO);
 		totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);
@@ -193,6 +167,32 @@ public class NovaRefeicaoFragment extends Fragment {
 		
 		return view;
 	}
+
+    private void carregaBundle(){
+        if(null == refeicao){
+            refeicao = new Refeicao();
+        } else {
+            carregaLista();
+            atualizaDadosTotais();
+        }
+    }
+
+    private void atualizaDadosTotais() {
+        totalCHO.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
+
+        SharedPreferences settings = getActivity().getSharedPreferences("CalculoInsulina", 0);
+        final boolean calculoInsulina = settings.getBoolean("calculoInsulina", false);
+
+        if (calculoInsulina) {
+            double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
+
+            totalInsulina.setText(String.valueOf(valorInsulina) + " U");
+        } else {
+            TextView texto = (TextView) view.findViewById(R.id.textoTotalInsulina);
+            texto.setVisibility(View.INVISIBLE);
+            totalInsulina.setVisibility(View.INVISIBLE);
+        }
+    }
 
 	private void carregaLista() {
 		List<AlimentoVirtual> alimentos = refeicao.getAlimentos();

@@ -12,16 +12,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 
 public class ConfigurarPerfilFragment extends Fragment{
+
+	@Override
+	public void onResume() {
+		super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Perfil");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.configurar_perfil, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Perfil");
 
 		Button botaoDados = (Button) view.findViewById(R.id.perfil_dados);
 		Button botaoBasal = (Button) view.findViewById(R.id.perfil_basal);

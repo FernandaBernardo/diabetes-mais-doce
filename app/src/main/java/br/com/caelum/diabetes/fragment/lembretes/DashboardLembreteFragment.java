@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.LembreteDao;
 import br.com.caelum.diabetes.model.Lembrete;
@@ -25,11 +26,15 @@ public class DashboardLembreteFragment extends Fragment {
 	private Button novoLembrete;
 
 	@Override
+	public void onResume() {
+		super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Lembrete");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.dashboard_lembrete, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Lembrete");
 
 		listarTodosLembretes = (Button) view.findViewById(R.id.ultimos_lembretes);
 

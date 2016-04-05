@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.GlicemiaDao;
 import br.com.caelum.diabetes.model.Glicemia;
@@ -31,11 +32,16 @@ public class ListaGlicemiaFragment extends Fragment{
 	private List<Glicemia> glicemias;
 
 	@Override
+	public void onResume() {
+		super.onResume();
+		carregaLista();
+        ((MainActivity) getActivity()).setTitleHeader("Glicemias");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.lista_glicemia, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Glicemias");
 
 		listaGlicemias = (ListView) view.findViewById(R.id.glicemias);
 		
@@ -47,7 +53,7 @@ public class ListaGlicemiaFragment extends Fragment{
 				campoOpcoes.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						registerForContextMenu(campoOpcoes);						
+						registerForContextMenu(campoOpcoes);
 						campoOpcoes.showContextMenu();
 					}
 				});
@@ -55,12 +61,6 @@ public class ListaGlicemiaFragment extends Fragment{
 		});
 		
 		return view;
-	}
-	
-	@Override
-	public void onResume() {
-		super.onResume();
-		carregaLista();
 	}
 	
 	private void carregaLista() {

@@ -20,8 +20,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
 import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.extras.Header;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.model.Refeicao;
 
@@ -36,12 +38,16 @@ public class AdicionaAlimentoFragment extends Fragment {
     private ArrayList<AlimentoFisico> alimentosSelecionados;
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Adiciona Alimento");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+    }
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.lista_busca_alimento, null);
-
-        Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-        header.setTitle("Escolher Alimentos");
 
 		Bundle bundle = this.getArguments();
 

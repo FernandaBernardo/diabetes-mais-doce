@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.extras.ValidaCampos;
@@ -32,11 +33,15 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 	private View view;
 
 	@Override
+	public void onResume() {
+		super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Insulina Contínua");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.configurar_insulina_continua, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Insulina Contínua");
 
 		getValoresGlobais();
 		settarTextos();

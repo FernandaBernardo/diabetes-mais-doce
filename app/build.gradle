@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "br.com.caelum.diabetes"
-        minSdkVersion 8
+        minSdkVersion 11
         targetSdkVersion 18
     }
 
@@ -30,4 +30,5 @@ dependencies {
     compile files('libs/ormlite-core-4.48.jar')
     compile 'com.github.flavienlaurent:datetimepicker:0f5d399995'
     compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.mikepenz:materialdrawer:5.1.6'
 }

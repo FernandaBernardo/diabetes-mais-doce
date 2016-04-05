@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.extras.UnidadeMedidaAlimento;
@@ -31,12 +32,16 @@ public class NovoAlimentoDiferenteFragment extends Fragment {
 	private Button salvarAlimento;
 
 	@Override
+	public void onResume() {
+		super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Adicionar Novo Alimento");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.novo_alimento_diferente, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Adicionar Novo Alimento");
 
 		nomeAlimento = (EditText) view.findViewById(R.id.nome_alimento);
 		unidadeMedida = (AutoCompleteTextView) view

@@ -15,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.extras.ValidaCampos;
@@ -35,11 +36,15 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 	private View view;
 
 	@Override
+	public void onResume() {
+		super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Dados Pessoais");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
+	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.configurar_dados, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Dados Pessoais");
 
 		initializeComponents(view);
 		DbHelper helper = new DbHelper(getActivity());
