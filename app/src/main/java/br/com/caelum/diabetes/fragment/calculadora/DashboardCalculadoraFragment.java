@@ -3,24 +3,28 @@ package br.com.caelum.diabetes.fragment.calculadora;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 
 public class DashboardCalculadoraFragment extends Fragment{
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		((MainActivity) getActivity()).setTitleHeader("Calculadora");
+		((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.dashboard_calculadora, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Calculadora");
 
 		Button novaRefeicao = (Button) view.findViewById(R.id.nova_refeicao);
 		Button listarRefeicoes = (Button) view.findViewById(R.id.listar_refeicoes);

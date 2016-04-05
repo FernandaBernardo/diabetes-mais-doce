@@ -3,7 +3,6 @@ package br.com.caelum.diabetes.fragment.calculadora;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
 import br.com.caelum.diabetes.model.Refeicao;
@@ -31,11 +30,15 @@ public class SelecionaQtdAlimentosFragment extends Fragment {
     private ListView list;
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Quantidade Alimentos");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.seleciona_qtd_alimentos, null);
-
-        Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-        header.setTitle("Quantidade Alimentos");
 
         Bundle bundle = this.getArguments();
 

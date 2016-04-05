@@ -12,16 +12,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.calculos.CalculaMediaGlicemia;
 
 public class DashboardGlicemiaFragment extends Fragment{
 	@Override
+	public void onResume() {
+		super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Glicemia");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.dashboard_glicemia, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Glicemia");
 
 		Button novaMedicao = (Button) view.findViewById(R.id.nova_medicao);
 		

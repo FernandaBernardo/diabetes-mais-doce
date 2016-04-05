@@ -5,16 +5,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dialog.PreencherDadosMedicosDialog;
@@ -22,7 +21,6 @@ import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
 import br.com.caelum.diabetes.fragment.glicemia.DashboardGlicemiaFragment;
 import br.com.caelum.diabetes.fragment.lembretes.DashboardLembreteFragment;
-import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 import br.com.caelum.diabetes.model.Paciente;
 
 public class DashboardFragment extends Fragment {
@@ -32,6 +30,13 @@ public class DashboardFragment extends Fragment {
 		DbHelper helper = new DbHelper(getActivity());
         PacienteDao dao = new PacienteDao(helper);
         paciente = dao.getPaciente();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Diabetes Mais Doce");
+        ((MainActivity) getActivity()).setHamburguerIcon();
 	}
 
 	@Override

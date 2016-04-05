@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.RefeicaoDao;
 import br.com.caelum.diabetes.model.Refeicao;
@@ -31,11 +32,16 @@ public class ListaRefeicaoFragment extends Fragment{
 	protected Refeicao refeicaoSelecionada;
 
 	@Override
+	public void onResume() {
+		super.onResume();
+		carregaLista();
+		((MainActivity) getActivity()).setTitleHeader("Refeições");
+		((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.lista_refeicao, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Refeições");
 
 		listaRefeicoes = (ListView) view.findViewById(R.id.lista_refeicoes);
 		listaRefeicoes.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -49,12 +55,6 @@ public class ListaRefeicaoFragment extends Fragment{
 		registerForContextMenu(listaRefeicoes);
 		
 		return view;
-	}
-	
-	@Override
-	public void onResume() {
-		super.onResume();
-		carregaLista();
 	}
 
 	private void carregaLista() {

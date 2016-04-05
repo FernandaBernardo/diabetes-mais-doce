@@ -4,15 +4,11 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        android:theme="@style/MaterialDrawerTheme.Light" >
         <activity
             android:name="br.com.caelum.diabetes.activity.BemVindoActivity"
             android:label="@string/app_name"

@@ -21,6 +21,7 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.LembreteDao;
 import br.com.caelum.diabetes.extras.PickerDialog;
@@ -35,13 +36,16 @@ public class NovoLembreteFragment extends Fragment {
 	private Button salvar;
     private PickerDialog pickerDialog;
 
+	@Override
+	public void onResume() {
+		super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Novo Lembrete");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.novo_lembrete, null);
-
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Novo Lembrete");
 
 		TextView horario = (TextView) view.findViewById(R.id.hora_lembrete);
 		TextView data = (TextView) view.findViewById(R.id.data_lembrete);

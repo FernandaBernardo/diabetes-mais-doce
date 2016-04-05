@@ -24,6 +24,7 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.calculos.DescobreTipoRefeicao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.GlicemiaDao;
@@ -39,12 +40,16 @@ public class NovaGlicemiaFragment extends Fragment {
 	private Button salvarGlicemia;
     private PickerDialog pickerDialog;
 
+	@Override
+	public void onResume() {
+		super.onResume();
+        ((MainActivity) getActivity()).setTitleHeader("Nova Glicemia");
+        ((MainActivity) getActivity()).setBackArrowIcon();
+	}
+
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.nova_glicemia, null);
-
-		Toolbar header = (Toolbar) getActivity().findViewById(R.id.header);
-		header.setTitle("Nova Glicemia");
 
 		final TextView horario = (TextView) view.findViewById(R.id.hora_glicemia);
 		final TextView data = (TextView) view.findViewById(R.id.data_glicemia);
