@@ -52,7 +52,6 @@
         android:paddingLeft="10dp"
         android:hint="@string/exemplo"
         android:inputType="textCapSentences"
-        android:background="@drawable/botao_edit"
         />
 
     <TextView
@@ -69,7 +68,6 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:inputType="textCapSentences"
-        android:background="@drawable/botao_edit"
         android:layout_gravity="center"
       />
 
@@ -79,7 +77,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/salvar" 
-        android:background="@drawable/botao_escuro"
         android:textColor="#fff"/>
     
     

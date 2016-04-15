@@ -12,7 +12,6 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/novo_lembrete"
-        android:background="@drawable/botao_escuro"
         android:textColor="#fff"
         android:id="@+id/novo_lembrete"
         android:layout_marginBottom="40dp"
@@ -25,7 +24,6 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/todos_lembretes"
-        android:background="@drawable/botao_escuro"
         android:textColor="#fff"
         android:layout_marginBottom="40dp"
         android:layout_gravity="center"
@@ -46,8 +44,4 @@
         android:id="@+id/list_lembretes_proximos">
         
     </ListView>
-    
-    
-    
-
 </LinearLayout>

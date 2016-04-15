@@ -20,7 +20,6 @@
 	    android:text="@string/cafe_da_manha"/>
 	<EditText 
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
@@ -34,7 +33,6 @@
 	    android:text="@string/lanche_da_manha"/>
 	<EditText 
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
@@ -48,7 +46,6 @@
 	    android:text="@string/almoco"/>
 	<EditText 
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
@@ -62,7 +59,6 @@
 	    android:text="@string/lanche_da_tarde"/>
 	<EditText 
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
@@ -76,7 +72,6 @@
 	    android:text="@string/jantar"/>
 	<EditText
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit" 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
@@ -90,7 +85,6 @@
 	    android:text="@string/ceia"/>
 	<EditText 
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
@@ -104,8 +98,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
 	    android:text="@string/salvar"
-	    android:textColor="#fff"
-	    android:background="@drawable/botao_escuro"/>
-	
+	    android:textColor="#fff" />
+
 </LinearLayout>
 </ScrollView>

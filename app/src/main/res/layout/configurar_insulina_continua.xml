@@ -20,7 +20,6 @@
 	    android:text="@string/cafe_da_manha"/>
 	<EditText 
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
@@ -38,7 +37,6 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:background="@drawable/botao_edit"
 	    android:id="@+id/valor_lanche_manha_continua"/>
 	
 	<TextView 
@@ -52,7 +50,6 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:background="@drawable/botao_edit"
 	    android:id="@+id/valor_almoco_continua"/>
 	
 	<TextView
@@ -66,7 +63,6 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:background="@drawable/botao_edit"
 	    android:id="@+id/valor_lanche_tarde_continua"/>
 	
 	<TextView 
@@ -80,7 +76,6 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:background="@drawable/botao_edit"
 	    android:id="@+id/valor_jantar_continua"/>
 	
 	<TextView 
@@ -94,7 +89,6 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:background="@drawable/botao_edit"
 	    android:id="@+id/valor_ceia_continua"/>
 	<Button
 	    android:id="@+id/salvar_insulina_continua"
@@ -104,7 +98,6 @@
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
 	    android:text="@string/salvar"
-	    android:textColor="#fff"
-	    android:background="@drawable/botao_escuro"/>
+	    android:textColor="#fff" />
 </LinearLayout>
 </ScrollView>

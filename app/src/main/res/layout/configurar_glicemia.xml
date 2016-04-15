@@ -20,7 +20,6 @@
 	    android:text="@string/cafe_da_manha"/>
 	<EditText 
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/mg_dl" 
@@ -34,7 +33,6 @@
 	    android:text="@string/almoco"/>
 	<EditText 
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/mg_dl" 
@@ -48,7 +46,6 @@
 	    android:text="@string/jantar"/>
 	<EditText 
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:hint="@string/mg_dl" 
@@ -63,7 +60,6 @@
 	    android:layout_gravity="center"
 	    android:text="@string/salvar"
 	    android:textColor="#fff"
-	    android:background="@drawable/botao_escuro"
 	    android:id="@+id/salvar_dados_perfil_glicemia"/>
 </LinearLayout>
 </ScrollView>

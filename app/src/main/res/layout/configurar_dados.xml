@@ -19,7 +19,6 @@
 	    android:inputType="number"
 	    android:id="@+id/idade"
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
 	    android:layout_gravity="center"/>
     
 	<TextView 
@@ -35,7 +34,6 @@
 	    android:layout_height="wrap_content"
 	    android:inputType="numberDecimal"
 	    android:id="@+id/peso"
-	    android:background="@drawable/botao_edit"
 	    android:layout_gravity="center"/>
 	
 	<TextView
@@ -50,7 +48,6 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:inputType="numberDecimal"
-	    android:background="@drawable/botao_edit"
 	    android:layout_gravity="center"
 	    android:id="@+id/altura"/>
 	
@@ -96,7 +93,6 @@
 	    android:id="@+id/salvar_dados"
 	    android:layout_gravity="center"
 	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_escuro"
 	    android:textColor="#fff"/>
 </LinearLayout>
 </ScrollView>

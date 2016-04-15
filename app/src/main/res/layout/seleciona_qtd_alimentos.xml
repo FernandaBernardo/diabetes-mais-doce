@@ -16,7 +16,5 @@
         android:text="@string/concluido"
         android:id="@+id/conclui_qtd"
         android:textColor="@color/icons"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/botao_escuro"/>
-
+        android:layout_marginTop="10dp" />
 </LinearLayout>

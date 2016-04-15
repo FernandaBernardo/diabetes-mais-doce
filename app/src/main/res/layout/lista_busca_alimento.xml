@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/botao_edit"
         android:id="@+id/busca_alimento"
         android:padding="10dp"
         android:hint="Digite os alimentos da refeição"
@@ -47,7 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/cancelar_alimentos"
-            android:background="@drawable/botao_escuro"
             android:textColor="@color/icons"
             android:layout_marginRight="20dp"
             android:drawablePadding="-5dp"
@@ -58,7 +56,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/conclui_alimentos"
-            android:background="@drawable/botao_escuro"
             android:textColor="@color/icons"
             android:text="@string/concluido"/>
     </LinearLayout>

@@ -31,7 +31,6 @@
 		android:orientation="horizontal"
         >
     	<Button
-    	    android:background="@drawable/botao_escuro"
         	android:id="@+id/confirmar_button"
         	android:text="@string/confirmar_dados_medicos"
         	android:layout_width="wrap_content"
@@ -44,7 +43,6 @@
     
    		<Button 
    		    android:layout_marginLeft="10dp"
-   		    android:background="@drawable/botao_escuro"
         	android:id="@+id/cancelar_button"
      	    android:text= "@string/cancelar_dados_medicos"
         	android:layout_width="wrap_content"

@@ -29,7 +29,6 @@
         android:hint="@string/nome_alimento"
         android:paddingLeft="10dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/botao_edit"
         android:id="@+id/nome_alimento"/>
     
     <TextView
@@ -44,7 +43,6 @@
         android:id="@+id/unidade_novo_alimento"
         android:layout_marginBottom="20dp"
         android:paddingLeft="10dp"
-        android:background="@drawable/botao_edit"
         android:completionThreshold="1"
         android:hint="@string/ex_colher_de_cha_concha_unidade"/>
     
@@ -61,7 +59,6 @@
         android:inputType="number"
         android:layout_marginBottom="30dp"
         android:paddingLeft="10dp"
-        android:background="@drawable/botao_edit"
         android:id="@+id/carboidrato_novo_alimento"/>
     
     <Button 
@@ -69,7 +66,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/salvar_alimento"
         android:textColor="#fff"
-        android:background="@drawable/botao_escuro"
         android:text="@string/salvar_alimento" />
     
 </LinearLayout>
