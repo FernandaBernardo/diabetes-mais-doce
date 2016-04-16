@@ -1,71 +1,77 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="30dp">
+    style="@style/container"
+    >
 	
-    <TextView 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/novo_alimento"
+    <TextView
         android:gravity="center"
-        android:textStyle="bold"
-        android:textColor="@color/primary"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:text="@string/novo_alimento"
         android:textAllCaps="true"
-        android:textSize="20sp"/>
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
     
     <TextView
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="@string/nome_alimento" />
-    
-    <EditText 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:text="@string/nome_alimento"
+        />
+    
+    <EditText
         android:hint="@string/nome_alimento"
-        android:paddingLeft="10dp"
+        android:id="@+id/nome_alimento"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:id="@+id/nome_alimento"/>
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        />
     
     <TextView
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="@string/unidade_de_medida" />
+        android:layout_width="match_parent"
+        android:text="@string/unidade_de_medida"
+        />
     
     <AutoCompleteTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/unidade_novo_alimento"
-        android:layout_marginBottom="20dp"
-        android:paddingLeft="10dp"
         android:completionThreshold="1"
-        android:hint="@string/ex_colher_de_cha_concha_unidade"/>
+        android:hint="@string/ex_colher_de_cha_concha_unidade"
+        android:id="@+id/unidade_novo_alimento"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        />
     
     <TextView 
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="@string/carboidrato"/>
-    
-    <EditText 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:text="@string/carboidrato"
+        />
+    
+    <EditText
         android:hint="@string/quantidade_de_gramas_de_cho"
+        android:id="@+id/carboidrato_novo_alimento"
         android:inputType="number"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         android:layout_marginBottom="30dp"
         android:paddingLeft="10dp"
-        android:id="@+id/carboidrato_novo_alimento"/>
+        />
     
-    <Button 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <Button
+        android:background="@color/accent"
         android:id="@+id/salvar_alimento"
-        android:textColor="#fff"
-        android:text="@string/salvar_alimento" />
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/salvar_alimento"
+        android:textColor="@color/icons"
+        />
     
 </LinearLayout>
