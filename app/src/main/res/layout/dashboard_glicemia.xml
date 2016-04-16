@@ -1,109 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent"
     android:layout_weight="1"
-    android:background="@color/primary"
-    android:gravity="center_horizontal">
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    >
     
     <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
         android:text="@string/medias"
         android:textAllCaps="true"
-        android:textColor="#fff"
-        android:textStyle="bold"
+        android:textColor="@color/primary_text"
         android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="5dp"/>
+        android:textStyle="bold"
+        />
     
     <LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal"
-	    android:weightSum="3"
-	    android:layout_marginTop="10dp"
-	    android:layout_marginLeft="32dp"
-	    android:layout_marginBottom="10dp">
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        >
 	    
 	    <TextView 
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="@string/hoje"
-		    android:layout_weight="1"
-		    android:textAlignment="center"
-		    android:textColor="#fff"
-		    android:textAllCaps="true"/>
+            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_marginRight="60dp"
+            android:text="@string/hoje"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_text"
+            />
 	    <TextView 
-		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:text="@string/semana"
-		    android:layout_marginLeft="20dp"
-		    android:layout_weight="1"
-		    android:textAlignment="center"
-		    android:textColor="#fff"
-		    android:textAllCaps="true"/>
+            android:layout_width="60dp"
+            android:layout_marginRight="60dp"
+            android:text="@string/semana"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_text"
+            />
 		<TextView 
-		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:text="@string/mes"
-		    android:layout_marginLeft="25dp"
-		    android:layout_weight="1"
-		    android:textAlignment="center"
-		    android:textColor="#fff"
-		    android:textAllCaps="true"/>
+            android:layout_width="60dp"
+            android:text="@string/mes"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_text"
+            />
 	</LinearLayout>
 	
 	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
 	    android:weightSum="3"
-	    android:layout_marginLeft="20dp"
-	    android:layout_marginBottom="50dp">
+        >
 		
 		<Button
-		    android:layout_width="60dp"
-		    android:layout_height="60dp"
-		    android:id="@+id/media_glicemia_hoje"
-		    android:textColor="@color/primary"
-		    android:layout_marginRight="30dp"/>
+            android:background="@color/accent"
+            android:id="@+id/media_glicemia_hoje"
+            android:layout_height="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_width="60dp"
+            android:textColor="@color/icons"
+            />
 		<Button
-		    android:layout_width="60dp"
-		    android:layout_height="60dp"
-		    android:id="@+id/media_glicemia_semana"
-		    android:textColor="@color/primary"
-		    android:layout_marginRight="30dp"
-		    android:layout_marginLeft="30dp"/>
+            android:background="@color/accent"
+            android:id="@+id/media_glicemia_semana"
+            android:layout_height="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_width="60dp"
+            android:textColor="@color/icons"
+            />
 		<Button
-		    android:layout_width="60dp"
-		    android:layout_height="60dp"
-		    android:id="@+id/media_glicemia_mes"
-		    android:textColor="@color/primary"
-		    android:layout_marginLeft="30dp"/>
+            android:background="@color/accent"
+            android:id="@+id/media_glicemia_mes"
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:textColor="@color/icons"
+            />
 	</LinearLayout>
 	
 	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content" 
-	    android:orientation="vertical"
-	    android:gravity="center">
-		<Button 
-		    android:layout_width="200dp"
-		    android:layout_height="wrap_content"
-		    android:text="@string/nova_glicemia"
-		    android:id="@+id/nova_medicao"
-		    android:textColor="#fff"
-		    android:layout_marginBottom="40dp" />
+	    style="@style/container"
+        >
+		<Button
+            android:id="@+id/nova_medicao"
+            android:text="@string/nova_glicemia"
+            style="@style/dashboard_button"
+            />
 		
-		<Button 
-		    android:layout_width="200dp"
-		    android:layout_height="wrap_content"
-		    android:textColor="#fff"
-		    android:text="@string/lista_glicemias"
-		    android:id="@+id/lista_glicemias"/>
-	
+		<Button
+            android:id="@+id/lista_glicemias"
+            android:text="@string/lista_glicemias"
+            style="@style/dashboard_button"
+            />
 	</LinearLayout>
 </LinearLayout>

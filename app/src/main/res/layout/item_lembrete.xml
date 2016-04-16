@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:background="@color/icons"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
+    android:orientation="horizontal"
     android:padding="15dp"
-    android:background="@drawable/list_item_style">
+    >
 
     <TextView
-        android:layout_width="0dp"
+        android:id="@+id/lembrete_data"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:id="@+id/lembrete_data"
+        android:layout_width="0dp"
         />
     <TextView
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        android:id="@+id/lembrete_nome"
         android:layout_height="wrap_content"
-        android:id="@+id/lembrete_nome"/>
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        />
 </LinearLayout>
