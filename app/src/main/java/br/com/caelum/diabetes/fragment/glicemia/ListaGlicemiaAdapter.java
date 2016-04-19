@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.extras.PickerDialog;
 import br.com.caelum.diabetes.model.Glicemia;
 
 public class ListaGlicemiaAdapter extends BaseAdapter{
@@ -52,7 +53,7 @@ public class ListaGlicemiaAdapter extends BaseAdapter{
 		
 		TextView campoDia = (TextView) item.findViewById(R.id.glicemia_dia);
 		Calendar data = glicemia.getData();
-		campoDia.setText(data.get(Calendar.DAY_OF_MONTH) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR));
+		campoDia.setText(PickerDialog.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR)));
 		
 		TextView campoValor = (TextView) item.findViewById(R.id.glicemia_valor);
 		int valorGlicemia = glicemia.getValorGlicemia();

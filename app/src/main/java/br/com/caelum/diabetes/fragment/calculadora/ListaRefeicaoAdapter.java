@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.extras.PickerDialog;
 import br.com.caelum.diabetes.model.Refeicao;
 
 public class ListaRefeicaoAdapter extends BaseAdapter{
@@ -53,7 +54,7 @@ public class ListaRefeicaoAdapter extends BaseAdapter{
 		
 		TextView campoDia = (TextView) item.findViewById(R.id.refeicao_dia);
 		Calendar data = refeicao.getData();
-		campoDia.setText(data.get(Calendar.DAY_OF_MONTH) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR));
+		campoDia.setText(PickerDialog.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR)));
 
         ImageView imagem = (ImageView) item.findViewById(R.id.refeicao_imagem);
         switch (refeicao.getTipoRefeicao()) {

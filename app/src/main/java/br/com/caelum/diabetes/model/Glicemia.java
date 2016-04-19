@@ -8,6 +8,7 @@ import org.joda.time.DateTime;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 
+import br.com.caelum.diabetes.extras.PickerDialog;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
 @SuppressWarnings("serial")
@@ -52,8 +53,8 @@ public class Glicemia implements Serializable{
 	
 	@Override
 	public String toString() {
-		return data.get(Calendar.DAY_OF_MONTH) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR) +
-                " - " + data.get(Calendar.HOUR_OF_DAY) + ":" + data.get(Calendar.MINUTE) + " - " +
-				tipoRefeicao + " - " + valorGlicemia; 
+		return PickerDialog.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR)) +
+                " - " + PickerDialog.getParseHour(data.get(Calendar.HOUR_OF_DAY), data.get(Calendar.MINUTE))
+				+ " - " + tipoRefeicao + " - " + valorGlicemia;
 	}
 }

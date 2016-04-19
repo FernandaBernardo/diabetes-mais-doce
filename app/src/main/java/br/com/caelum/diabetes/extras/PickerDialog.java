@@ -50,15 +50,19 @@ public class PickerDialog implements DatePickerDialog.OnDateSetListener, TimePic
     }
 
     public void setText() {
-        dataTextView.setText(dataSelecionada.get(Calendar.DAY_OF_MONTH) + "/" + dataSelecionada.get(Calendar.MONTH) + "/" + dataSelecionada.get(Calendar.YEAR));
-        horaTextView.setText(dataSelecionada.get(Calendar.HOUR_OF_DAY) + ":" + dataSelecionada.get(Calendar.MINUTE));
+        dataTextView.setText(getParseDate(dataSelecionada.get(Calendar.DAY_OF_MONTH), dataSelecionada.get(Calendar.MONTH), dataSelecionada.get(Calendar.YEAR)));
+        horaTextView.setText(getParseHour(dataSelecionada.get(Calendar.HOUR_OF_DAY), dataSelecionada.get(Calendar.MINUTE)));
+    }
+
+    public Calendar getDataSelecionada() {
+        return dataSelecionada;
     }
 
     @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         dataSelecionada.set(year, month, day);
 
-        dataTextView.setText(day + "/" + month + "/" + year);
+        dataTextView.setText(getParseDate(day, month, year));
     }
 
     @Override
@@ -66,10 +70,19 @@ public class PickerDialog implements DatePickerDialog.OnDateSetListener, TimePic
         dataSelecionada.set(Calendar.HOUR_OF_DAY, hora);
         dataSelecionada.set(Calendar.MINUTE, minuto);
 
-        horaTextView.setText(hora + ":" + minuto);
+        horaTextView.setText(getParseHour(hora, minuto));
     }
 
-    public Calendar getDataSelecionada() {
-        return dataSelecionada;
+    private static String getParseNumber(int number) {
+        if (number < 10) return "0" + number;
+        return number + "";
+    }
+
+    public static String getParseDate(int day, int month, int year) {
+        return getParseNumber(day) + "/" + getParseNumber(month + 1) + "/" + getParseNumber(year);
+    }
+
+    public static String getParseHour(int hour, int minute) {
+        return getParseNumber(hour) + ":" + getParseNumber(minute);
     }
 }
