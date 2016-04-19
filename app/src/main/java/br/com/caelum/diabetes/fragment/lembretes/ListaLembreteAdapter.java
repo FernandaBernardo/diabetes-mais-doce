@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.extras.Parser;
 import br.com.caelum.diabetes.extras.PickerDialog;
 import br.com.caelum.diabetes.model.Lembrete;
 import br.com.caelum.diabetes.model.Refeicao;
@@ -52,8 +53,8 @@ public class ListaLembreteAdapter extends BaseAdapter {
         View item = inflater.inflate(R.layout.item_lembrete, null);
 
         Lembrete lembrete = lembretes.get(pos);
-        String dataAux = PickerDialog.getParseDate(lembrete.getData().get(Calendar.DAY_OF_MONTH), lembrete.getData().get(Calendar.MONTH), lembrete.getData().get(Calendar.YEAR))
-                + " - " + PickerDialog.getParseHour(lembrete.getData().get(Calendar.HOUR_OF_DAY), lembrete.getData().get(Calendar.MINUTE));
+        String dataAux = Parser.getParseDate(lembrete.getData().get(Calendar.DAY_OF_MONTH), lembrete.getData().get(Calendar.MONTH), lembrete.getData().get(Calendar.YEAR))
+                + " - " + Parser.getParseHour(lembrete.getData().get(Calendar.HOUR_OF_DAY), lembrete.getData().get(Calendar.MINUTE));
         TextView data = (TextView) item.findViewById(R.id.lembrete_data);
         data.setText(dataAux);
         TextView atividade = (TextView) item.findViewById(R.id.lembrete_nome);

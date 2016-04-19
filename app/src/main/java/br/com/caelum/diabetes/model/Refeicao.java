@@ -1,18 +1,16 @@
 package br.com.caelum.diabetes.model;
 
+import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
-import org.joda.time.DateTime;
-
-import com.j256.ormlite.field.DataType;
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.field.ForeignCollectionField;
-
-import br.com.caelum.diabetes.extras.PickerDialog;
+import br.com.caelum.diabetes.extras.Parser;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
 @SuppressWarnings("serial")
@@ -77,7 +75,7 @@ public class Refeicao implements Serializable{
 	
 	@Override
 	public String toString() {
-		return PickerDialog.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR))
-				+ " - " + PickerDialog.getParseHour(data.get(Calendar.HOUR_OF_DAY), data.get(Calendar.MINUTE)) + " - " + tipoRefeicao;
+		return Parser.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR))
+				+ " - " + Parser.getParseHour(data.get(Calendar.HOUR_OF_DAY), data.get(Calendar.MINUTE)) + " - " + tipoRefeicao;
 	}
 }
