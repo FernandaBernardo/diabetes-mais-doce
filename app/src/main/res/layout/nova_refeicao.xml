@@ -127,12 +127,8 @@
     </LinearLayout>
 
     <Button
-        android:background="@color/accent"
+        style="@style/action_button"
         android:id="@+id/salvar_refeicao"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
         android:text="@string/salvar"
-        android:textColor="@color/icons"
         />
 </LinearLayout>

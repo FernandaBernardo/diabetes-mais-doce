@@ -79,13 +79,9 @@
             android:hint="@string/unidade"
             />
         <Button
-            android:background="@color/accent"
+            style="@style/action_button"
             android:id="@+id/salvar_insulina_continua"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
             android:text="@string/salvar"
-            android:textColor="@color/icons"
             />
     </LinearLayout>
 </ScrollView>

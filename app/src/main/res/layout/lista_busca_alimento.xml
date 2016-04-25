@@ -1,5 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/container"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
     android:weightSum="10"
     >
 
@@ -52,13 +55,10 @@
             android:textColor="@color/icons"
             />
         <Button
-            android:background="@color/accent"
+            style="@style/action_button"
             android:id="@+id/conclui_alimentos"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_width="match_parent"
             android:text="@string/concluido"
-            android:textColor="@color/icons"
             />
     </LinearLayout>
 </LinearLayout>

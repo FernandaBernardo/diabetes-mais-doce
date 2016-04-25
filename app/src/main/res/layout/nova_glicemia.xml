@@ -53,12 +53,8 @@
         />
 
     <Button
-        android:background="@color/accent"
+        style="@style/action_button"
         android:id="@+id/salvar_glicemia"
-        android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
-        android:layout_height="wrap_content"
         android:text="@string/salvar_glicemia"
-        android:textColor="@color/icons"
         />
 </LinearLayout>

@@ -59,12 +59,9 @@
         />
     
     <Button
-        android:background="@color/accent"
+        style="@style/action_button"
         android:id="@+id/salvar_alimento"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
         android:text="@string/salvar_alimento"
-        android:textColor="@color/icons"
         />
     
 </LinearLayout>
