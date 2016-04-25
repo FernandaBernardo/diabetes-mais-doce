@@ -53,7 +53,7 @@
     <string name="configurar_insulina_correcao">Configurar Insulina Correção</string>
     <string name="configurar_insulina_continua">Configurar Insulina Continua</string>
     <string name="configurar_glicemia_alvo">Configurar Glicemia Alvo</string>
-    <string name="novo_alimento">Novo Alimento</string>
+    <string name="novo_alimento">Adicionar Novo Alimento</string>
     <string name="dados_medicos_aviso">Se quiser usar o cálculo de insulina cadastre os valores de correção</string>
     <string name="confirmar_dados_medicos">Preencher os dados</string>
     <string name="cancelar_dados_medicos">Não quero usar esse cálculo</string>
@@ -61,7 +61,7 @@
     <string name="dado_incorreto_texto">Dados Inválidos. Preencha novamente!</string>
     <string name="adicionar_novo_alimento">Adicionar Novo Alimento</string>
     <string name="salvar_alimento">Salvar Alimento</string>
-    <string name="nome_alimento">Nome do Novo Alimento</string>
+    <string name="nome_alimento">Nome do novo alimento</string>
     <string name="quantidade_de_carboidrato">Quantidade de Carboidrato</string>
     <string name="unidade_de_medida">Unidade de Medida</string>
     <string name="nova_refeicao">Nova Refeição</string>
@@ -93,8 +93,8 @@
     <string name="valor_glicemia_mg_dl">Valor Glicemia (mg/DL)</string>
     <string name="listar_refeicoes">Listar Refeições</string>
     <string name="medias">Médias</string>
-    <string name="ex_colher_de_cha_concha_unidade">Ex: colher de chá, concha, unidade</string>
-    <string name="quantidade_de_gramas_de_cho">quantidade de gramas de CHO</string>
+    <string name="ex_colher_de_cha_concha_unidade">(colher, concha, unidade...)</string>
+    <string name="quantidade_de_gramas_de_cho">Gramas de carboidratos</string>
     <string name="novo_alimento_refeicao">Novo Alimento - Refeição</string>
     <string name="cancelar">Cancela</string>
     <string name="concluido">Concluído</string>

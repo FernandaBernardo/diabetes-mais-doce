@@ -1,78 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/container"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+    >
+    <LinearLayout
         android:gravity="center"
-        android:layout_marginTop="20dp">
-
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        >
 		<TextView
-		    android:id="@+id/data_glicemia"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_marginRight="30dp"
-		    android:drawableLeft="@drawable/calendar"
-		    android:drawablePadding="10dp"
-		    android:gravity="center_vertical"
+            android:drawableLeft="@drawable/calendar"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:id="@+id/data_glicemia"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_width="wrap_content"
 		    />
-		
-		<TextView
-	        android:id="@+id/hora_glicemia" 
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:drawablePadding="10dp"
-	        android:gravity="center_vertical"
-	        android:drawableLeft="@drawable/clock"
-            />
-	</LinearLayout> 
-	
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:gravity="center">
-	
-	    <Spinner
-	        android:id="@+id/tipo_refeicao"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:paddingLeft="5dp"
-	        android:background="@drawable/botao_select"
-	        android:entries="@array/refeicoes_array" />
-    
-    </LinearLayout>
-	
-	<LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center">
 
-	    <EditText
-	        android:id="@+id/valor_glicemia"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:paddingLeft="10dp"
-	        android:background="@drawable/botao_edit"
-	        android:hint="@string/valor_glicemia_mg_dl"
-	        android:inputType="number" />
+		<TextView
+            android:drawableLeft="@drawable/clock"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:id="@+id/hora_glicemia"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+	</LinearLayout>
+	
+    <LinearLayout
+        android:background="@color/icons"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        >
+	    <Spinner
+            android:entries="@array/refeicoes_array"
+            android:id="@+id/tipo_refeicao"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
     </LinearLayout>
+	
+    <EditText
+        style="@style/edit_text"
+        android:hint="@string/valor_glicemia_mg_dl"
+        android:id="@+id/valor_glicemia"
+        android:inputType="number"
+        />
 
     <Button
+        style="@style/action_button"
         android:id="@+id/salvar_glicemia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textColor="#fff"
-        android:background="@drawable/botao_escuro"
-        android:text="@string/salvar_glicemia" />
-
+        android:text="@string/salvar_glicemia"
+        />
 </LinearLayout>

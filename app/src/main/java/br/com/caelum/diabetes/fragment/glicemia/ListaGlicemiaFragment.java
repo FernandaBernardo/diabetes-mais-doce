@@ -44,22 +44,16 @@ public class ListaGlicemiaFragment extends Fragment{
 		View view = inflater.inflate(R.layout.lista_glicemia, null);
 
 		listaGlicemias = (ListView) view.findViewById(R.id.glicemias);
-		
-		listaGlicemias.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View v, int pos, long arg3) {
-				glicemiaSelecionada = (Glicemia) listaGlicemias.getItemAtPosition(pos);
-				final ImageView campoOpcoes = (ImageView) v.findViewById(R.id.glicemia_opcoes);
-				campoOpcoes.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						registerForContextMenu(campoOpcoes);
-						campoOpcoes.showContextMenu();
-					}
-				});
-			}
-		});
-		
+        listaGlicemias.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                glicemiaSelecionada = (Glicemia) listaGlicemias.getItemAtPosition(position);
+                return false;
+            }
+        });
+
+        registerForContextMenu(listaGlicemias);
+
 		return view;
 	}
 	
@@ -72,8 +66,7 @@ public class ListaGlicemiaFragment extends Fragment{
 		helper.close();
 		
 		adapter = new ListaGlicemiaAdapter(glicemias, getActivity());
-		
-		listaGlicemias.setAdapter(adapter);		
+		listaGlicemias.setAdapter(adapter);
 	}
 
 	@Override

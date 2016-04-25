@@ -1,87 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/container"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="30dp" >
+    >
     
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+    <LinearLayout
         android:gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        >
         
         <TextView
-        	android:id="@+id/hora_lembrete"
-        	android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="30dp"
-	        android:drawablePadding="10dp"
-	        android:gravity="center_vertical"
-	        android:drawableLeft="@drawable/clock"
+            android:drawableLeft="@drawable/clock"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:id="@+id/hora_lembrete"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_width="wrap_content"
 	        />
         
         <TextView
-	    	android:id="@+id/data_lembrete"
-	    	android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:drawableLeft="@drawable/calendar"
-		    android:drawablePadding="10dp"
-		    android:gravity="center_vertical"
-	    	 />
-        
-    </LinearLayout> 
+            android:drawableLeft="@drawable/calendar"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:id="@+id/data_lembrete"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+    </LinearLayout>
     
     <TextView
-        android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lembrete:" 
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:text="Lembrete:"
         />
     
     
     <EditText
-        android:layout_marginTop="10dp"
-        android:id="@+id/atividade_lembrete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
+        style="@style/edit_text"
         android:hint="@string/exemplo"
+        android:id="@+id/atividade_lembrete"
         android:inputType="textCapSentences"
-        android:background="@drawable/botao_edit"
         />
 
     <TextView
-        android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/anotacoes" />
+        android:layout_width="match_parent"
+        android:text="@string/anotacoes"
+        />
 
     <EditText
-        android:layout_marginTop="10dp"
+        style="@style/edit_text"
         android:id="@+id/anotacoes_lembrete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
         android:inputType="textCapSentences"
-        android:background="@drawable/botao_edit"
-        android:layout_gravity="center"
-      />
+        />
 
     <Button
-        android:layout_marginTop="30dp"
+        style="@style/action_button"
         android:id="@+id/salvar_lembrete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/salvar" 
-        android:background="@drawable/botao_escuro"
-        android:textColor="#fff"/>
-    
-    
-
+        android:text="@string/salvar"
+        />
 </LinearLayout>

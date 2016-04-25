@@ -32,7 +32,6 @@ public class AdicionaAlimentoFragment extends Fragment {
 	private AlimentoFisicoDao alimentoDao;
 	private Refeicao refeicao;
 	private DbHelper helper;
-	private AutoCompleteTextView buscaAlimento;
     private BuscaAdapter adapter;
     private List<AlimentoFisico> alimentos;
     private ArrayList<AlimentoFisico> alimentosSelecionados;

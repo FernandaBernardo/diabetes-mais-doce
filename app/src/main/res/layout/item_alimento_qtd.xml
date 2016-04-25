@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:padding="15dp"
-    android:background="@drawable/list_item_style">
+    android:background="@color/icons">
 
     <TextView
         android:layout_width="match_parent"
@@ -30,7 +30,6 @@
             android:inputType="number"
             android:padding="5dp"
             android:text="1.0"
-            android:background="@drawable/botao_edit"
             />
     </LinearLayout>
     <LinearLayout
@@ -48,7 +47,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:id="@+id/porcao_qtd"
-            android:background="@drawable/botao_edit"
             android:padding="5dp"
             android:enabled="false"/>
     </LinearLayout>

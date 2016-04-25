@@ -1,111 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
-<LinearLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical" 
-    android:padding="30dp">
-    
-    <TextView 
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/configurar_insulina_correcao"/>
-    
-	<TextView 
-	    android:layout_marginTop="10dp"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/cafe_da_manha"/>
-	<EditText 
-	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="@string/u_g_de_carboidrato" 
-	    android:inputType="number"
-	    android:id="@+id/valor_cafe_correcao"/>
-	
-	<TextView 
-	    android:layout_marginTop="10dp"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/lanche_da_manha"/>
-	<EditText 
-	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="@string/u_g_de_carboidrato" 
-	    android:inputType="number"
-	    android:id="@+id/valor_lanche_manha_correcao"/>
-	
-	<TextView 
-	    android:layout_marginTop="10dp"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/almoco"/>
-	<EditText 
-	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="@string/u_g_de_carboidrato" 
-	    android:inputType="number"
-	    android:id="@+id/valor_almoco_correcao"/>
-	
-	<TextView 
-	    android:layout_marginTop="10dp"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/lanche_da_tarde"/>
-	<EditText 
-	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="@string/u_g_de_carboidrato" 
-	    android:inputType="number"
-	    android:id="@+id/valor_lanche_tarde_correcao"/>
-	
-	<TextView 
-	    android:layout_marginTop="10dp"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/jantar"/>
-	<EditText
-	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit" 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="@string/u_g_de_carboidrato" 
-	    android:inputType="number"
-	    android:id="@+id/valor_jantar_correcao"/>
-	
-	<TextView 
-	    android:layout_marginTop="10dp"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/ceia"/>
-	<EditText 
-	    android:paddingLeft="10dp"
-	    android:background="@drawable/botao_edit"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="@string/u_g_de_carboidrato" 
-	    android:inputType="number"
-	    android:id="@+id/valor_ceia_correcao"/>
-	<Button 
-	    android:id="@+id/salvar_insulina_correcao"
-	    android:layout_marginTop="15dp"
-	    android:paddingLeft="10dp"
-	    android:layout_width="200dp"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:text="@string/salvar"
-	    android:textColor="#fff"
-	    android:background="@drawable/botao_escuro"/>
-	
-</LinearLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	>
+    <LinearLayout
+        style="@style/container"
+        >
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/cafe_da_manha"
+            />
+        <EditText
+            style="@style/edit_text"
+            android:hint="@string/u_g_de_carboidrato"
+            android:id="@+id/valor_cafe_correcao"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/lanche_da_manha"
+            />
+        <EditText
+            style="@style/edit_text"
+            android:hint="@string/u_g_de_carboidrato"
+            android:id="@+id/valor_lanche_manha_correcao"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/almoco"
+            />
+        <EditText
+            style="@style/edit_text"
+            android:hint="@string/u_g_de_carboidrato"
+            android:id="@+id/valor_almoco_correcao"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/lanche_da_tarde"
+            />
+        <EditText
+            style="@style/edit_text"
+            android:hint="@string/u_g_de_carboidrato"
+            android:id="@+id/valor_lanche_tarde_correcao"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/jantar"
+            />
+        <EditText
+            style="@style/edit_text"
+            android:hint="@string/u_g_de_carboidrato"
+            android:id="@+id/valor_jantar_correcao"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/ceia"
+            />
+        <EditText
+            style="@style/edit_text"
+            android:id="@+id/valor_ceia_correcao"
+            android:inputType="number"
+            android:hint="@string/u_g_de_carboidrato"
+            />
+        <Button
+            style="@style/action_button"
+            android:id="@+id/salvar_insulina_correcao"
+            android:text="@string/salvar"
+            />
+    </LinearLayout>
 </ScrollView>

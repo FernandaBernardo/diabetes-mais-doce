@@ -1,66 +1,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:weightSum="10">
+    android:weightSum="10"
+    >
 
     <EditText
-        android:layout_width="match_parent"
+        android:hint="Buscar alimentos"
+        android:id="@+id/busca_alimento"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/botao_edit"
-        android:id="@+id/busca_alimento"
+        android:layout_width="match_parent"
         android:padding="10dp"
-        android:hint="Digite os alimentos da refeição"
+        android:textColor="@color/divider"
         />
 
     <TextView
-        android:layout_width="match_parent"
+        android:background="@color/icons"
+        android:id="@+id/cadastrar_alimento"
+        android:gravity="center"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
-        android:text="Não conseguiu encontrar um alimento? Cadastre no aplicativo!"
+        android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:textColor="@color/blue"
-        android:background="@drawable/list_item_style"
-        android:id="@+id/cadastrar_alimento"
+        android:text="Não conseguiu encontrar um alimento? Cadastre clicando aqui!"
+        android:textColor="@color/primary"
         />
 
     <ListView
-        android:layout_width="match_parent"
+        android:id="@+id/lista_busca_alimentos"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:id="@+id/lista_busca_alimentos"
+        android:layout_width="match_parent"
         android:scrollbarStyle="insideOverlay"
         />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:gravity="bottom|end"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:gravity="bottom|end">
+        >
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/cancelar_alimentos"
-            android:background="@drawable/botao_escuro"
-            android:textColor="@color/white"
-            android:layout_marginRight="20dp"
             android:drawablePadding="-5dp"
-            android:paddingLeft="5dp"
-            android:text="@string/cancelar"/>
-        <Button
-            android:layout_width="match_parent"
+            android:id="@+id/cancelar_alimentos"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:paddingLeft="5dp"
+            android:text="@string/cancelar"
+            android:textColor="@color/icons"
+            />
+        <Button
+            style="@style/action_button"
             android:id="@+id/conclui_alimentos"
-            android:background="@drawable/botao_escuro"
-            android:textColor="@color/white"
-            android:text="@string/concluido"/>
+            android:layout_weight="1"
+            android:text="@string/concluido"
+            />
     </LinearLayout>
-
 </LinearLayout>

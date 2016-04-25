@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    >
 	
-    <ListView 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/glicemias"
+    <ListView
         android:divider="@android:color/transparent"
         android:dividerHeight="10dp"
-        android:headerDividersEnabled="true"
-        android:footerDividersEnabled="true"
         android:fastScrollAlwaysVisible="true"
-        android:scrollbarStyle="outsideInset"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:id="@+id/glicemias"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:scrollbarStyle="outsideInset"
         android:scrollingCache="true"
-        android:layout_marginBottom="10dp">
-        
+        >
     </ListView>
-
 </LinearLayout>

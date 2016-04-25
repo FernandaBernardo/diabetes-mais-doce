@@ -21,7 +21,7 @@
 		    android:textSize="20sp"
 		    android:gravity="center"
 		    android:textStyle="bold"
-	        android:textColor="@color/blue"
+	        android:textColor="@color/primary"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:text="@string/bem_vindo"/>
@@ -46,12 +46,10 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:id="@+id/nome_pessoa"
-		    android:inputType="textCapWords"
-		    android:background="@drawable/botao_edit"/>
+		    android:inputType="textCapWords"/>
 		
 		<Button 
 		    android:layout_marginTop="10dp"
-		    android:background="@drawable/botao_escuro"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:text="@string/proximo"
