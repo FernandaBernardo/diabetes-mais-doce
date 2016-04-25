@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/container"
+    android:orientation="vertical"
+    >
     
-    <LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="0dp"
-	    android:layout_weight="1"
-	    android:background="@color/primary" >
-		
-	    <Button
-	        style="@style/dashboard_button" 
-	        android:text="@string/dados_pessoais"
-	        android:id="@+id/perfil_dados"/>
-	    <Button
-	        style="@style/dashboard_button" 
-	        android:text="@string/basal"
-	        android:id="@+id/perfil_basal"/>
-	    <Button
-	        style="@style/dashboard_button" 
-	        android:text="@string/bolus"
-	        android:id="@+id/perfil_bolus"/>
-	    <Button
-	        style="@style/dashboard_button" 
-	        android:text="@string/glicemia_alvo"
-	        android:id="@+id/perfil_glicemia_alvo"/>
-	    
-	</LinearLayout>
+    <Button
+        style="@style/dashboard_button"
+        android:id="@+id/perfil_dados"
+        android:text="@string/dados_pessoais"
+        />
+    <Button
+        style="@style/dashboard_button"
+        android:id="@+id/perfil_basal"
+        android:text="@string/basal"
+        />
+    <Button
+        style="@style/dashboard_button"
+        android:id="@+id/perfil_bolus"
+        android:text="@string/bolus"
+        />
+    <Button
+        style="@style/dashboard_button"
+        android:id="@+id/perfil_glicemia_alvo"
+        android:text="@string/glicemia_alvo"
+        />
 </LinearLayout>
