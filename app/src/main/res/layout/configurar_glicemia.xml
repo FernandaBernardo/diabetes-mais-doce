@@ -14,52 +14,42 @@
             android:text="@string/cafe_da_manha"
             />
         <EditText
+            style="@style/edit_text"
             android:hint="@string/mg_dl"
             android:id="@+id/valor_cafe_glicemia"
             android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="@string/almoco"
             />
         <EditText
+            style="@style/edit_text"
             android:hint="@string/mg_dl"
             android:id="@+id/valor_almoco_glicemia"
             android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="@string/jantar"
             />
         <EditText
+            style="@style/edit_text"
             android:hint="@string/mg_dl"
             android:id="@+id/valor_jantar_glicemia"
             android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             />
 
         <Button
             android:background="@color/accent"
             android:id="@+id/salvar_dados_perfil_glicemia"
-            android:layout_marginTop="15dp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             android:text="@string/salvar"
             android:textColor="@color/icons"
             />

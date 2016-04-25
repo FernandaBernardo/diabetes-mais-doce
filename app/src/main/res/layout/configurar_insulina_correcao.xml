@@ -9,97 +9,78 @@
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="@string/cafe_da_manha"
             />
         <EditText
+            style="@style/edit_text"
             android:hint="@string/u_g_de_carboidrato"
             android:id="@+id/valor_cafe_correcao"
             android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="@string/lanche_da_manha"
             />
         <EditText
+            style="@style/edit_text"
             android:hint="@string/u_g_de_carboidrato"
             android:id="@+id/valor_lanche_manha_correcao"
             android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="@string/almoco"
             />
         <EditText
+            style="@style/edit_text"
             android:hint="@string/u_g_de_carboidrato"
             android:id="@+id/valor_almoco_correcao"
             android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="@string/lanche_da_tarde"
             />
         <EditText
+            style="@style/edit_text"
             android:hint="@string/u_g_de_carboidrato"
             android:id="@+id/valor_lanche_tarde_correcao"
             android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="@string/jantar"
             />
         <EditText
+            style="@style/edit_text"
             android:hint="@string/u_g_de_carboidrato"
             android:id="@+id/valor_jantar_correcao"
             android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="@string/ceia"
             />
         <EditText
+            style="@style/edit_text"
             android:id="@+id/valor_ceia_correcao"
             android:inputType="number"
             android:hint="@string/u_g_de_carboidrato"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
             />
         <Button
             android:background="@color/accent"
             android:id="@+id/salvar_insulina_correcao"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"

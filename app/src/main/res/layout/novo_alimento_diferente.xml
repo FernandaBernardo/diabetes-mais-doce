@@ -17,19 +17,14 @@
     
     <TextView
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:text="@string/nome_alimento"
         />
     
     <EditText
+        style="@style/edit_text"
         android:hint="@string/nome_alimento"
         android:id="@+id/nome_alimento"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
-        android:paddingLeft="10dp"
-        android:textColorHint="@color/divider"
         />
     
     <TextView
@@ -52,20 +47,15 @@
     
     <TextView 
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:text="@string/carboidrato"
         />
     
     <EditText
+        style="@style/edit_text"
         android:hint="@string/quantidade_de_gramas_de_cho"
         android:id="@+id/carboidrato_novo_alimento"
         android:inputType="number"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="30dp"
-        android:paddingLeft="10dp"
-        android:textColorHint="@color/divider"
         />
     
     <Button

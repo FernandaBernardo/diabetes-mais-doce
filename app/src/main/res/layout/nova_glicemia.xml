@@ -45,27 +45,18 @@
             />
     </LinearLayout>
 	
-	<LinearLayout
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        >
-	    <EditText
-            android:hint="@string/valor_glicemia_mg_dl"
-            android:id="@+id/valor_glicemia"
-            android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            />
-    </LinearLayout>
+    <EditText
+        style="@style/edit_text"
+        android:hint="@string/valor_glicemia_mg_dl"
+        android:id="@+id/valor_glicemia"
+        android:inputType="number"
+        />
 
     <Button
         android:background="@color/accent"
         android:id="@+id/salvar_glicemia"
         android:layout_width="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
         android:text="@string/salvar_glicemia"
         android:textColor="@color/icons"

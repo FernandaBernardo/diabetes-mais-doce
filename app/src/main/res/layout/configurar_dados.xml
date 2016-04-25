@@ -7,61 +7,40 @@
         >
 
         <TextView
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="@string/idade"
             />
         <EditText
+            style="@style/edit_text"
             android:id="@+id/idade"
             android:inputType="number"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
-            android:textColor="@color/divider"
             />
 
         <TextView
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:text="@string/peso"
             />
         <EditText
+            style="@style/edit_text"
             android:id="@+id/peso"
             android:inputType="numberDecimal"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
-            android:textColor="@color/divider"
             />
 
         <TextView
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:text="@string/altura"
             />
         <EditText
+            style="@style/edit_text"
             android:id="@+id/altura"
             android:inputType="numberDecimal"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:paddingLeft="10dp"
-            android:textColor="@color/divider"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:text="@string/sexo"
             />
