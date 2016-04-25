@@ -29,6 +29,7 @@
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:paddingLeft="10dp"
+        android:textColorHint="@color/divider"
         />
     
     <TextView
@@ -46,6 +47,7 @@
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:paddingLeft="10dp"
+        android:textColorHint="@color/divider"
         />
     
     <TextView 
@@ -63,6 +65,7 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="30dp"
         android:paddingLeft="10dp"
+        android:textColorHint="@color/divider"
         />
     
     <Button

@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    >
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
         android:id="@+id/lista_qtd_alimentos"
+        android:layout_height="0dip"
         android:layout_weight="1"
+        android:layout_width="match_parent"
         />
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/concluido"
+        android:background="@color/accent"
         android:id="@+id/conclui_qtd"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:text="@string/concluido"
         android:textColor="@color/icons"
-        android:layout_marginTop="10dp" />
+        />
 </LinearLayout>
