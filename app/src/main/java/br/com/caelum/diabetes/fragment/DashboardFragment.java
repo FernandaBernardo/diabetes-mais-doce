@@ -19,6 +19,7 @@ import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dialog.PreencherDadosMedicosDialog;
 import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
+import br.com.caelum.diabetes.fragment.estatisticas.DashboardEstatisticasFragment;
 import br.com.caelum.diabetes.fragment.glicemia.DashboardGlicemiaFragment;
 import br.com.caelum.diabetes.fragment.lembretes.DashboardLembreteFragment;
 import br.com.caelum.diabetes.model.Paciente;
@@ -88,8 +89,18 @@ public class DashboardFragment extends Fragment {
 			}
 		});
 
-        Button exames = (Button) view.findViewById(R.id.main_exames);
         Button estatisticas = (Button) view.findViewById(R.id.main_estatisticas);
+        estatisticas.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_view, new DashboardEstatisticasFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        Button exames = (Button) view.findViewById(R.id.main_exames);
 
         calculadora.setText(Html.fromHtml("<b><big>" + "Calculadora" + "</big></b>" + "<br />" +
                 "<small>" + "Calcule os carboidratos consumidos" + "</small>"));
@@ -97,10 +108,10 @@ public class DashboardFragment extends Fragment {
                 "<small>" + "Não esqueça de se alimentar de 3 em 3 horas" + "</small>"));
         medicao.setText(Html.fromHtml("<b><big>" + "Glicemia" + "</big></b>" + "<br />" +
                 "<small>" + "Agora ficou fácil monitorar sua glicemia no decorrer do mês" + "</small>"));
+        estatisticas.setText(Html.fromHtml("<b><big>" + "Estatísticas" + "</big></b>" + "<br />" +
+                "<small>" + "Acompanhe a evolução dos seus níveis glicêmicos" + "</small>"));
         exames.setText(Html.fromHtml("<b><big>" + "Exames (logo)" + "</big></b>" + "<br />" +
                 "<small>" + "Lembre-se de todos os seus exames" + "</small>"));
-        estatisticas.setText(Html.fromHtml("<b><big>" + "Estatísticas (logo)" + "</big></b>" + "<br />" +
-                "<small>" + "Acompanhe a evolução dos seus níveis glicêmicos" + "</small>"));
         return view;
 	}
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/container"
+    >
+
+    <Button
+        android:id="@+id/tabela_glicemias"
+        android:text="Gerar tabela de glicemias"
+        style="@style/dashboard_button"
+        />
+</LinearLayout>
