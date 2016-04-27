@@ -100,7 +100,7 @@ public class DashboardFragment extends Fragment {
             }
         });
 
-        Button exames = (Button) view.findViewById(R.id.main_exames);
+//        Button exames = (Button) view.findViewById(R.id.main_exames);
 
         calculadora.setText(Html.fromHtml("<b><big>" + "Calculadora" + "</big></b>" + "<br />" +
                 "<small>" + "Calcule os carboidratos consumidos" + "</small>"));
@@ -110,8 +110,8 @@ public class DashboardFragment extends Fragment {
                 "<small>" + "Agora ficou fácil monitorar sua glicemia no decorrer do mês" + "</small>"));
         estatisticas.setText(Html.fromHtml("<b><big>" + "Estatísticas" + "</big></b>" + "<br />" +
                 "<small>" + "Acompanhe a evolução dos seus níveis glicêmicos" + "</small>"));
-        exames.setText(Html.fromHtml("<b><big>" + "Exames (logo)" + "</big></b>" + "<br />" +
-                "<small>" + "Lembre-se de todos os seus exames" + "</small>"));
+//        exames.setText(Html.fromHtml("<b><big>" + "Exames (logo)" + "</big></b>" + "<br />" +
+//                "<small>" + "Lembre-se de todos os seus exames" + "</small>"));
         return view;
 	}
 }
