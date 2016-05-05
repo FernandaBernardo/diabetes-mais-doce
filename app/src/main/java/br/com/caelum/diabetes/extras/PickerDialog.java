@@ -50,8 +50,8 @@ public class PickerDialog implements DatePickerDialog.OnDateSetListener, TimePic
     }
 
     public void setText() {
-        dataTextView.setText(Parser.getParseDate(dataSelecionada.get(Calendar.DAY_OF_MONTH), dataSelecionada.get(Calendar.MONTH), dataSelecionada.get(Calendar.YEAR)));
-        horaTextView.setText(Parser.getParseHour(dataSelecionada.get(Calendar.HOUR_OF_DAY), dataSelecionada.get(Calendar.MINUTE)));
+        dataTextView.setText(ParserTools.getParseDate(dataSelecionada));
+        horaTextView.setText(ParserTools.getParseHour(dataSelecionada));
     }
 
     public Calendar getDataSelecionada() {
@@ -61,8 +61,7 @@ public class PickerDialog implements DatePickerDialog.OnDateSetListener, TimePic
     @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         dataSelecionada.set(year, month, day);
-
-        dataTextView.setText(Parser.getParseDate(day, month, year));
+        dataTextView.setText(ParserTools.getParseDate(day, month, year));
     }
 
     @Override
@@ -70,6 +69,6 @@ public class PickerDialog implements DatePickerDialog.OnDateSetListener, TimePic
         dataSelecionada.set(Calendar.HOUR_OF_DAY, hora);
         dataSelecionada.set(Calendar.MINUTE, minuto);
 
-        horaTextView.setText(Parser.getParseHour(hora, minuto));
+        horaTextView.setText(ParserTools.getParseHour(hora, minuto));
     }
 }

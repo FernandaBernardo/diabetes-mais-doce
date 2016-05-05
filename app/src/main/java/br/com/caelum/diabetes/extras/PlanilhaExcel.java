@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Environment;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-import jxl.write.biff.RowsExceededException;
 
 /**
  * Created by Fernanda Bernardo on 26/04/2016.
@@ -39,8 +37,12 @@ public class PlanilhaExcel {
             criaHeader(sheet);
 
             for (Glicemia glicemia: glicemias) {
-                sheet.addCell(new Label(glicemia.getTipoRefeicao().getNum(), glicemia.getData().get(Calendar.DAY_OF_MONTH), glicemia.getValorGlicemia()+""));
-                sheet.addCell(new Label(0, glicemia.getData().get(Calendar.DAY_OF_MONTH), Parser.getParseDate(glicemia.getData().get(Calendar.DAY_OF_MONTH), glicemia.getData().get(Calendar.MONTH), glicemia.getData().get(Calendar.YEAR))));
+                sheet.addCell(new Label(glicemia.getTipoRefeicao().getExcelColumnIndex(),
+                        glicemia.getData().get(Calendar.DAY_OF_MONTH),
+                        glicemia.getValorGlicemia()+""));
+                sheet.addCell(new Label(0,
+                        glicemia.getData().get(Calendar.DAY_OF_MONTH),
+                        ParserTools.getParseDate(glicemia.getData())));
             }
 
             autoSizeLabel(sheet);
@@ -69,23 +71,19 @@ public class PlanilhaExcel {
             Cell[] cells = sheet.getColumn(i);
             int longestStrLen = -1;
 
-            if (cells.length == 0)
-                continue;
+            if (cells.length == 0) continue;
 
             for (int j = 0; j < cells.length; j++) {
                 if ( cells[j].getContents().length() > longestStrLen ) {
                     String str = cells[j].getContents();
-                    if (str == null || str.isEmpty())
-                        continue;
+                    if (str == null || str.isEmpty()) continue;
                     longestStrLen = str.trim().length();
                 }
             }
 
-            if (longestStrLen == -1)
-                continue;
+            if (longestStrLen == -1) continue;
 
-            if (longestStrLen > 255)
-                longestStrLen = 255;
+            if (longestStrLen > 255) longestStrLen = 255;
 
             CellView cv = sheet.getColumnView(i);
             cv.setSize(longestStrLen * 256 + 100);

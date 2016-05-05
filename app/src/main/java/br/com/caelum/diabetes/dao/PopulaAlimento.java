@@ -17,35 +17,35 @@ import br.com.caelum.diabetes.R;
  */
 public class PopulaAlimento extends AsyncTask<String,Void,Boolean> {
 
-    private final DbHelper helper;
+    private final AlimentoFisicoDao alimentoFisicoDao;
+    private final ArrayList<String> inserts;
     private final Resources resources;
+    private BufferedReader bufferedReader;
 
     public PopulaAlimento(DbHelper helper, Resources resources) {
-        this.helper = helper;
         this.resources = resources;
+        this.alimentoFisicoDao = new AlimentoFisicoDao(helper);
+        this.inserts = new ArrayList<String>();
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        InputStream insert = resources.openRawResource(R.raw.insert);
+        DataInputStream inputStream = new DataInputStream(insert);
+        this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
     }
 
     @Override
     protected Boolean doInBackground(String... strings) {
-        int arquivo = R.raw.insert;
         boolean success = false;
         try {
-
-            InputStream insert = resources.openRawResource(arquivo);
-            DataInputStream inputStream = new DataInputStream(insert);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
-            AlimentoFisicoDao alimentoFisicoDao = new AlimentoFisicoDao(helper);
-            ArrayList<String> inserts = new ArrayList<String>();
             while ((line = bufferedReader.readLine()) != null) {
                 inserts.add(line);
             }
-            inputStream.close();
+            bufferedReader.close();
             alimentoFisicoDao.importarAlimentos(inserts);
             success = true;
         } catch (IOException e) {

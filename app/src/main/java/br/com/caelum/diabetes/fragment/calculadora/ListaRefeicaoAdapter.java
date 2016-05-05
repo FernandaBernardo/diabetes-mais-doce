@@ -3,8 +3,6 @@ package br.com.caelum.diabetes.fragment.calculadora;
 import java.util.Calendar;
 import java.util.List;
 
-import org.joda.time.DateTime;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.caelum.diabetes.R;
-import br.com.caelum.diabetes.extras.Parser;
-import br.com.caelum.diabetes.extras.PickerDialog;
+import br.com.caelum.diabetes.extras.ParserTools;
 import br.com.caelum.diabetes.model.Refeicao;
 
 public class ListaRefeicaoAdapter extends BaseAdapter{
@@ -55,7 +52,7 @@ public class ListaRefeicaoAdapter extends BaseAdapter{
 		
 		TextView campoDia = (TextView) item.findViewById(R.id.refeicao_dia);
 		Calendar data = refeicao.getData();
-		campoDia.setText(Parser.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR)));
+		campoDia.setText(ParserTools.getParseDate(data));
 
         ImageView imagem = (ImageView) item.findViewById(R.id.refeicao_imagem);
         switch (refeicao.getTipoRefeicao()) {

@@ -13,9 +13,10 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.misc.TransactionManager;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-public class AlimentoFisicoDao{
+public class AlimentoFisicoDao {
 
 	private DbHelper helper;
 	private RuntimeExceptionDao<AlimentoFisico, Integer> dao;
@@ -70,7 +71,7 @@ public class AlimentoFisicoDao{
 
     public void importarAlimentos(final ArrayList<String> inserts) {
         try {
-            TransactionManager.callInTransaction(helper.connectionSource, new Callable<Void>() {
+            TransactionManager.callInTransaction(helper.getConnectionSource(), new Callable<Void>() {
                 @Override
                 public Void call() throws Exception {
                     for(String insert: inserts) {

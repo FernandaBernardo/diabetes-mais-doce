@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.diabetes.R;
@@ -42,7 +43,11 @@ public class DashboardEstatisticasFragment extends Fragment {
             public void onClick(View v) {
                 DbHelper helper = new DbHelper(getActivity());
                 GlicemiaDao dao = new GlicemiaDao(helper);
-                List<Glicemia> glicemias = dao.getGlicemias();
+                Calendar dataInicial = Calendar.getInstance();
+                dataInicial.set(2016, 04, 01);
+                Calendar dataFinal = Calendar.getInstance();
+                dataFinal.set(2016, 05, 01);
+                List<Glicemia> glicemias = dao.getGlicemiasEntre(dataInicial, dataFinal);
                 helper.close();
 
                 File file = new PlanilhaExcel(getActivity()).criaArquivo(glicemias);
