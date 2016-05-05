@@ -10,7 +10,7 @@ import br.com.caelum.diabetes.extras.CalendarTypePersister;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
 @SuppressWarnings("serial")
-public class Glicemia implements Serializable{
+public class Glicemia implements Serializable, Comparable<Glicemia> {
 	@DatabaseField(generatedId=true)
 	private int id;
     @DatabaseField(persisterClass = CalendarTypePersister.class)
@@ -54,5 +54,17 @@ public class Glicemia implements Serializable{
 		return ParserTools.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR)) +
                 " - " + ParserTools.getParseHour(data.get(Calendar.HOUR_OF_DAY), data.get(Calendar.MINUTE))
 				+ " - " + tipoRefeicao + " - " + valorGlicemia;
+	}
+
+	@Override
+	public int compareTo(Glicemia another) {
+		if(this.getData().getTimeInMillis() > another.getData().getTimeInMillis()) {
+			return -1;
+		}
+		if(this.getData().getTimeInMillis() < another.getData().getTimeInMillis()) {
+			return 1;
+		}
+
+		return 0;
 	}
 }
