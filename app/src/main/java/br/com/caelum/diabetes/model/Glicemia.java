@@ -1,19 +1,19 @@
 package br.com.caelum.diabetes.model;
 
-import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 
 import java.io.Serializable;
 import java.util.Calendar;
 
 import br.com.caelum.diabetes.extras.ParserTools;
+import br.com.caelum.diabetes.extras.CalendarTypePersister;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
 @SuppressWarnings("serial")
 public class Glicemia implements Serializable{
 	@DatabaseField(generatedId=true)
 	private int id;
-    @DatabaseField(dataType = DataType.SERIALIZABLE)
+    @DatabaseField(persisterClass = CalendarTypePersister.class)
 	private Calendar data;
 	@DatabaseField
 	private TipoRefeicao tipoRefeicao;

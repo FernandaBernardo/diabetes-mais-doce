@@ -55,7 +55,7 @@ public class GlicemiaDao {
         QueryBuilder<Glicemia, Integer> builder = dao.queryBuilder();
         PreparedQuery<Glicemia> prepare = null;
 		try {
-            builder.where().between("data", dataInicial.getTime(), dataFinal.getTime());
+            builder.where().between("data", dataInicial, dataFinal);
             prepare = builder.prepare();
         } catch (SQLException e) {
             new TratadorExcecao(helper.context).trataSqlException(e);

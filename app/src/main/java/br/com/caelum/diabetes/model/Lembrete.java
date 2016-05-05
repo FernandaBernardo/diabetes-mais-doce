@@ -1,18 +1,18 @@
 package br.com.caelum.diabetes.model;
 
+import com.j256.ormlite.field.DatabaseField;
+
 import java.io.Serializable;
 import java.util.Calendar;
 
-import com.j256.ormlite.field.DataType;
-import com.j256.ormlite.field.DatabaseField;
-
 import br.com.caelum.diabetes.extras.ParserTools;
+import br.com.caelum.diabetes.extras.CalendarTypePersister;
 
 @SuppressWarnings("serial")
 public class Lembrete implements Serializable {
 	@DatabaseField(generatedId=true)
 	int id;
-    @DatabaseField(dataType = DataType.SERIALIZABLE)
+    @DatabaseField(persisterClass = CalendarTypePersister.class)
 	Calendar data;
 	@DatabaseField
 	String atividade;
