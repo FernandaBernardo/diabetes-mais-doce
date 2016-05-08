@@ -5,6 +5,8 @@ import android.os.Environment;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import br.com.caelum.diabetes.model.Glicemia;
@@ -36,6 +38,17 @@ public class PlanilhaExcel {
 
             criaHeader(sheet);
 
+            glicemias = ordenaLista(glicemias);
+
+            Calendar dataInicial = glicemias.get(0).getData();
+            Calendar dataFinal = glicemias.get(glicemias.size()-1).getData();
+
+            preencheData(dataInicial, dataFinal);
+
+            for (int i = 0; i < glicemias.size(); i++) {
+
+            }
+
             for (Glicemia glicemia: glicemias) {
                 sheet.addCell(new Label(glicemia.getTipoRefeicao().getExcelColumnIndex(),
                         glicemia.getData().get(Calendar.DAY_OF_MONTH),
@@ -53,6 +66,22 @@ public class PlanilhaExcel {
             e.printStackTrace();
         }
         return file;
+    }
+
+    private void preencheData(Calendar dataInicial, Calendar dataFinal) {
+    }
+
+    private List<Glicemia> ordenaLista(List<Glicemia> glicemias) {
+        Comparator<Glicemia> comparador = new Comparator<Glicemia>() {
+            public int compare(Glicemia g1, Glicemia g2) {
+                if(g1.getData().getTimeInMillis() > g2.getData().getTimeInMillis()) return 1;
+                if(g1.getData().getTimeInMillis() < g2.getData().getTimeInMillis()) return -1;
+                return 0;
+            }
+        };
+        Collections.sort(glicemias, comparador);
+
+        return glicemias;
     }
 
     private void criaHeader(WritableSheet sheet) throws WriteException {

@@ -55,8 +55,6 @@ public class NovaGlicemiaFragment extends Fragment {
 		final TextView data = (TextView) view.findViewById(R.id.data_glicemia);
 
         pickerDialog = new PickerDialog(getFragmentManager(), data, horario);
-        pickerDialog.setListener();
-        pickerDialog.setText();
 
 		final Spinner tipoRefeicao = (Spinner) view.findViewById(R.id.tipo_refeicao);
 		final ArrayAdapter<String> spinnerAdapter = (ArrayAdapter<String>) tipoRefeicao.getAdapter();

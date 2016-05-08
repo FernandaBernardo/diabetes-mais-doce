@@ -14,23 +14,39 @@ import java.util.Calendar;
  * Created by Fernanda on 03/07/2015.
  */
 public class PickerDialog implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    private final DatePickerDialog datePickerDialog;
-    private final TimePickerDialog timePickerDialog;
+    private DatePickerDialog datePickerDialog;
+    private TimePickerDialog timePickerDialog;
     private FragmentManager fragmentManager;
     private Calendar dataSelecionada;
     private TextView dataTextView;
     private TextView horaTextView;
 
     public PickerDialog(FragmentManager fragmentManager, TextView dataTextView, TextView horaTextView) {
+        this(fragmentManager, dataTextView);
+        this.horaTextView = horaTextView;
+        this.timePickerDialog = TimePickerDialog.newInstance(this, dataSelecionada.get(Calendar.HOUR_OF_DAY) , dataSelecionada.get(Calendar.MINUTE), true);
+        setTimeListener();
+        setTimeText();
+    }
+
+    public PickerDialog(FragmentManager fragmentManager, TextView dataTextView) {
         this.fragmentManager = fragmentManager;
         this.dataSelecionada = Calendar.getInstance();
         this.dataTextView = dataTextView;
-        this.horaTextView = horaTextView;
         this.datePickerDialog = DatePickerDialog.newInstance(this, dataSelecionada.get(Calendar.YEAR), dataSelecionada.get(Calendar.MONTH), dataSelecionada.get(Calendar.DAY_OF_MONTH));
-        this.timePickerDialog = TimePickerDialog.newInstance(this, dataSelecionada.get(Calendar.HOUR_OF_DAY) , dataSelecionada.get(Calendar.MINUTE), true);
+        setDataListener();
+        setDataText();
     }
 
-    public void setListener () {
+    public PickerDialog(FragmentManager fragmentManager, TextView dataTextView, Calendar dataInicial) {
+        this(fragmentManager, dataTextView);
+        this.dataSelecionada = dataInicial;
+        this.datePickerDialog = DatePickerDialog.newInstance(this, dataInicial.get(Calendar.YEAR), dataInicial.get(Calendar.MONTH), dataInicial.get(Calendar.DAY_OF_MONTH));
+        setDataListener();
+        setDataText();
+    }
+
+    private void setDataListener () {
         dataTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +55,9 @@ public class PickerDialog implements DatePickerDialog.OnDateSetListener, TimePic
                 datePickerDialog.show(fragmentManager, "datepicker");
             }
         });
+    }
 
+    private void setTimeListener () {
         horaTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,8 +67,11 @@ public class PickerDialog implements DatePickerDialog.OnDateSetListener, TimePic
         });
     }
 
-    public void setText() {
+    private void setDataText() {
         dataTextView.setText(ParserTools.getParseDate(dataSelecionada));
+    }
+
+    private void setTimeText() {
         horaTextView.setText(ParserTools.getParseHour(dataSelecionada));
     }
 

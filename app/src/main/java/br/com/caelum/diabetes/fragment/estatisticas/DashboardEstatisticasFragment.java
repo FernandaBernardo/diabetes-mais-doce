@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.GlicemiaDao;
 import br.com.caelum.diabetes.extras.PlanilhaExcel;
+import br.com.caelum.diabetes.fragment.glicemia.NovaGlicemiaFragment;
 import br.com.caelum.diabetes.model.Glicemia;
 
 /**
@@ -41,19 +43,10 @@ public class DashboardEstatisticasFragment extends Fragment {
         gerarTabela.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DbHelper helper = new DbHelper(getActivity());
-                GlicemiaDao dao = new GlicemiaDao(helper);
-                Calendar dataInicial = Calendar.getInstance();
-                dataInicial.set(2016, 04, 01);
-                Calendar dataFinal = Calendar.getInstance();
-                dataFinal.set(2016, 05, 01);
-                List<Glicemia> glicemias = dao.getGlicemiasEntre(dataInicial, dataFinal);
-                helper.close();
-
-                File file = new PlanilhaExcel(getActivity()).criaArquivo(glicemias);
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setDataAndType(Uri.fromFile(file),"application/vnd.ms-excel");
-                startActivity(intent);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_view, new GeraTabelaFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

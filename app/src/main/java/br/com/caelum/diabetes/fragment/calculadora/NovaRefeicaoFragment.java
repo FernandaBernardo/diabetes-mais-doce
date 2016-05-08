@@ -81,8 +81,6 @@ public class NovaRefeicaoFragment extends Fragment {
         horaRefeicao = (TextView) view.findViewById(R.id.hora_refeicao);
 
         pickerDialog = new PickerDialog(getFragmentManager(), dataRefeicao, horaRefeicao);
-        pickerDialog.setListener();
-        pickerDialog.setText();
 
         campoLista = (ListView) view.findViewById(R.id.lista_alimentos);
 

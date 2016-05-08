@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="fill"
+    style="@style/container"
+    >
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:text="Data inicial:"
+        />
+
+    <TextView
+        android:drawableLeft="@drawable/calendar"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:id="@+id/data_inicial_tabela"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_width="wrap_content"
+        />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:text="Data final:"
+        />
+
+    <TextView
+        android:drawableLeft="@drawable/calendar"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:id="@+id/data_final_tabela"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="wrap_content"
+        />
+
+    <Button
+        style="@style/action_button"
+        android:id="@+id/gerar_tabela"
+        android:text="Gerar Tabela"
+        />
+</LinearLayout>

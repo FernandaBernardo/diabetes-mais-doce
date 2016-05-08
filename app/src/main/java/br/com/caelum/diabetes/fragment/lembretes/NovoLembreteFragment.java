@@ -51,8 +51,6 @@ public class NovoLembreteFragment extends Fragment {
 		TextView data = (TextView) view.findViewById(R.id.data_lembrete);
 
         pickerDialog = new PickerDialog(getFragmentManager(), data, horario);
-        pickerDialog.setListener();
-        pickerDialog.setText();
 
 		lembrete = new Lembrete();
 
