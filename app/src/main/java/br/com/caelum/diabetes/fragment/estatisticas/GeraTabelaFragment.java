@@ -59,7 +59,7 @@ public class GeraTabelaFragment extends Fragment {
                 List<Glicemia> glicemias = dao.getGlicemiasEntre(dataInicialPicker.getDataSelecionada(), dataFinalPicker.getDataSelecionada());
                 helper.close();
 
-                File file = new PlanilhaExcel(getActivity()).criaArquivo(glicemias);
+                File file = new PlanilhaExcel().criaArquivo(glicemias);
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setDataAndType(Uri.fromFile(file),"application/vnd.ms-excel");
                 startActivity(intent);

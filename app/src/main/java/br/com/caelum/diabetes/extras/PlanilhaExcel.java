@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.os.Environment;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import br.com.caelum.diabetes.model.Glicemia;
@@ -17,58 +20,73 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 /**
  * Created by Fernanda Bernardo on 26/04/2016.
  */
 public class PlanilhaExcel {
-    private Activity activity;
-
-    public PlanilhaExcel(Activity activity) {
-        this.activity = activity;
-    }
+    private WritableSheet sheet;
 
     public File criaArquivo(List<Glicemia> glicemias) {
         File file = new File(Environment.getExternalStorageDirectory(), "TabelaGlicemias.xls");
         try {
             WritableWorkbook wb = Workbook.createWorkbook(file);
-            wb.createSheet("Glicemias", 0);
-
-            WritableSheet sheet = wb.getSheet(0);
-
-            criaHeader(sheet);
 
             glicemias = ordenaLista(glicemias);
 
             Calendar dataInicial = glicemias.get(0).getData();
             Calendar dataFinal = glicemias.get(glicemias.size()-1).getData();
 
-            preencheData(dataInicial, dataFinal);
+            int cont = 0;
+            for(int mes = dataInicial.get(Calendar.MONTH); mes <= dataFinal.get(Calendar.MONTH); mes++) {
+                wb.createSheet("Mês " + (mes + 1), cont);
 
-            for (int i = 0; i < glicemias.size(); i++) {
+                sheet = wb.getSheet(cont);
 
+                criaHeader(sheet);
+
+                int rowDate = 1;
+                int dataAtual = glicemias.get(0).getData().get(Calendar.DAY_OF_MONTH);
+
+                List<Glicemia> remover = new ArrayList<>();
+                for (Glicemia glicemia : glicemias) {
+                    if(glicemia.getData().get(Calendar.MONTH) != mes) break;
+
+                    if(dataAtual != glicemia.getData().get(Calendar.DAY_OF_MONTH)) {
+                        rowDate++;
+                    }
+
+                    sheet.addCell(new Label(0,
+                            rowDate,
+                            ParserTools.getParseDate(glicemia.getData())));
+
+                    String valorGlicemia = null;
+                    Cell cell = sheet.getCell(glicemia.getTipoRefeicao().getExcelColumnIndex(), rowDate);
+                    if(cell.getContents() == "") {
+                        valorGlicemia = glicemia.getValorGlicemia() + "";
+                    } else {
+                        valorGlicemia = cell.getContents() + "/" + glicemia.getValorGlicemia();
+                    }
+
+                    sheet.addCell(new Label(glicemia.getTipoRefeicao().getExcelColumnIndex(),
+                            rowDate,
+                            valorGlicemia));
+
+                    remover.add(glicemia);
+                }
+                glicemias.removeAll(remover);
+
+                autoSizeLabel(sheet);
+
+                cont++;
             }
-
-            for (Glicemia glicemia: glicemias) {
-                sheet.addCell(new Label(glicemia.getTipoRefeicao().getExcelColumnIndex(),
-                        glicemia.getData().get(Calendar.DAY_OF_MONTH),
-                        glicemia.getValorGlicemia()+""));
-                sheet.addCell(new Label(0,
-                        glicemia.getData().get(Calendar.DAY_OF_MONTH),
-                        ParserTools.getParseDate(glicemia.getData())));
-            }
-
-            autoSizeLabel(sheet);
-
             wb.write();
             wb.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return file;
-    }
-
-    private void preencheData(Calendar dataInicial, Calendar dataFinal) {
     }
 
     private List<Glicemia> ordenaLista(List<Glicemia> glicemias) {
@@ -86,13 +104,12 @@ public class PlanilhaExcel {
 
     private void criaHeader(WritableSheet sheet) throws WriteException {
         sheet.addCell(new Label(0, 0, "Data"));
-        sheet.addCell(new Label(1, 0, "Antes do Café"));
-        sheet.addCell(new Label(2, 0, "2h depois do Café"));
-        sheet.addCell(new Label(3, 0, "Antes do Almoço"));
-        sheet.addCell(new Label(4, 0, "2h depois do Almoço"));
-        sheet.addCell(new Label(5, 0, "Antes do Jantar"));
-        sheet.addCell(new Label(6, 0, "2h depois do Jantar"));
-        sheet.addCell(new Label(7, 0, "Madrugada"));
+        sheet.addCell(new Label(1, 0, Extras.CAFE_DA_MANHA));
+        sheet.addCell(new Label(2, 0, Extras.LANCHE_DA_MANHA));
+        sheet.addCell(new Label(3, 0, Extras.ALMOCO));
+        sheet.addCell(new Label(4, 0, Extras.LANCHE_DA_TARDE));
+        sheet.addCell(new Label(5, 0, Extras.JANTAR));
+        sheet.addCell(new Label(6, 0, Extras.CEIA));
     }
 
     private void autoSizeLabel(WritableSheet sheet) {
