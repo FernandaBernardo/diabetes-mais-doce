@@ -2,6 +2,7 @@ package br.com.caelum.diabetes.extras;
 
 import android.app.Activity;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,8 +27,6 @@ import jxl.write.biff.RowsExceededException;
  * Created by Fernanda Bernardo on 26/04/2016.
  */
 public class PlanilhaExcel {
-    private WritableSheet sheet;
-
     public File criaArquivo(List<Glicemia> glicemias) {
         File file = new File(Environment.getExternalStorageDirectory(), "TabelaGlicemias.xls");
         try {
@@ -38,48 +37,10 @@ public class PlanilhaExcel {
             Calendar dataInicial = glicemias.get(0).getData();
             Calendar dataFinal = glicemias.get(glicemias.size()-1).getData();
 
-            int cont = 0;
             for(int mes = dataInicial.get(Calendar.MONTH); mes <= dataFinal.get(Calendar.MONTH); mes++) {
-                wb.createSheet("Mês " + (mes + 1), cont);
-
-                sheet = wb.getSheet(cont);
-
-                criaHeader(sheet);
-
-                int rowDate = 1;
-                int dataAtual = glicemias.get(0).getData().get(Calendar.DAY_OF_MONTH);
-
-                List<Glicemia> remover = new ArrayList<>();
-                for (Glicemia glicemia : glicemias) {
-                    if(glicemia.getData().get(Calendar.MONTH) != mes) break;
-
-                    if(dataAtual != glicemia.getData().get(Calendar.DAY_OF_MONTH)) {
-                        rowDate++;
-                    }
-
-                    sheet.addCell(new Label(0,
-                            rowDate,
-                            ParserTools.getParseDate(glicemia.getData())));
-
-                    String valorGlicemia = null;
-                    Cell cell = sheet.getCell(glicemia.getTipoRefeicao().getExcelColumnIndex(), rowDate);
-                    if(cell.getContents() == "") {
-                        valorGlicemia = glicemia.getValorGlicemia() + "";
-                    } else {
-                        valorGlicemia = cell.getContents() + "/" + glicemia.getValorGlicemia();
-                    }
-
-                    sheet.addCell(new Label(glicemia.getTipoRefeicao().getExcelColumnIndex(),
-                            rowDate,
-                            valorGlicemia));
-
-                    remover.add(glicemia);
-                }
-                glicemias.removeAll(remover);
+                WritableSheet sheet = createMonthSheet(glicemias, wb,  mes);
 
                 autoSizeLabel(sheet);
-
-                cont++;
             }
             wb.write();
             wb.close();
@@ -87,6 +48,53 @@ public class PlanilhaExcel {
             e.printStackTrace();
         }
         return file;
+    }
+
+    @NonNull
+    private WritableSheet createMonthSheet(List<Glicemia> glicemias, WritableWorkbook wb,  int mes) throws WriteException {
+        int sheetIndex = wb.getNumberOfSheets();
+        WritableSheet sheet = wb.createSheet("Mês " + (mes + 1), sheetIndex);
+
+        criaHeader(sheet);
+
+        int rowDate = 1;
+        int diaGlicemiaAnterior = glicemias.get(0).getData().get(Calendar.DAY_OF_MONTH);
+
+        List<Glicemia> remover = new ArrayList<>();
+        for (Glicemia glicemia : glicemias) {
+            int excelColumnIndex = glicemia.getTipoRefeicao().getExcelColumnIndex();
+            int diaGlicemiaAtual = glicemia.getData().get(Calendar.DAY_OF_MONTH);
+
+            if(glicemia.getData().get(Calendar.MONTH) != mes) break;
+
+            if(diaGlicemiaAnterior != diaGlicemiaAtual) {
+                rowDate++;
+                diaGlicemiaAnterior = diaGlicemiaAtual;
+
+                sheet.addCell(new Label(0,
+                        rowDate,
+                        ParserTools.getParseDate(glicemia.getData())));
+            }
+
+            preecheCelula(sheet, rowDate, glicemia, excelColumnIndex);
+
+            remover.add(glicemia);
+        }
+        glicemias.removeAll(remover);
+        return sheet;
+    }
+
+    private void preecheCelula(WritableSheet sheet, int rowDate, Glicemia glicemia, int excelColumnIndex) throws WriteException {
+        Cell cell = sheet.getCell(excelColumnIndex, rowDate);
+        String valorGlicemiaTexto = Integer.toString(glicemia.getValorGlicemia());
+
+        if(!("".equals(cell.getContents()))) {
+            valorGlicemiaTexto = cell.getContents() + "/" + valorGlicemiaTexto;
+        }
+
+        sheet.addCell(new Label(excelColumnIndex,
+                rowDate,
+                valorGlicemiaTexto));
     }
 
     private List<Glicemia> ordenaLista(List<Glicemia> glicemias) {
