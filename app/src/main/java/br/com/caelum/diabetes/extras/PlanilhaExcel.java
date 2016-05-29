@@ -58,6 +58,7 @@ public class PlanilhaExcel {
         criaHeader(sheet);
 
         int rowDate = 1;
+        boolean preencheuData = false;
         int diaGlicemiaAnterior = glicemias.get(0).getData().get(Calendar.DAY_OF_MONTH);
 
         List<Glicemia> remover = new ArrayList<>();
@@ -70,10 +71,14 @@ public class PlanilhaExcel {
             if(diaGlicemiaAnterior != diaGlicemiaAtual) {
                 rowDate++;
                 diaGlicemiaAnterior = diaGlicemiaAtual;
+                preencheuData = false;
+            }
 
+            if(!preencheuData) {
                 sheet.addCell(new Label(0,
                         rowDate,
                         ParserTools.getParseDate(glicemia.getData())));
+                preencheuData = true;
             }
 
             preecheCelula(sheet, rowDate, glicemia, excelColumnIndex);
