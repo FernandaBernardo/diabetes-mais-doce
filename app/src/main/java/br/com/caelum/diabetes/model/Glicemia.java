@@ -1,22 +1,19 @@
 package br.com.caelum.diabetes.model;
 
+import com.j256.ormlite.field.DatabaseField;
+
 import java.io.Serializable;
 import java.util.Calendar;
 
-import org.joda.time.DateTime;
-
-import com.j256.ormlite.field.DataType;
-import com.j256.ormlite.field.DatabaseField;
-
-import br.com.caelum.diabetes.extras.Parser;
-import br.com.caelum.diabetes.extras.PickerDialog;
+import br.com.caelum.diabetes.extras.ParserTools;
+import br.com.caelum.diabetes.extras.CalendarTypePersister;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
 @SuppressWarnings("serial")
-public class Glicemia implements Serializable{
+public class Glicemia implements Serializable, Comparable<Glicemia> {
 	@DatabaseField(generatedId=true)
 	private int id;
-    @DatabaseField(dataType = DataType.SERIALIZABLE)
+    @DatabaseField(persisterClass = CalendarTypePersister.class)
 	private Calendar data;
 	@DatabaseField
 	private TipoRefeicao tipoRefeicao;
@@ -54,8 +51,20 @@ public class Glicemia implements Serializable{
 	
 	@Override
 	public String toString() {
-		return Parser.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR)) +
-                " - " + Parser.getParseHour(data.get(Calendar.HOUR_OF_DAY), data.get(Calendar.MINUTE))
+		return ParserTools.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR)) +
+                " - " + ParserTools.getParseHour(data.get(Calendar.HOUR_OF_DAY), data.get(Calendar.MINUTE))
 				+ " - " + tipoRefeicao + " - " + valorGlicemia;
+	}
+
+	@Override
+	public int compareTo(Glicemia another) {
+		if(this.getData().getTimeInMillis() > another.getData().getTimeInMillis()) {
+			return -1;
+		}
+		if(this.getData().getTimeInMillis() < another.getData().getTimeInMillis()) {
+			return 1;
+		}
+
+		return 0;
 	}
 }

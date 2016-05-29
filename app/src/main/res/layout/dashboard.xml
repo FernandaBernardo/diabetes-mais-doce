@@ -29,15 +29,15 @@
             />
 
         <Button
-            android:drawableLeft="@drawable/exames"
-            android:id="@+id/main_exames"
-            style="@style/main_dashboard_button"
-            />
-
-        <Button
             android:drawableLeft="@drawable/estatistica"
             android:id="@+id/main_estatisticas"
             style="@style/main_dashboard_button"
             />
+
+        <!--<Buttonn
+            android:drawableLeft="@drawable/exames"
+            android:id="@+id/main_exames"
+            style="@style/main_dashboard_button"
+            />-->
     </LinearLayout>
 </ScrollView>

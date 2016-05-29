@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.fragment.glicemia;
 
+import java.util.Collections;
 import java.util.List;
 
 import android.os.Bundle;
@@ -62,10 +63,12 @@ public class ListaGlicemiaFragment extends Fragment{
 		GlicemiaDao dao = new GlicemiaDao(helper);
 		
 		glicemias = dao.getGlicemias();
-		
-		helper.close();
-		
-		adapter = new ListaGlicemiaAdapter(glicemias, getActivity());
+
+        helper.close();
+
+        Collections.sort(glicemias);
+
+        adapter = new ListaGlicemiaAdapter(glicemias, getActivity());
 		listaGlicemias.setAdapter(adapter);
 	}
 

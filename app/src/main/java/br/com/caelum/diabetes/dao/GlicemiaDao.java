@@ -1,14 +1,19 @@
 package br.com.caelum.diabetes.dao;
 
+import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.diabetes.exception.TratadorExcecao;
+import br.com.caelum.diabetes.extras.ParserTools;
 import br.com.caelum.diabetes.model.Glicemia;
 
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.SelectArg;
+import com.j256.ormlite.stmt.Where;
 
 public class GlicemiaDao {
 	private RuntimeExceptionDao<Glicemia, Integer> dao;
@@ -42,6 +47,20 @@ public class GlicemiaDao {
 			new TratadorExcecao(helper.context).trataSqlException(e);
 		}
 		
+		List<Glicemia> glicemias = dao.query(prepare);
+		return glicemias;
+	}
+
+	public List<Glicemia> getGlicemiasEntre(Calendar dataInicial, Calendar dataFinal) {
+        QueryBuilder<Glicemia, Integer> builder = dao.queryBuilder();
+        PreparedQuery<Glicemia> prepare = null;
+		try {
+            builder.where().between("data", dataInicial, dataFinal);
+            prepare = builder.prepare();
+        } catch (SQLException e) {
+            new TratadorExcecao(helper.context).trataSqlException(e);
+		}
+
 		List<Glicemia> glicemias = dao.query(prepare);
 		return glicemias;
 	}

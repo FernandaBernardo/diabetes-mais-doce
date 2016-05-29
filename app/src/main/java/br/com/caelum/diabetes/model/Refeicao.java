@@ -1,6 +1,5 @@
 package br.com.caelum.diabetes.model;
 
-import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 
@@ -10,7 +9,8 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
-import br.com.caelum.diabetes.extras.Parser;
+import br.com.caelum.diabetes.extras.ParserTools;
+import br.com.caelum.diabetes.extras.CalendarTypePersister;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
 @SuppressWarnings("serial")
@@ -21,7 +21,7 @@ public class Refeicao implements Serializable{
 	private Collection<AlimentoVirtual> alimentos;
 	@DatabaseField
 	private TipoRefeicao tipoRefeicao;
-	@DatabaseField(dataType = DataType.SERIALIZABLE)
+	@DatabaseField(persisterClass = CalendarTypePersister.class)
 	private Calendar data;
 	
 	public Refeicao() {
@@ -75,7 +75,7 @@ public class Refeicao implements Serializable{
 	
 	@Override
 	public String toString() {
-		return Parser.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR))
-				+ " - " + Parser.getParseHour(data.get(Calendar.HOUR_OF_DAY), data.get(Calendar.MINUTE)) + " - " + tipoRefeicao;
+		return ParserTools.getParseDate(data)
+				+ " - " + ParserTools.getParseHour(data) + " - " + tipoRefeicao;
 	}
 }
