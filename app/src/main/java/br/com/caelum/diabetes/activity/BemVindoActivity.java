@@ -1,8 +1,8 @@
 package br.com.caelum.diabetes.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,18 +10,22 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.Profile;
-import com.facebook.ProfileTracker;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
@@ -29,7 +33,7 @@ import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dao.PopulaAlimento;
 import br.com.caelum.diabetes.model.Paciente;
 
-public class BemVindoActivity extends Activity {
+public class BemVindoActivity extends AppCompatActivity {
 	
 	private Paciente pacienteBanco;
 	private PacienteDao dao;
@@ -37,14 +41,13 @@ public class BemVindoActivity extends Activity {
     private CallbackManager facebookCallbackManager;
     private LoginButton facebookLogin;
     private EditText nomeUsuario;
-    private AccessTokenTracker accessTokenTracker;
-    private ProfileTracker profileTracker;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
         FacebookSdk.sdkInitialize(this.getApplicationContext());
+        facebookCallbackManager = CallbackManager.Factory.create();
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -52,7 +55,6 @@ public class BemVindoActivity extends Activity {
 
         setContentView(R.layout.bem_vindo);
 
-        facebookCallbackManager = CallbackManager.Factory.create();
         facebookLogin = (LoginButton) findViewById(R.id.facebook_login_button);
         nomeUsuario = (EditText) findViewById(R.id.nome_pessoa);
 
@@ -65,31 +67,11 @@ public class BemVindoActivity extends Activity {
 			intent.putExtra("paciente", pacienteBanco);
 			startActivity(intent);
         } else {
-            new PopulaAlimento(helper, getResources()).execute();
+//            new PopulaAlimento(helper, getResources()).execute();
 
             nativeLogin();
             facebookLogin();
         }
-    }
-
-    @Override
-	protected void onPause() {
-		super.onPause();
-		finish();
-	}
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Profile profile = Profile.getCurrentProfile();
-        nextActivity(profile);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        accessTokenTracker.stopTracking();
-        profileTracker.stopTracking();
     }
 
     @Override
@@ -103,39 +85,31 @@ public class BemVindoActivity extends Activity {
         botao.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Paciente paciente = new Paciente();
-                paciente.setNome(nomeUsuario.getText().toString());
-                dao.salva(paciente);
-                Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
-                intent.putExtra("paciente", paciente);
-                startActivity(intent);
-            }
-        });
+                newUser(nomeUsuario.getText().toString());
+    }
+});
     }
 
     private void facebookLogin() {
-        accessTokenTracker = new AccessTokenTracker() {
-            @Override
-            protected void onCurrentAccessTokenChanged(AccessToken oldToken, AccessToken newToken) {
-            }
-        };
-        profileTracker = new ProfileTracker() {
-            @Override
-            protected void onCurrentProfileChanged(Profile oldProfile, Profile newProfile) {
-                nextActivity(newProfile);
-            }
-        };
-        accessTokenTracker.startTracking();
-        profileTracker.startTracking();
-
-        facebookLogin.setReadPermissions("public_profile");
+        facebookLogin.setReadPermissions(Arrays.asList("public_profile"));
         facebookLogin.registerCallback(facebookCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                AccessToken accessToken = loginResult.getAccessToken();
-                Profile profile = Profile.getCurrentProfile();
-                nextActivity(profile);
-                Toast.makeText(getApplicationContext(), "Logging in...", Toast.LENGTH_SHORT).show();
+                Log.d("BemVindoActivity", "success Facebook");
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        try {
+                            newUser(object.getString("name"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "name");
+                request.setParameters(parameters);
+                request.executeAsync();
             }
 
             @Override
@@ -150,14 +124,13 @@ public class BemVindoActivity extends Activity {
         });
     }
 
-    private void nextActivity(Profile profile){
-        if(profile != null){
-            Paciente paciente = new Paciente();
-            paciente.setNome(profile.getFirstName().toString());
-            dao.salva(paciente);
-            Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
-            intent.putExtra("paciente", paciente);
-            startActivity(intent);
-        }
+    private void newUser(String nome) {
+        Paciente paciente = new Paciente();
+        paciente.setNome(nome);
+        dao.salva(paciente);
+        Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
+        intent.putExtra("paciente", paciente);
+        startActivity(intent);
+        finish();
     }
 }
