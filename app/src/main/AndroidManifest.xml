@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/logo_simples"
         android:label="@string/app_name"
         android:theme="@style/MaterialDrawerTheme.Light" >
 
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
 		
-         <activity 
+        <activity
             android:name="br.com.caelum.diabetes.activity.MainActivity"
             android:screenOrientation="portrait" />
 

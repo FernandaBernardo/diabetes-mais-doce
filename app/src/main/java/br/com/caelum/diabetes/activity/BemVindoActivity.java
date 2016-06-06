@@ -54,9 +54,6 @@ public class BemVindoActivity extends AppCompatActivity {
 
         setContentView(R.layout.bem_vindo);
 
-        facebookLogin = (LoginButton) findViewById(R.id.facebook_login_button);
-        nomeUsuario = (EditText) findViewById(R.id.nome_pessoa);
-
 		helper = new DbHelper(BemVindoActivity.this);
 		dao = new PacienteDao(helper);
 		pacienteBanco = dao.getPaciente();
@@ -65,7 +62,11 @@ public class BemVindoActivity extends AppCompatActivity {
 			Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
 			intent.putExtra("paciente", pacienteBanco);
 			startActivity(intent);
+            finish();
         } else {
+            facebookLogin = (LoginButton) findViewById(R.id.facebook_login_button);
+            nomeUsuario = (EditText) findViewById(R.id.nome_pessoa);
+
             nativeLogin();
             facebookLogin();
         }
@@ -74,6 +75,9 @@ public class BemVindoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            finish();
+        }
         facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -132,7 +136,7 @@ public class BemVindoActivity extends AppCompatActivity {
         Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
         intent.putExtra("paciente", paciente);
         startActivity(intent);
-        progressDialog.dismiss();
         finish();
+        progressDialog.dismiss();
     }
 }
