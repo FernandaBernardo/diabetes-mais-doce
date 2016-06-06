@@ -1,9 +1,9 @@
 package br.com.caelum.diabetes.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -11,14 +11,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -41,6 +39,7 @@ public class BemVindoActivity extends AppCompatActivity {
     private CallbackManager facebookCallbackManager;
     private LoginButton facebookLogin;
     private EditText nomeUsuario;
+    private ProgressDialog progressDialog;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +66,6 @@ public class BemVindoActivity extends AppCompatActivity {
 			intent.putExtra("paciente", pacienteBanco);
 			startActivity(intent);
         } else {
-//            new PopulaAlimento(helper, getResources()).execute();
-
             nativeLogin();
             facebookLogin();
         }
@@ -85,9 +82,12 @@ public class BemVindoActivity extends AppCompatActivity {
         botao.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                progressDialog = new ProgressDialog(BemVindoActivity.this);
+                progressDialog.setMessage("Carregando...");
+                progressDialog.show();
                 newUser(nomeUsuario.getText().toString());
-    }
-});
+            }
+        });
     }
 
     private void facebookLogin() {
@@ -95,7 +95,9 @@ public class BemVindoActivity extends AppCompatActivity {
         facebookLogin.registerCallback(facebookCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("BemVindoActivity", "success Facebook");
+                progressDialog = new ProgressDialog(BemVindoActivity.this);
+                progressDialog.setMessage("Carregando...");
+                progressDialog.show();
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
@@ -107,30 +109,30 @@ public class BemVindoActivity extends AppCompatActivity {
                     }
                 });
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "name");
+                parameters.putString("fields", "name, picture");
                 request.setParameters(parameters);
                 request.executeAsync();
             }
 
             @Override
             public void onCancel() {
-                Log.d("BemVindoActivity", "cancel Facebook");
             }
 
             @Override
             public void onError(FacebookException error) {
-                Log.d("BemVindoActivity", "error Facebook");
             }
         });
     }
 
     private void newUser(String nome) {
+        new PopulaAlimento(helper, getResources()).execute();
         Paciente paciente = new Paciente();
         paciente.setNome(nome);
         dao.salva(paciente);
         Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
         intent.putExtra("paciente", paciente);
         startActivity(intent);
+        progressDialog.dismiss();
         finish();
     }
 }

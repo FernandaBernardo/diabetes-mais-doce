@@ -99,5 +99,7 @@
     <string name="cancelar">Cancela</string>
     <string name="concluido">Concluído</string>
     <string name="porcao">Porção</string>
+    <string name="home">Home</string>
+    <string name="configuracoes">Configurações</string>
 
 </resources>
