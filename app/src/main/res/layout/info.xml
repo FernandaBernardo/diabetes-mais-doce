@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/container"
+    >
+        <TextView
+            android:id="@+id/texto_info"
+            style="@style/edit_text"
+            android:text="@string/info_continua"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/referencia_info"
+            style="@style/edit_text"
+            android:text="@string/diabetes_org"
+            android:gravity="right"
+            android:textSize="10dp"
+            android:autoLink="web"
+            />
+</LinearLayout>

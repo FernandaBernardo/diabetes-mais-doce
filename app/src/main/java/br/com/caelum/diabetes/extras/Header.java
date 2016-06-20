@@ -1,15 +1,12 @@
 package br.com.caelum.diabetes.extras;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -19,15 +16,11 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
+import br.com.caelum.diabetes.dialog.InfoDialog;
+import br.com.caelum.diabetes.dialog.PreencherDadosMedicosDialog;
 import br.com.caelum.diabetes.fragment.DashboardFragment;
 import br.com.caelum.diabetes.fragment.calculadora.NovaRefeicaoFragment;
 import br.com.caelum.diabetes.fragment.glicemia.NovaGlicemiaFragment;
@@ -77,6 +70,22 @@ public class Header {
 
     public void setTitulo(String titulo) {
         header.setTitle(titulo);
+    }
+
+    public void showInfo(final String text, final String referencia) {
+        ImageButton info = (ImageButton) header.findViewById(R.id.header_info);
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InfoDialog info = new InfoDialog();
+                info.setText(text);
+                info.setReferencia(referencia);
+                FragmentManager fm = activity.getSupportFragmentManager();
+                info.show(fm, "header");
+            }
+        });
+        info.setVisibility(View.VISIBLE);
+        info.setClickable(true);
     }
 
     private void setMenuLateral() {

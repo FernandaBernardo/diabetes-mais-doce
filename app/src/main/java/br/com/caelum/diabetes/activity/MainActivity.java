@@ -46,4 +46,8 @@ public class MainActivity extends AppCompatActivity{
     public void setHamburguerIcon() {
         header.setHamburguerIcon();
     }
+
+    public void showInfo(String text, String referencia) {
+        header.showInfo(text, referencia);
+    }
 }

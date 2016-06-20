@@ -3,16 +3,12 @@ package br.com.caelum.diabetes.fragment.perfil;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.activity.MainActivity;
@@ -39,6 +35,7 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 		super.onResume();
         ((MainActivity) getActivity()).setTitleHeader("Insulina Correção");
         ((MainActivity) getActivity()).setBackArrowIcon();
+        ((MainActivity) getActivity()).showInfo(getResources().getString(R.string.info_correcao), getResources().getString(R.string.diabetes_org));
 	}
 
 	@Override
