@@ -39,20 +39,22 @@ public class Paciente implements Serializable{
 		this.nome = nome;
 	}
 	public Integer getIdade() {
-		
+		if(idade == null) return 0;
 		return idade;
 	}
 	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
 	public Double getPeso() {
+		if(peso == null) return 0.0;
 		return peso;
 	}
 	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
 	public Double getAltura() {
-		return altura;
+        if(altura== null) return 0.0;
+        return altura;
 	}
 	public void setAltura(Double altura) {
 		this.altura = altura;
