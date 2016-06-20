@@ -41,7 +41,7 @@
     <string name="tipo_de_diabetes">Tipo de Diabetes</string>
     <string name="tipo_1">Tipo 1</string>
     <string name="tipo_2">Tipo 2</string>
-    <string name="digite_o_seu_nome">Digite o seu nome:</string>
+    <string name="digite_o_seu_nome">Nome de usuário</string>
     <string name="proximo">Próximo</string>
     <string name="voltar">Voltar</string>
     <string name="calculadora">Calculadora</string>
@@ -101,5 +101,6 @@
     <string name="porcao">Porção</string>
     <string name="home">Home</string>
     <string name="configuracoes">Configurações</string>
+    <string name="entrar">Entrar</string>
 
 </resources>

@@ -25,34 +25,36 @@
         android:paddingRight="50dp"
         android:paddingBottom="20dp"
         >
-		<TextView
-		    android:layout_marginTop="30dp"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-            android:textColor="@color/primary_text"
-		    android:text="@string/digite_o_seu_nome"
-            />
-		<EditText 
-		    android:layout_marginTop="10dp"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:id="@+id/nome_pessoa"
-		    android:inputType="textCapWords"
-            />
-		
-		<Button
-            style="@style/action_button"
-		    android:text="@string/proximo"
-		    android:id="@+id/botao_proximo"
-            />
-
         <com.facebook.login.widget.LoginButton
             android:id="@+id/facebook_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp" />
+            />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OU"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/primary_text"
+            />
+
+		<EditText
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/nome_pessoa"
+		    android:inputType="textCapWords"
+            android:hint="@string/digite_o_seu_nome"
+            android:layout_marginBottom="10dp"
+            />
+
+		<Button
+            style="@style/action_button"
+		    android:text="@string/entrar"
+		    android:id="@+id/botao_entrar"
+            />
     </LinearLayout>
 </LinearLayout>

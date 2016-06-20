@@ -82,7 +82,7 @@ public class BemVindoActivity extends AppCompatActivity {
     }
 
     private void nativeLogin() {
-        Button botao = (Button) findViewById(R.id.botao_proximo);
+        Button botao = (Button) findViewById(R.id.botao_entrar);
         botao.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
