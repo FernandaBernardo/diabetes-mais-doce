@@ -56,7 +56,7 @@
     <string name="novo_alimento">Adicionar Novo Alimento</string>
     <string name="dados_medicos_aviso">Se quiser usar o cálculo de insulina cadastre os valores de correção</string>
     <string name="confirmar_dados_medicos">Preencher os dados</string>
-    <string name="cancelar_dados_medicos">Não quero usar esse cálculo</string>
+    <string name="cancelar_dados_medicos">Não preencher</string>
     <string name="dado_incorreto_ok">OK</string>
     <string name="dado_incorreto_texto">Dados Inválidos. Preencha novamente!</string>
     <string name="adicionar_novo_alimento">Adicionar Novo Alimento</string>

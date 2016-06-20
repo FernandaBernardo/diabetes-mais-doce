@@ -1,56 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_gravity="center"
-    android:orientation="vertical"
-    android:padding="30dp" 
-    android:background="@color/primary">
+    style="@style/container"
+    >
+        <TextView
+            android:text="@string/dados_medicos_aviso"
+            style="@style/edit_text"
+            />
 
-    <ScrollView
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fillViewport="true">
-            
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" 
-                android:text="@string/dados_medicos_aviso"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_marginBottom="30dp"
-                android:textColor="#fff"/>
-    </ScrollView>
-    
-    <LinearLayout
-        android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:gravity="center_vertical"
-		android:orientation="horizontal"
-        >
-    	<Button
-        	android:id="@+id/confirmar_button"
-        	android:text="@string/confirmar_dados_medicos"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_weight="1"
-        	android:layout_gravity="center_horizontal"
-        	android:gravity="center"
-        	android:textColor="#DEDEDE"
-        />
-    
-   		<Button 
-   		    android:layout_marginLeft="10dp"
-        	android:id="@+id/cancelar_button"
-     	    android:text= "@string/cancelar_dados_medicos"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_weight="1"
-        	android:layout_gravity="center_horizontal"
-        	android:gravity="center"
-        	android:textColor="#DEDEDE"
-        />    
-    </LinearLayout>
+            android:gravity="center"
+            android:weightSum="10"
+            >
+            <Button
+                android:id="@+id/confirmar_button"
+                android:text="@string/confirmar_dados_medicos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:padding="10dp"
+                android:background="@color/accent"
+                android:textColor="@color/white"
+                android:layout_weight="6"
+                />
+
+            <Button
+                android:id="@+id/cancelar_button"
+                android:text= "@string/cancelar_dados_medicos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@color/primary"
+                android:textColor="@color/white"
+                android:layout_weight="4"
+                />
+        </LinearLayout>
 </LinearLayout>
