@@ -1,6 +1,10 @@
 package br.com.caelum.diabetes.extras;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -15,11 +19,20 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.fragment.DashboardFragment;
 import br.com.caelum.diabetes.fragment.calculadora.NovaRefeicaoFragment;
 import br.com.caelum.diabetes.fragment.glicemia.NovaGlicemiaFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
+import br.com.caelum.diabetes.model.Paciente;
 
 /**
  * Created by Fernanda Bernardo on 22/03/2016.
@@ -67,10 +80,10 @@ public class Header {
     }
 
     private void setMenuLateral() {
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName("Home");
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName("Nova Refeição");
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName("Nova Glicemia");
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName("Configurações");
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName(activity.getResources().getString(R.string.home));
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withName(activity.getResources().getString(R.string.nova_refeicao));
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withName(activity.getResources().getString(R.string.nova_glicemia));
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withName(activity.getResources().getString(R.string.configuracoes));
 
         Drawer.OnDrawerItemClickListener listener = new Drawer.OnDrawerItemClickListener() {
             @Override
@@ -96,11 +109,15 @@ public class Header {
             }
         };
 
+        DbHelper helper = new DbHelper(activity);
+        PacienteDao dao = new PacienteDao(helper);
+        Paciente paciente = dao.getPaciente();
+
         AccountHeader perfil = new AccountHeaderBuilder()
                 .withActivity(activity)
                 .withHeaderBackground(R.drawable.wallpaper)
                 .addProfiles(new ProfileDrawerItem()
-                                .withName("Fernanda")
+                                .withName(paciente.getNome())
                                 .withIcon(activity.getResources().getDrawable(R.drawable.gota))
                 )
                 .build();
@@ -112,4 +129,6 @@ public class Header {
                 .withAccountHeader(perfil)
                 .build();
     }
+
+
 }

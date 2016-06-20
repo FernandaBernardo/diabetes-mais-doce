@@ -6,9 +6,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/logo_simples"
         android:label="@string/app_name"
         android:theme="@style/MaterialDrawerTheme.Light" >
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
         <activity
             android:name="br.com.caelum.diabetes.activity.BemVindoActivity"
             android:label="@string/app_name"
@@ -19,11 +24,17 @@
             </intent-filter>
         </activity>
 		
-         <activity 
+        <activity
             android:name="br.com.caelum.diabetes.activity.MainActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
     </application>
 
-    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
