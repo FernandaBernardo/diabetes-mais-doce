@@ -24,11 +24,6 @@ import br.com.caelum.diabetes.model.Refeicao;
  * Created by Fê on 19/03/2015.
  */
 public class SelecionaQtdAlimentosFragment extends Fragment {
-    private List<AlimentoFisico> alimentos;
-    private Refeicao refeicao;
-    private SelecionaQtdAdapter adapter;
-    private ListView list;
-
     @Override
     public void onResume() {
         super.onResume();
@@ -39,40 +34,35 @@ public class SelecionaQtdAlimentosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.seleciona_qtd_alimentos, null);
-
         Bundle bundle = this.getArguments();
+        ListView listView = (ListView) view.findViewById(R.id.lista_qtd_alimentos);
+        Button concluirButton = (Button) view.findViewById(R.id.conclui_qtd);
 
-        alimentos = (List<AlimentoFisico>) bundle.getSerializable("alimentosSelecionados");
-        refeicao = (Refeicao) bundle.getSerializable("refeicao");
+        final Refeicao refeicao = (Refeicao) bundle.getSerializable("refeicao");
+        final List<AlimentoFisico> alimentosBundle = (List<AlimentoFisico>) bundle.getSerializable("alimentosSelecionados");
+        final List<AlimentoVirtual> alimentosSelecionados = new ArrayList<>();
 
-        for(AlimentoFisico aux: alimentos) {
-            refeicao.adicionaAlimento(new AlimentoVirtual(aux, 1.0, refeicao));
+        for(AlimentoFisico alimentoFisico: alimentosBundle) {
+            AlimentoVirtual alimentoVirtual = new AlimentoVirtual(alimentoFisico, 1.0, refeicao);
+            alimentosSelecionados.add(alimentoVirtual);
         }
 
-        adapter = new SelecionaQtdAdapter(refeicao.getAlimentos(), getActivity());
+        SelecionaQtdAdapter adapter = new SelecionaQtdAdapter(alimentosSelecionados, getActivity());
 
-        list = (ListView) view.findViewById(R.id.lista_qtd_alimentos);
-        list.setAdapter(adapter);
+        listView.setAdapter(adapter);
 
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                EditText qtd = (EditText) view.findViewById(R.id.qtd_cho);
-                refeicao.getAlimentos().get(i).setQuantidade(Double.parseDouble(qtd.getText().toString()));
+                EditText quantidade = (EditText) view.findViewById(R.id.qtd_cho);
+                alimentosSelecionados.get(i).setQuantidade(Double.parseDouble(quantidade.getText().toString()));
             }
         });
 
-        Button concluir = (Button) view.findViewById(R.id.conclui_qtd);
-        concluir.setOnClickListener(new View.OnClickListener() {
+        concluirButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<AlimentoVirtual> listAux = new ArrayList<AlimentoVirtual>();
-                for (int i = 0; i < list.getAdapter().getCount(); i++) {
-                    AlimentoVirtual aux = (AlimentoVirtual) list.getAdapter().getItem(i);
-                    listAux.add(aux);
-                }
-                refeicao.setAlimentos(listAux);
+                refeicao.adicionaAlimentos(alimentosSelecionados);
 
                 Bundle args = new Bundle();
                 args.putSerializable("refeicao", refeicao);
@@ -80,7 +70,6 @@ public class SelecionaQtdAlimentosFragment extends Fragment {
                 getFragmentManager().popBackStack("novarefeicao", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
-
 
         return view;
     }

@@ -1,11 +1,9 @@
 package br.com.caelum.diabetes.fragment.calculadora;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,11 +19,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.fourmob.datetimepicker.date.DatePickerDialog;
-import com.sleepbot.datetimepicker.time.RadialPickerLayout;
-import com.sleepbot.datetimepicker.time.TimePickerDialog;
-
-import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.diabetes.R;
@@ -42,16 +35,16 @@ import br.com.caelum.diabetes.model.Paciente;
 import br.com.caelum.diabetes.model.Refeicao;
 
 public class NovaRefeicaoFragment extends Fragment {
+	private View view;
 	private Refeicao refeicao;
 	private Paciente paciente;
-	private View view;
-	protected AlimentoVirtual alimentoSelecionado;
-	private ListView campoLista;
-	private EditText totalCHO;
-	private EditText totalInsulina;
-    private TextView dataRefeicao;
-    private TextView horaRefeicao;
-    private PickerDialog pickerDialog;
+	private AlimentoVirtual alimentoSelecionado;
+	private PickerDialog pickerDialog;
+	private ListView campoListaView;
+	private EditText totalCHOText;
+	private EditText totalInsulinaText;
+	private TextView dataRefeicaoView;
+	private TextView horaRefeicaoView;
 
 	@Override
 	public void onResume() {
@@ -65,8 +58,8 @@ public class NovaRefeicaoFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.nova_refeicao, null);
 
-		totalCHO = (EditText) view.findViewById(R.id.totalCHO);
-		totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);
+		totalCHOText = (EditText) view.findViewById(R.id.totalCHO);
+		totalInsulinaText = (EditText) view.findViewById(R.id.totalInsulina);
 		
 		carregaBundle();
 		
@@ -77,19 +70,19 @@ public class NovaRefeicaoFragment extends Fragment {
 		
 		helper.close();
 
-        dataRefeicao = (TextView) view.findViewById(R.id.data_refeicao);
-        horaRefeicao = (TextView) view.findViewById(R.id.hora_refeicao);
+        dataRefeicaoView = (TextView) view.findViewById(R.id.data_refeicao);
+        horaRefeicaoView = (TextView) view.findViewById(R.id.hora_refeicao);
 
-        pickerDialog = new PickerDialog(getFragmentManager(), dataRefeicao, horaRefeicao);
+        pickerDialog = new PickerDialog(getFragmentManager(), dataRefeicaoView, horaRefeicaoView);
 
-        campoLista = (ListView) view.findViewById(R.id.lista_alimentos);
+        campoListaView = (ListView) view.findViewById(R.id.lista_alimentos);
 
 		carregaLista();
 		
-		campoLista.setOnItemClickListener(new OnItemClickListener() {
+		campoListaView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View v, int pos, long arg3) {
-				alimentoSelecionado = (AlimentoVirtual) campoLista.getItemAtPosition(pos);
+				alimentoSelecionado = (AlimentoVirtual) campoListaView.getItemAtPosition(pos);
 				final ImageView campoDeletar = (ImageView) v.findViewById(R.id.refeicao_alimento_deletar);
 				campoDeletar.setOnClickListener(new OnClickListener() {
 					@Override
@@ -98,14 +91,14 @@ public class NovaRefeicaoFragment extends Fragment {
 						carregaLista();
 						atualizaDadosTotais();
 					}
-				});				
+				});
 			}
 		});
 		
 		Spinner tipoRefeicao = (Spinner) view.findViewById(R.id.tipo_refeicao);
 		final ArrayAdapter<String> spinnerAdapter = (ArrayAdapter<String>) tipoRefeicao.getAdapter();
 		
-		String tipo = null;
+		String tipo;
 		if(refeicao.getTipoRefeicao() == null) {
 			tipo = new DescobreTipoRefeicao().getTipoRefeicao().getText();
 		} else {
@@ -176,7 +169,7 @@ public class NovaRefeicaoFragment extends Fragment {
     }
 
     private void atualizaDadosTotais() {
-        totalCHO.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
+        totalCHOText.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
 
         SharedPreferences settings = getActivity().getSharedPreferences("CalculoInsulina", 0);
         final boolean calculoInsulina = settings.getBoolean("calculoInsulina", false);
@@ -184,17 +177,17 @@ public class NovaRefeicaoFragment extends Fragment {
         if (calculoInsulina) {
             double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
 
-            totalInsulina.setText(String.valueOf(valorInsulina) + " U");
+            totalInsulinaText.setText(String.valueOf(valorInsulina) + " U");
         } else {
             TextView texto = (TextView) view.findViewById(R.id.textoTotalInsulina);
             texto.setVisibility(View.INVISIBLE);
-            totalInsulina.setVisibility(View.INVISIBLE);
+            totalInsulinaText.setVisibility(View.INVISIBLE);
         }
     }
 
 	private void carregaLista() {
 		List<AlimentoVirtual> alimentos = refeicao.getAlimentos();
 		ListaAlimentoAdapter adapter = new ListaAlimentoAdapter(alimentos, getActivity());
-		campoLista.setAdapter(adapter);
+		campoListaView.setAdapter(adapter);
 	}
 }

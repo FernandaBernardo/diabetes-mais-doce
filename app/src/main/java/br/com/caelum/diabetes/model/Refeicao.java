@@ -25,12 +25,8 @@ public class Refeicao implements Serializable{
 	private Calendar data;
 	
 	public Refeicao() {
-		this.alimentos = new ArrayList<AlimentoVirtual>();
+		this.alimentos = new ArrayList<>();
 		this.data = Calendar.getInstance();
-	}
-	
-	public void adicionaAlimento(AlimentoVirtual alimento) {
-		alimentos.add(alimento);
 	}
 	
 	public List<AlimentoVirtual> getAlimentos() {
@@ -77,5 +73,9 @@ public class Refeicao implements Serializable{
 	public String toString() {
 		return ParserTools.getParseDate(data)
 				+ " - " + ParserTools.getParseHour(data) + " - " + tipoRefeicao;
+	}
+
+	public void adicionaAlimentos(List<AlimentoVirtual> alimentosSelecionados) {
+		alimentos.addAll(alimentosSelecionados);
 	}
 }
