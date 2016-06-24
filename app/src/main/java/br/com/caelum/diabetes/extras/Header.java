@@ -70,6 +70,7 @@ public class Header {
 
     public void setTitulo(String titulo) {
         header.setTitle(titulo);
+        hideInfo();
     }
 
     public void showInfo(final String text, final String referencia) {
@@ -86,6 +87,12 @@ public class Header {
         });
         info.setVisibility(View.VISIBLE);
         info.setClickable(true);
+    }
+
+    public void hideInfo() {
+        ImageButton info = (ImageButton) header.findViewById(R.id.header_info);
+        info.setVisibility(View.INVISIBLE);
+        info.setClickable(false);
     }
 
     private void setMenuLateral() {
