@@ -20,7 +20,6 @@ import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dialog.InfoDialog;
-import br.com.caelum.diabetes.dialog.PreencherDadosMedicosDialog;
 import br.com.caelum.diabetes.fragment.DashboardFragment;
 import br.com.caelum.diabetes.fragment.calculadora.NovaRefeicaoFragment;
 import br.com.caelum.diabetes.fragment.glicemia.NovaGlicemiaFragment;
@@ -71,6 +70,7 @@ public class Header {
     public void setTitulo(String titulo) {
         header.setTitle(titulo);
         hideInfo();
+        hideSettings();
     }
 
     public void showInfo(final String text, final String referencia) {
@@ -91,8 +91,29 @@ public class Header {
 
     public void hideInfo() {
         ImageButton info = (ImageButton) header.findViewById(R.id.header_info);
-        info.setVisibility(View.INVISIBLE);
+        info.setVisibility(View.GONE);
         info.setClickable(false);
+    }
+
+    public void showSettings() {
+        ImageButton settings = (ImageButton) header.findViewById(R.id.header_settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_view, new ConfigurarPerfilFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+        settings.setVisibility(View.VISIBLE);
+        settings.setClickable(true);
+    }
+
+    public void hideSettings() {
+        ImageButton settings = (ImageButton) header.findViewById(R.id.header_settings);
+        settings.setVisibility(View.GONE);
+        settings.setClickable(false);
     }
 
     private void setMenuLateral() {
@@ -145,6 +166,4 @@ public class Header {
                 .withAccountHeader(perfil)
                 .build();
     }
-
-
 }

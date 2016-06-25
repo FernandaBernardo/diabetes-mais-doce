@@ -50,4 +50,8 @@ public class MainActivity extends AppCompatActivity{
     public void showInfo(String text, String referencia) {
         header.showInfo(text, referencia);
     }
+
+    public void showSettings() {
+        header.showSettings();
+    }
 }

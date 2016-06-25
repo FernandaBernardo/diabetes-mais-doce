@@ -38,6 +38,7 @@ public class DashboardFragment extends Fragment {
 		super.onResume();
         ((MainActivity) getActivity()).setTitleHeader("Diabetes Mais Doce");
         ((MainActivity) getActivity()).setHamburguerIcon();
+		((MainActivity) getActivity()).showSettings();
 	}
 
 	@Override
