@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/icons"
     android:gravity="center"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
     android:padding="10dp"
-    android:background="@color/icons" >
-    <TextView 
-        android:layout_width="wrap_content"
+    >
+    <TextView
+        android:ellipsize="end"
+        android:id="@+id/refeicao_alimento"
         android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
-        android:id="@+id/refeicao_alimento"/>
-    <TextView 
+        android:layout_marginRight="20dp"
+        android:layout_weight="2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:singleLine="true"
+        />
+    <TextView
         android:id="@+id/refeicao_alimento_cho"
-        android:textStyle="bold"/>
-    <LinearLayout
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="right">
-	    <ImageView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:background="@drawable/delete"
-	       	android:layout_gravity="center_vertical"
-	        android:id="@+id/refeicao_alimento_deletar"/>
-    </LinearLayout>
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        />
+    <ImageView
+        android:background="@drawable/close"
+        android:id="@+id/refeicao_alimento_deletar"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        />
 </LinearLayout>

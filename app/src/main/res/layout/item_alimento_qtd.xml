@@ -1,53 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/icons"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
     android:padding="15dp"
-    android:background="@color/icons">
+    >
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/alimento_qtd"
-        android:textStyle="bold"
-        android:layout_margin="5dp"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="Abacate"
+        />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        >
         <TextView
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/quantidade"/>
-        <EditText
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:text="@string/quantidade"
+            />
+        <EditText
             android:id="@+id/qtd_cho"
             android:inputType="number"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_width="0dp"
             android:padding="5dp"
             android:text="1.0"
             />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        >
         <TextView
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/porcao"/>
-        <EditText
             android:layout_width="0dp"
+            android:text="@string/porcao"
+            />
+        <EditText
+            android:id="@+id/porcao_qtd"
+            android:enabled="false"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:id="@+id/porcao_qtd"
+            android:layout_width="0dp"
             android:padding="5dp"
-            android:enabled="false"/>
+            />
     </LinearLayout>
 </LinearLayout>
