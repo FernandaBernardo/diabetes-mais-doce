@@ -41,9 +41,17 @@ public class SelecionaQtdAlimentosFragment extends Fragment {
         final Refeicao refeicao = (Refeicao) bundle.getSerializable("refeicao");
         final List<AlimentoFisico> alimentosBundle = (List<AlimentoFisico>) bundle.getSerializable("alimentosSelecionados");
         final List<AlimentoVirtual> alimentosSelecionados = new ArrayList<>();
+        final List<AlimentoVirtual> alimentosExistentes = new ArrayList<>();
 
         for(AlimentoFisico alimentoFisico: alimentosBundle) {
-            AlimentoVirtual alimentoVirtual = new AlimentoVirtual(alimentoFisico, 1.0, refeicao);
+            AlimentoVirtual alimentoExistente = refeicao.getAlimentoExistente(alimentoFisico);
+            AlimentoVirtual alimentoVirtual;
+            if(alimentoExistente == null) {
+                alimentoVirtual = new AlimentoVirtual(alimentoFisico, 1.0, refeicao);
+            } else {
+                alimentoVirtual = alimentoExistente;
+                alimentosExistentes.add(alimentoExistente);
+            }
             alimentosSelecionados.add(alimentoVirtual);
         }
 
@@ -62,6 +70,7 @@ public class SelecionaQtdAlimentosFragment extends Fragment {
         concluirButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                refeicao.removeAlimentos(alimentosExistentes);
                 refeicao.adicionaAlimentos(alimentosSelecionados);
 
                 Bundle args = new Bundle();

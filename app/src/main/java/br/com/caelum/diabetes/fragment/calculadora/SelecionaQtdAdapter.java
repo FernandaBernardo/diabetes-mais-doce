@@ -55,12 +55,13 @@ public class SelecionaQtdAdapter extends BaseAdapter {
         porcao.setText(alimento.getAlimento().getUnidadeDeMedida());
 
         EditText qtd = (EditText) item.findViewById(R.id.qtd_cho);
+        qtd.setText(String.valueOf(alimento.getQuantidade()));
         qtd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
-                    EditText qtd = (EditText) view.findViewById(R.id.qtd_cho);
-                    alimento.setQuantidade(Double.parseDouble(qtd.getText().toString()));
+                    EditText quantidade = (EditText) view.findViewById(R.id.qtd_cho);
+                    alimento.setQuantidade(Double.parseDouble(quantidade.getText().toString()));
                 }
             }
         });

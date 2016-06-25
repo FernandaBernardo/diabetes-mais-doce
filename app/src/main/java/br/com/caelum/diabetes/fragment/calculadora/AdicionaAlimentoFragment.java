@@ -72,7 +72,7 @@ public class AdicionaAlimentoFragment extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.lista_busca_alimentos);
         listView.setAdapter(adapter);
 
-        alimentosSelecionados = new ArrayList<AlimentoFisico>();
+        alimentosSelecionados = new ArrayList<>();
 
         TextView cadastra = (TextView) view.findViewById(R.id.cadastrar_alimento);
         cadastra.setOnClickListener(new OnClickListener() {

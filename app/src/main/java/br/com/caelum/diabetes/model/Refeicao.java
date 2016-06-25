@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import br.com.caelum.diabetes.extras.ParserTools;
@@ -23,12 +24,12 @@ public class Refeicao implements Serializable{
 	private TipoRefeicao tipoRefeicao;
 	@DatabaseField(persisterClass = CalendarTypePersister.class)
 	private Calendar data;
-	
+
 	public Refeicao() {
 		this.alimentos = new ArrayList<>();
 		this.data = Calendar.getInstance();
 	}
-	
+
 	public List<AlimentoVirtual> getAlimentos() {
 		return (List<AlimentoVirtual>) alimentos;
 	}
@@ -78,4 +79,17 @@ public class Refeicao implements Serializable{
 	public void adicionaAlimentos(List<AlimentoVirtual> alimentosSelecionados) {
 		alimentos.addAll(alimentosSelecionados);
 	}
+
+    public AlimentoVirtual getAlimentoExistente(AlimentoFisico alimentoSelecionado) {
+        for (AlimentoVirtual alimento: alimentos) {
+            if(alimentoSelecionado.getId() == alimento.getAlimento().getId()) {
+                return alimento;
+            }
+        }
+        return null;
+    }
+
+    public void removeAlimentos(List<AlimentoVirtual> alimentosExistentes) {
+        alimentos.removeAll(alimentosExistentes);
+    }
 }
