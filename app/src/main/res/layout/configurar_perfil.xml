@@ -11,6 +11,11 @@
         />
     <Button
         style="@style/dashboard_button"
+        android:id="@+id/perfil_fator_correcao"
+        android:text="@string/fator_de_correcao"
+        />
+    <Button
+        style="@style/dashboard_button"
         android:id="@+id/perfil_basal"
         android:text="@string/basal"
         />

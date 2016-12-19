@@ -105,6 +105,7 @@
     <string name="diabetes_org">http://www.diabetes.org.br/</string>
     <string name="info_correcao">"O termo bolus, se refere a quantidades maiores de insulina que são liberadas na circulação sanguínea em momentos de maior necessidade, como por exemplo às refeições, ou quando há aumento de açúcar no sangue."</string>
     <string name="info_continua">"Como basal entende-se uma secreção constante de insulina que permanece em níveis baixos no sangue o tempo todo e é produzida em forma de ‘gotas contínuas’, mantendo a liberação de glicose para as células do organismo"</string>
+    <string name="fator_de_correcao">Fator de Correção</string>
 
 
 </resources>

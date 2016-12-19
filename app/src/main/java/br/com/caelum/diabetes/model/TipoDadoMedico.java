@@ -7,6 +7,7 @@ import br.com.caelum.diabetes.extras.Extras;
 public enum TipoDadoMedico implements Serializable {
 	CONTINUA(Extras.CONTINUO), 
 	CORRECAO(Extras.CORRECAO),
+	FATOR_CORRECAO(Extras.FATOR_CORRECAO),
 	GLICEMIA_ALVO(Extras.GLICEMIA_ALVO);
 	
 	private String text;

@@ -29,11 +29,13 @@ public class ConfigurarPerfilFragment extends Fragment{
 		View view = inflater.inflate(R.layout.configurar_perfil, null);
 
 		Button botaoDados = (Button) view.findViewById(R.id.perfil_dados);
+		Button botaoFatorCorrecao = (Button) view.findViewById(R.id.perfil_fator_correcao);
 		Button botaoBasal = (Button) view.findViewById(R.id.perfil_basal);
 		Button botaoBolus = (Button) view.findViewById(R.id.perfil_bolus);
 		Button botaoGlicemiaAlvo = (Button) view.findViewById(R.id.perfil_glicemia_alvo);
 		
 		onClickBotao(botaoDados, new ConfigurarDadosPessoaisFragment());
+		onClickBotao(botaoFatorCorrecao, new ConfigurarFatorCorrecaoFragment());
 		onClickBotao(botaoBasal, new ConfigurarInsulinaContinuaFragment());
 		onClickBotao(botaoBolus, new ConfigurarInsulinaCorrecaoFragment());
 		onClickBotao(botaoGlicemiaAlvo, new ConfigurarGlicemiaAlvoFragment());

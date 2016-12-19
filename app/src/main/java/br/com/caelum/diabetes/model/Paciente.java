@@ -28,7 +28,9 @@ public class Paciente implements Serializable{
 	private DadosMedicos insulinaCorrecao;
 	@DatabaseField(foreign=true)
 	private DadosMedicos glicemiaAlvo;
-	
+	@DatabaseField(foreign=true)
+	private DadosMedicos fatorCorrecao;
+
 	public Paciente() {
 	}
 	
@@ -102,5 +104,13 @@ public class Paciente implements Serializable{
 	
 	public boolean temValorCorrecao(){
 		return (!(this.getInsulinaCorrecao() == null));
+	}
+
+	public DadosMedicos getFatorCorrecao() {
+		return fatorCorrecao;
+	}
+
+	public void setFatorCorrecao(DadosMedicos fatorCorrecao) {
+		this.fatorCorrecao = fatorCorrecao;
 	}
 }
