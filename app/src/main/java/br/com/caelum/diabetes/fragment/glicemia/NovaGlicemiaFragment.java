@@ -1,44 +1,45 @@
 package br.com.caelum.diabetes.fragment.glicemia;
 
-import org.joda.time.DateTime;
-
-import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.widget.TimePicker;
+
+import java.util.Calendar;
+
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.activity.MainActivity;
+import br.com.caelum.diabetes.calculos.CalculaInsulina;
 import br.com.caelum.diabetes.calculos.DescobreTipoRefeicao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.GlicemiaDao;
+import br.com.caelum.diabetes.dao.PacienteDao;
+import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.extras.PickerDialog;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 import br.com.caelum.diabetes.extras.ValidaCampos;
 import br.com.caelum.diabetes.model.Glicemia;
+import br.com.caelum.diabetes.model.Paciente;
 import br.com.caelum.diabetes.util.ValidatorUtils;
 
 public class NovaGlicemiaFragment extends Fragment {
 	private Glicemia glicemia;
-	private EditText valorGlicemia;
+	private EditText valorGlicemiaCampo;
 	private Button salvarGlicemia;
     private PickerDialog pickerDialog;
+	private EditText totalInsulina;
+	private Paciente paciente;
+	private TextView totalInsulinaText;
 
 	@Override
 	public void onResume() {
@@ -50,6 +51,10 @@ public class NovaGlicemiaFragment extends Fragment {
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.nova_glicemia, null);
+
+		DbHelper helper = new DbHelper(getActivity());
+		final PacienteDao pacienteDao = new PacienteDao(helper);
+		this.paciente = pacienteDao.getPaciente();
 
 		final TextView horario = (TextView) view.findViewById(R.id.hora_glicemia);
 		final TextView data = (TextView) view.findViewById(R.id.data_glicemia);
@@ -66,20 +71,57 @@ public class NovaGlicemiaFragment extends Fragment {
 		if (position == -1) position = 0;
 		tipoRefeicao.setSelection(position);
 
-		valorGlicemia = (EditText) view.findViewById(R.id.valor_glicemia);
-		salvarGlicemia = (Button) view.findViewById(R.id.salvar_glicemia);
-        salvarGlicemia.setEnabled(ValidatorUtils.checkEmptyEditText(valorGlicemia));
+		valorGlicemiaCampo = (EditText) view.findViewById(R.id.valor_glicemia);
+		totalInsulina = (EditText) view.findViewById(R.id.glicemia_total_insulina);
+		totalInsulinaText = (TextView) view.findViewById(R.id.glicemia_total_insulina_text);
 
-        ValidaCampos.validateEditText(valorGlicemia, salvarGlicemia);
+		valorGlicemiaCampo.setOnKeyListener(new View.OnKeyListener() {
+			@Override
+			public boolean onKey(View view, int i, KeyEvent keyEvent) {
+				int pos = tipoRefeicao.getSelectedItemPosition();
+				String item = spinnerAdapter.getItem(pos);
+				TipoRefeicao tipoRefeicao = TipoRefeicao.fromString(item);
+				String text = valorGlicemiaCampo.getText().toString();
+				int valorGlicemia = Integer.parseInt(text.equals("") ? "0" : text);
+				Calendar dataSelecionada = pickerDialog.getDataSelecionada();
+
+				atualizaGlicemia(valorGlicemia, tipoRefeicao, dataSelecionada);
+
+				return false;
+			}
+		});
+
+		tipoRefeicao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View view, int pos, long id) {
+				String item = spinnerAdapter.getItem(pos);
+				TipoRefeicao tipoRefeicao = TipoRefeicao.fromString(item);
+				String text = valorGlicemiaCampo.getText().toString();
+				int valorGlicemia = Integer.parseInt(text.equals("") ? "0" : text);
+				Calendar dataSelecionada = pickerDialog.getDataSelecionada();
+
+				atualizaGlicemia(valorGlicemia, tipoRefeicao, dataSelecionada);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
+
+		salvarGlicemia = (Button) view.findViewById(R.id.salvar_glicemia);
+		salvarGlicemia.setEnabled(ValidatorUtils.checkEmptyEditText(valorGlicemiaCampo));
+
+        ValidaCampos.validateEditText(valorGlicemiaCampo, salvarGlicemia);
 
 		salvarGlicemia.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				glicemia.setValorGlicemia(Integer.parseInt(valorGlicemia.getText().toString()));
 				int pos = tipoRefeicao.getSelectedItemPosition();
-				glicemia.setTipoRefeicao(TipoRefeicao.fromString(spinnerAdapter.getItem(pos)));
+				int valorGlicemia = Integer.parseInt(valorGlicemiaCampo.getText().toString());
+				TipoRefeicao tipoRefeicao = TipoRefeicao.fromString(spinnerAdapter.getItem(pos));
+				Calendar dataSelecionada = pickerDialog.getDataSelecionada();
 
-				glicemia.setData(pickerDialog.getDataSelecionada());
+				atualizaGlicemia(valorGlicemia, tipoRefeicao, dataSelecionada);
 
 				DbHelper helper = new DbHelper(getActivity());
 				GlicemiaDao dao = new GlicemiaDao(helper);
@@ -90,5 +132,26 @@ public class NovaGlicemiaFragment extends Fragment {
 			}
 		});
 		return view;
+	}
+
+	private void atualizaGlicemia(int valorGlicemia, TipoRefeicao tipoRefeicao, Calendar data) {
+		glicemia.setValorGlicemia(valorGlicemia);
+		glicemia.setTipoRefeicao(tipoRefeicao);
+		glicemia.setData(data);
+
+		SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME_GLICEMIA, 0);
+		boolean calculoInsulina = settings.getBoolean("calculoInsulinaGlicemia", false);
+
+		if (calculoInsulina && !tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_MANHA) &&
+				!tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_TARDE) && !tipoRefeicao.equals(TipoRefeicao.CEIA)) {
+			totalInsulinaText.setVisibility(View.VISIBLE);
+			totalInsulina.setVisibility(View.VISIBLE);
+
+			double valorInsulina = CalculaInsulina.getTotalInsulinaFatorCorrecao(paciente, glicemia);
+			totalInsulina.setText(String.valueOf(valorInsulina) + " U");
+		} else {
+			totalInsulinaText.setVisibility(View.INVISIBLE);
+			totalInsulina.setVisibility(View.INVISIBLE);
+		}
 	}
 }

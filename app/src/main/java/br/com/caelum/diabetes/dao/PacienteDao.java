@@ -57,15 +57,18 @@ public class PacienteDao {
 		List<DadosMedicos> listDados = dadosDao.query(prepareDados);
 		for (DadosMedicos dadosMedicos : listDados) {
 			switch (dadosMedicos.getTipo()) {
-			case CONTINUA:
-				paciente.setInsulinaContinua(dadosMedicos);
-				break;
-			case CORRECAO:
-				paciente.setInsulinaCorrecao(dadosMedicos);
-				break;
-			case GLICEMIA_ALVO:
-				paciente.setGlicemiaAlvo(dadosMedicos);
-				break;
+				case CONTINUA:
+					paciente.setInsulinaContinua(dadosMedicos);
+					break;
+				case CORRECAO:
+					paciente.setInsulinaCorrecao(dadosMedicos);
+					break;
+				case GLICEMIA_ALVO:
+					paciente.setGlicemiaAlvo(dadosMedicos);
+					break;
+				case FATOR_CORRECAO:
+					paciente.setFatorCorrecao(dadosMedicos);
+					break;
 			}
 		}
 		return paciente;

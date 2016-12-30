@@ -28,6 +28,7 @@ import br.com.caelum.diabetes.calculos.DescobreTipoRefeicao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dao.RefeicaoDao;
+import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.extras.PickerDialog;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
@@ -171,7 +172,7 @@ public class NovaRefeicaoFragment extends Fragment {
     private void atualizaDadosTotais() {
         totalCHOText.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
 
-        SharedPreferences settings = getActivity().getSharedPreferences("CalculoInsulina", 0);
+        SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
         final boolean calculoInsulina = settings.getBoolean("calculoInsulina", false);
 
         if (calculoInsulina) {

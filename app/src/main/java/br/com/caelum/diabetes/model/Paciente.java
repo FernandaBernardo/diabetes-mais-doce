@@ -109,7 +109,6 @@ public class Paciente implements Serializable{
 	public DadosMedicos getFatorCorrecao() {
 		return fatorCorrecao;
 	}
-
 	public void setFatorCorrecao(DadosMedicos fatorCorrecao) {
 		this.fatorCorrecao = fatorCorrecao;
 	}

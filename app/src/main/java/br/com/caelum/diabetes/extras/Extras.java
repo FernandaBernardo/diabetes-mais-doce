@@ -29,4 +29,5 @@ public class Extras {
 	public static final String COPO = "Copo";
 
     public static final String PREFS_NAME = "CalculoInsulina";
+	public static final String PREFS_NAME_GLICEMIA = "CalculoInsulinaGlicemia";
 }

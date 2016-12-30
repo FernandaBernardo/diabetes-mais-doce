@@ -48,6 +48,10 @@ public class DadosMedicosDao {
 			case GLICEMIA_ALVO:
 				paciente.setGlicemiaAlvo(dadosMedicos);
 				break;
+
+			case FATOR_CORRECAO:
+				paciente.setFatorCorrecao(dadosMedicos);
+				break;
 		}
 		
 		pacienteDao.atualiza(paciente);

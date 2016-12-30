@@ -50,11 +50,40 @@
         android:hint="@string/valor_glicemia_mg_dl"
         android:id="@+id/valor_glicemia"
         android:inputType="number"
+        android:layout_marginTop="10dp"
+        android:maxLength="3"
         />
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/total_insulina"
+            android:id="@+id/glicemia_total_insulina_text"
+            />
+        <EditText
+            android:background="@color/icons"
+            android:enabled="false"
+            android:gravity="center"
+            android:id="@+id/glicemia_total_insulina"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:text="0.0"
+            android:textColor="@color/primary_dark"
+            />
+    </LinearLayout>
 
     <Button
         style="@style/action_button"
         android:id="@+id/salvar_glicemia"
+        android:layout_marginTop="10dp"
         android:text="@string/salvar_glicemia"
         />
 </LinearLayout>
