@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.extras.Extras;
-import br.com.caelum.diabetes.fragment.DashboardFragment;
 import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 
@@ -42,7 +41,7 @@ public class PreencherDadosMedicosDialog extends DialogFragment {
 			public void onClick(View v) {
                 SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("calculoInsulina", false);
+                editor.putBoolean(Extras.PREFS_NAME_INSULINA_CORRECAO, false);
                 editor.commit();
 
 				setTransaction(R.id.main_view, new DashboardCalculadoraFragment());

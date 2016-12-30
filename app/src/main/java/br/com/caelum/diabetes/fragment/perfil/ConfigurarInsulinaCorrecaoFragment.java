@@ -72,7 +72,7 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 
                 SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("calculoInsulina", true);
+                editor.putBoolean(Extras.PREFS_NAME_INSULINA_CORRECAO, true);
                 editor.commit();
 
 				getFragmentManager().popBackStack();

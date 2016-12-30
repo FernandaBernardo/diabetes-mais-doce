@@ -25,11 +25,8 @@ import br.com.caelum.diabetes.util.ValidatorUtils;
 public class ConfigurarFatorCorrecaoFragment extends Fragment {
     private View view;
     private EditText cafe;
-    private EditText lancheManha;
     private EditText almoco;
-    private EditText lancheTarde;
     private EditText jantar;
-    private EditText ceia;
     private Button salvar;
 
     @Override
@@ -48,21 +45,15 @@ public class ConfigurarFatorCorrecaoFragment extends Fragment {
         ValidaCampos.validateEditText(cafe, salvar);
         ValidaCampos.validateEditText(almoco, salvar);
         ValidaCampos.validateEditText(jantar, salvar);
-        ValidaCampos.validateEditText(lancheManha, salvar);
-        ValidaCampos.validateEditText(lancheTarde, salvar);
-        ValidaCampos.validateEditText(ceia, salvar);
-        salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar, lancheManha, lancheTarde, ceia));
+        salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar));
 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DadosMedicos dadosMedicos = new DadosMedicos(TipoDadoMedico.FATOR_CORRECAO);
                 dadosMedicos.setCafeManha(Double.parseDouble(cafe.getText().toString()));
-                dadosMedicos.setLancheManha(Double.parseDouble(lancheManha.getText().toString()));
                 dadosMedicos.setAlmoco(Double.parseDouble(almoco.getText().toString()));
-                dadosMedicos.setLancheTarde(Double.parseDouble(lancheTarde.getText().toString()));
                 dadosMedicos.setJantar(Double.parseDouble(jantar.getText().toString()));
-                dadosMedicos.setCeia(Double.parseDouble(ceia.getText().toString()));
 
                 DbHelper helper = new DbHelper(getActivity());
 
@@ -71,9 +62,9 @@ public class ConfigurarFatorCorrecaoFragment extends Fragment {
 
                 helper.close();
 
-                SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME_GLICEMIA, 0);
+                SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("calculoInsulinaGlicemia", true);
+                editor.putBoolean(Extras.PREFS_NAME_FATOR_CORRECAO, true);
                 editor.commit();
 
                 getFragmentManager().popBackStack();
@@ -91,22 +82,16 @@ public class ConfigurarFatorCorrecaoFragment extends Fragment {
         if (dadosMedicosAntigo == null) return;
 
         cafe.setText(String.valueOf(dadosMedicosAntigo.getCafeManha()));
-        lancheManha.setText(String.valueOf(dadosMedicosAntigo.getLancheManha()));
         almoco.setText(String.valueOf(dadosMedicosAntigo.getAlmoco()));
-        lancheTarde.setText(String.valueOf(dadosMedicosAntigo.getLancheTarde()));
         jantar.setText(String.valueOf(dadosMedicosAntigo.getJantar()));
-        ceia.setText(String.valueOf(dadosMedicosAntigo.getCeia()));
 
         helper.close();
     }
 
     private void getValoresGlobais() {
         cafe = (EditText) view.findViewById(R.id.valor_cafe_fator_correcao);
-        lancheManha = (EditText) view.findViewById(R.id.valor_lanche_manha_fator_correcao);
         almoco = (EditText) view.findViewById(R.id.valor_almoco_fator_correcao);
-        lancheTarde = (EditText) view.findViewById(R.id.valor_lanche_tarde_fator_correcao);
         jantar = (EditText) view.findViewById(R.id.valor_jantar_fator_correcao);
-        ceia = (EditText) view.findViewById(R.id.valor_ceia_faotr_correcao);
         salvar = (Button) view.findViewById(R.id.salvar_insulina_fator_correcao);
     }
 }

@@ -173,7 +173,7 @@ public class NovaRefeicaoFragment extends Fragment {
         totalCHOText.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
 
         SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
-        final boolean calculoInsulina = settings.getBoolean("calculoInsulina", false);
+        final boolean calculoInsulina = settings.getBoolean(Extras.PREFS_NAME_INSULINA_CORRECAO, false);
 
         if (calculoInsulina) {
             double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();

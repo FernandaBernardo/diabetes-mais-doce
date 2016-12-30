@@ -28,6 +28,8 @@ public class Extras {
 	public static final String XICARA = "Xícara";
 	public static final String COPO = "Copo";
 
-    public static final String PREFS_NAME = "CalculoInsulina";
-	public static final String PREFS_NAME_GLICEMIA = "CalculoInsulinaGlicemia";
+    public static final String PREFS_NAME= "Configuracao";
+    public static final String PREFS_NAME_INSULINA_CORRECAO = "configInsulinaCorrecao";
+	public static final String PREFS_NAME_FATOR_CORRECAO = "configFatorCorrecao";
+	public static final String PREFS_NAME_GLICEMIA_ALVO = "configGlicemiaAlvo";
 }

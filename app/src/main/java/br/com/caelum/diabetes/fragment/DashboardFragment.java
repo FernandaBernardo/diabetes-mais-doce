@@ -47,7 +47,7 @@ public class DashboardFragment extends Fragment {
 		View view = inflater.inflate(R.layout.dashboard, null);
 
         SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
-        final boolean calculoInsulina = settings.getBoolean("calculoInsulina", true);
+        final boolean calculoInsulina = settings.getBoolean(Extras.PREFS_NAME_INSULINA_CORRECAO, true);
 
         Button calculadora = (Button) view.findViewById(R.id.main_calculadora);
 		calculadora.setOnClickListener(new OnClickListener() {

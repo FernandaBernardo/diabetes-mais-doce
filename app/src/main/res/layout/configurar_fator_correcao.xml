@@ -22,36 +22,12 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="@string/lanche_da_manha"
-            />
-        <EditText
-            style="@style/edit_text"
-            android:hint="@string/mg_dl"
-            android:id="@+id/valor_lanche_manha_fator_correcao"
-            android:inputType="number"
-            />
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             android:text="@string/almoco"
             />
         <EditText
             style="@style/edit_text"
             android:hint="@string/mg_dl"
             android:id="@+id/valor_almoco_fator_correcao"
-            android:inputType="number"
-            />
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="@string/lanche_da_tarde"
-            />
-        <EditText
-            style="@style/edit_text"
-            android:hint="@string/mg_dl"
-            android:id="@+id/valor_lanche_tarde_fator_correcao"
             android:inputType="number"
             />
 
@@ -67,17 +43,6 @@
             android:inputType="number"
             />
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="@string/ceia"
-            />
-        <EditText
-            style="@style/edit_text"
-            android:id="@+id/valor_ceia_faotr_correcao"
-            android:inputType="number"
-            android:hint="@string/mg_dl"
-            />
         <Button
             style="@style/action_button"
             android:id="@+id/salvar_insulina_fator_correcao"

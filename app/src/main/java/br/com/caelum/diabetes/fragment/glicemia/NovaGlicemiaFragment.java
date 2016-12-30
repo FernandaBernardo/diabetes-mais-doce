@@ -139,10 +139,11 @@ public class NovaGlicemiaFragment extends Fragment {
 		glicemia.setTipoRefeicao(tipoRefeicao);
 		glicemia.setData(data);
 
-		SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME_GLICEMIA, 0);
-		boolean calculoInsulina = settings.getBoolean("calculoInsulinaGlicemia", false);
+		SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
+		boolean configFatorCorrecao = settings.getBoolean(Extras.PREFS_NAME_FATOR_CORRECAO, false);
+		boolean configGlicemiaAlvo = settings.getBoolean(Extras.PREFS_NAME_GLICEMIA_ALVO, false);
 
-		if (calculoInsulina && !tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_MANHA) &&
+		if (configFatorCorrecao && configGlicemiaAlvo && !tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_MANHA) &&
 				!tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_TARDE) && !tipoRefeicao.equals(TipoRefeicao.CEIA)) {
 			totalInsulinaText.setVisibility(View.VISIBLE);
 			totalInsulina.setVisibility(View.VISIBLE);

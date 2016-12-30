@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.fragment.perfil;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +18,7 @@ import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.extras.ValidaCampos;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
@@ -62,6 +64,11 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 				dadosDao.salva(dadosMedicos);
 
 				helper.close();
+
+				SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
+				SharedPreferences.Editor editor = settings.edit();
+				editor.putBoolean(Extras.PREFS_NAME_GLICEMIA_ALVO, true);
+				editor.commit();
 
 				getFragmentManager().popBackStack();
 			}
