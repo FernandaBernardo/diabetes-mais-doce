@@ -57,25 +57,6 @@ public class DadosMedicosDao {
 		pacienteDao.atualiza(paciente);
 	}
 
-	public void deletar(DadosMedicos dadosMedicos) {
-		dao.delete(dadosMedicos);
-	}
-
-	public void atualiza(DadosMedicos dadosMedicos) {
-		dao.update(dadosMedicos);
-	}
-	
-	public List<DadosMedicos> getDadosMedicos() {
-		QueryBuilder<DadosMedicos,Integer> builder = dao.queryBuilder();
-		PreparedQuery<DadosMedicos> prepare = null;
-		try {
-			prepare = builder.prepare();
-		} catch (SQLException e) {
-			new TratadorExcecao(helper.context).trataSqlException(e);
-		}
-		return dao.query(prepare);
-	}
-	
 	public DadosMedicos getDadosMedicosCom(TipoDadoMedico glicemiaAlvo) {
 		QueryBuilder<DadosMedicos,Integer> builder = dao.queryBuilder();
 		

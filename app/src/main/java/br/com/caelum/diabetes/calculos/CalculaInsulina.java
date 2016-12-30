@@ -19,22 +19,8 @@ public class CalculaInsulina {
 		double totalCHO = refeicao.getTotalCHO();
 		DadosMedicos correcao = paciente.getInsulinaCorrecao();
 		TipoRefeicao tipoRefeicao = refeicao.getTipoRefeicao();
-		double valorCorrecao = 1;
-		
-		if(tipoRefeicao == TipoRefeicao.CAFE_DA_MANHA) {
-			valorCorrecao = correcao.getCafeManha();
-		} else if (tipoRefeicao == TipoRefeicao.LANCHE_DA_MANHA) {
-			valorCorrecao = correcao.getLancheManha();
-		} else if (tipoRefeicao == TipoRefeicao.ALMOCO) {
-			valorCorrecao = correcao.getAlmoco();
-		} else if (tipoRefeicao == TipoRefeicao.LANCHE_DA_TARDE) {
-			valorCorrecao = correcao.getLancheTarde();
-		} else if (tipoRefeicao == TipoRefeicao.JANTAR) {
-			valorCorrecao = correcao.getJantar();
-		} else if (tipoRefeicao == TipoRefeicao.CEIA) {
-			valorCorrecao = correcao.getCeia();
-		}
-		
+		double valorCorrecao = correcao.get(tipoRefeicao);
+
 		double totalInsulina = totalCHO / valorCorrecao;
 		
 		return totalInsulina;
@@ -44,19 +30,8 @@ public class CalculaInsulina {
 		DadosMedicos fatorCorrecao = paciente.getFatorCorrecao();
 		DadosMedicos glicemiaAlvoDadosMedicos = paciente.getGlicemiaAlvo();
 		TipoRefeicao tipoRefeicao = glicemia.getTipoRefeicao();
-		double valorFatorCorrecao = 1;
-		double glicemiaAlvo = 0;
-
-		if(tipoRefeicao == TipoRefeicao.CAFE_DA_MANHA) {
-			valorFatorCorrecao = fatorCorrecao.getCafeManha();
-			glicemiaAlvo = glicemiaAlvoDadosMedicos.getCafeManha();
-		} else if (tipoRefeicao == TipoRefeicao.ALMOCO) {
-			valorFatorCorrecao = fatorCorrecao.getAlmoco();
-			glicemiaAlvo = glicemiaAlvoDadosMedicos.getAlmoco();
-		} else if (tipoRefeicao == TipoRefeicao.JANTAR) {
-			valorFatorCorrecao = fatorCorrecao.getJantar();
-			glicemiaAlvo = glicemiaAlvoDadosMedicos.getJantar();
-		}
+		double valorFatorCorrecao = fatorCorrecao.get(tipoRefeicao);
+		double glicemiaAlvo = glicemiaAlvoDadosMedicos.get(tipoRefeicao);
 
 		double totalInsulina = (glicemia.getValorGlicemia() - glicemiaAlvo) / valorFatorCorrecao;
 

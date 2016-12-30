@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import com.j256.ormlite.field.DatabaseField;
 
+import br.com.caelum.diabetes.extras.TipoRefeicao;
+
 @SuppressWarnings("serial")
 public class DadosMedicos implements Serializable {
 	@DatabaseField(generatedId = true)
@@ -29,65 +31,48 @@ public class DadosMedicos implements Serializable {
 	public DadosMedicos(TipoDadoMedico tipo) {
 		this.tipo = tipo;
 	}
-		
-	public Double getCafeManha() {
-		return cafeManha;
+
+	public Double get(TipoRefeicao tipoRefeicao) {
+		if(tipoRefeicao.equals(TipoRefeicao.CAFE_DA_MANHA)) {
+			return cafeManha;
+		} else if(tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_MANHA)) {
+			return lancheManha;
+		} else if(tipoRefeicao.equals(TipoRefeicao.ALMOCO)) {
+			return almoco;
+		} else if(tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_TARDE)) {
+			return lancheTarde;
+		} else if(tipoRefeicao.equals(TipoRefeicao.JANTAR)) {
+			return jantar;
+		} else if(tipoRefeicao.equals(TipoRefeicao.CEIA)) {
+			return ceia;
+		}
+		return null;
 	}
-	public void setCafeManha(Double cafeManha) {
-		this.cafeManha = cafeManha;
+
+	public void set(Double valor, TipoRefeicao tipoRefeicao) {
+		if(tipoRefeicao.equals(TipoRefeicao.CAFE_DA_MANHA)) {
+			this.cafeManha = valor;
+		} else if(tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_MANHA)) {
+			this.lancheManha = valor;
+		} else if(tipoRefeicao.equals(TipoRefeicao.ALMOCO)) {
+			this.almoco = valor;
+		} else if(tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_TARDE)) {
+			this.lancheTarde = valor;
+		} else if(tipoRefeicao.equals(TipoRefeicao.JANTAR)) {
+			this.jantar = valor;
+		} else if(tipoRefeicao.equals(TipoRefeicao.CEIA)) {
+			this.ceia = valor;
+		}
 	}
-	public Double getLancheManha() {
-		return lancheManha;
-	}
-	public void setLancheManha(Double lancheManha) {
-		this.lancheManha = lancheManha;
-	}
-	public Double getAlmoco() {
-		return almoco;
-	}
-	public void setAlmoco(Double almoco) {
-		this.almoco = almoco;
-	}
-	public Double getLancheTarde() {
-		return lancheTarde;
-	}
-	public void setLancheTarde(Double lancheTarde) {
-		this.lancheTarde = lancheTarde;
-	}
-	public Double getJantar() {
-		return jantar;
-	}
-	public void setJantar(Double jantar) {
-		this.jantar = jantar;
-	}
-	public Double getCeia() {
-		return ceia;
-	}
-	public void setCeia(Double ceia) {
-		this.ceia = ceia;
-	}
+
 	public TipoDadoMedico getTipo() {
 		return tipo;
-	}
-	public void setTipo(TipoDadoMedico tipo) {
-		this.tipo = tipo;
 	}
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public boolean isEmpty(){
-		
-		if (this.tipo == TipoDadoMedico.GLICEMIA_ALVO){
-			return this.cafeManha == null || this.almoco == null || this.jantar == null;
-		}
-		
-		return this.almoco == null || this.cafeManha == null
-				|| this.ceia == null || this.jantar == null
-				|| this.lancheManha == null || this.lancheTarde == null;
 	}
 }
 

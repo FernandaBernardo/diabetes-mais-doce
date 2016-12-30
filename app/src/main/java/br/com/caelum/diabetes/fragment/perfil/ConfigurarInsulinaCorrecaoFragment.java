@@ -15,6 +15,7 @@ import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.extras.Extras;
+import br.com.caelum.diabetes.extras.TipoRefeicao;
 import br.com.caelum.diabetes.extras.ValidaCampos;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
@@ -56,12 +57,12 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				DadosMedicos dadosMedicos = new DadosMedicos(TipoDadoMedico.CORRECAO);
-				dadosMedicos.setCafeManha(Double.parseDouble(cafe.getText().toString()));
-				dadosMedicos.setLancheManha(Double.parseDouble(lancheManha.getText().toString()));
-				dadosMedicos.setAlmoco(Double.parseDouble(almoco.getText().toString()));
-				dadosMedicos.setLancheTarde(Double.parseDouble(lancheTarde.getText().toString()));
-				dadosMedicos.setJantar(Double.parseDouble(jantar.getText().toString()));
-				dadosMedicos.setCeia(Double.parseDouble(ceia.getText().toString()));
+				dadosMedicos.set(Double.parseDouble(cafe.getText().toString()), TipoRefeicao.CAFE_DA_MANHA);
+				dadosMedicos.set(Double.parseDouble(lancheManha.getText().toString()), TipoRefeicao.LANCHE_DA_MANHA);
+				dadosMedicos.set(Double.parseDouble(almoco.getText().toString()), TipoRefeicao.ALMOCO);
+				dadosMedicos.set(Double.parseDouble(lancheTarde.getText().toString()), TipoRefeicao.LANCHE_DA_TARDE);
+				dadosMedicos.set(Double.parseDouble(jantar.getText().toString()), TipoRefeicao.JANTAR);
+				dadosMedicos.set(Double.parseDouble(ceia.getText().toString()), TipoRefeicao.CEIA);
 
 				DbHelper helper = new DbHelper(getActivity());
 
@@ -89,12 +90,12 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 		DadosMedicos dadosMedicosAntigo = dao.getDadosMedicosCom(TipoDadoMedico.CORRECAO);
 		if (dadosMedicosAntigo == null) return;
 
-		cafe.setText(String.valueOf(dadosMedicosAntigo.getCafeManha()));
-		lancheManha.setText(String.valueOf(dadosMedicosAntigo.getLancheManha()));
-		almoco.setText(String.valueOf(dadosMedicosAntigo.getAlmoco()));
-		lancheTarde.setText(String.valueOf(dadosMedicosAntigo.getLancheTarde()));
-		jantar.setText(String.valueOf(dadosMedicosAntigo.getJantar()));
-		ceia.setText(String.valueOf(dadosMedicosAntigo.getCeia()));
+		cafe.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.CAFE_DA_MANHA)));
+		lancheManha.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_MANHA)));
+		almoco.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.ALMOCO)));
+		lancheTarde.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_TARDE)));
+		jantar.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.JANTAR)));
+		ceia.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.CEIA)));
 
 		helper.close();
 	}

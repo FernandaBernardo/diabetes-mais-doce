@@ -19,6 +19,7 @@ import br.com.caelum.diabetes.activity.MainActivity;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.extras.Extras;
+import br.com.caelum.diabetes.extras.TipoRefeicao;
 import br.com.caelum.diabetes.extras.ValidaCampos;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
@@ -54,9 +55,9 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				DadosMedicos dadosMedicos = new DadosMedicos(TipoDadoMedico.GLICEMIA_ALVO);
-				dadosMedicos.setCafeManha(Double.parseDouble(cafe.getText().toString()));
-				dadosMedicos.setAlmoco(Double.parseDouble(almoco.getText().toString()));
-				dadosMedicos.setJantar(Double.parseDouble(jantar.getText().toString()));
+				dadosMedicos.set(Double.parseDouble(cafe.getText().toString()), TipoRefeicao.CAFE_DA_MANHA);
+				dadosMedicos.set(Double.parseDouble(almoco.getText().toString()), TipoRefeicao.ALMOCO);
+				dadosMedicos.set(Double.parseDouble(jantar.getText().toString()), TipoRefeicao.JANTAR);
 
 				DbHelper helper = new DbHelper(getActivity());
 
@@ -84,9 +85,9 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 		DadosMedicos dadosMedicosAntigo = dao.getDadosMedicosCom(TipoDadoMedico.GLICEMIA_ALVO);
 		if (dadosMedicosAntigo == null) return;
 
-		cafe.setText(String.valueOf(dadosMedicosAntigo.getCafeManha()));
-		almoco.setText(String.valueOf(dadosMedicosAntigo.getAlmoco()));
-		jantar.setText(String.valueOf(dadosMedicosAntigo.getJantar()));
+		cafe.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.CAFE_DA_MANHA)));
+		almoco.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.ALMOCO)));
+		jantar.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.JANTAR)));
 
 		helper.close();
 	}

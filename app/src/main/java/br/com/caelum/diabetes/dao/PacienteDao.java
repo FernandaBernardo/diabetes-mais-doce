@@ -26,10 +26,6 @@ public class PacienteDao {
 		dao.create(paciente);
 	}
 
-	public void deletar(Paciente paciente) {
-		dao.delete(paciente);
-	}
-
 	public void atualiza(Paciente paciente) {
 		dao.update(paciente);
 	}
