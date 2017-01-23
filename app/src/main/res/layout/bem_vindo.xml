@@ -49,6 +49,7 @@
 		    android:inputType="textCapWords"
             android:hint="@string/digite_o_seu_nome"
             android:layout_marginBottom="10dp"
+			android:imeOptions="actionDone"
             />
 
 		<Button

@@ -4,12 +4,15 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -82,16 +85,30 @@ public class BemVindoActivity extends AppCompatActivity {
     }
 
     private void nativeLogin() {
+        nomeUsuario.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if(actionId == EditorInfo.IME_ACTION_DONE){
+                    submitNativeLogin();
+                    return true;
+                }
+                return false;
+            }
+        });
         Button botao = (Button) findViewById(R.id.botao_entrar);
         botao.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                progressDialog = new ProgressDialog(BemVindoActivity.this);
-                progressDialog.setMessage("Carregando...");
-                progressDialog.show();
-                newUser(nomeUsuario.getText().toString());
+            submitNativeLogin();
             }
         });
+    }
+
+    private void submitNativeLogin() {
+        progressDialog = new ProgressDialog(BemVindoActivity.this);
+        progressDialog.setMessage("Carregando...");
+        progressDialog.show();
+        newUser(nomeUsuario.getText().toString());
     }
 
     private void facebookLogin() {
