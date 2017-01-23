@@ -120,10 +120,16 @@ public class BemVindoActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
+                finish();
+                Intent intent = new Intent(BemVindoActivity.this, BemVindoActivity.class);
+                startActivity(intent);
             }
 
             @Override
             public void onError(FacebookException error) {
+                finish();
+                Intent intent = new Intent(BemVindoActivity.this, BemVindoActivity.class);
+                startActivity(intent);
             }
         });
     }
