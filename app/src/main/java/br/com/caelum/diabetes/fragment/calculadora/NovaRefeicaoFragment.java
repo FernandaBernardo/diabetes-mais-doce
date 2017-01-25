@@ -29,6 +29,7 @@ import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dao.RefeicaoDao;
 import br.com.caelum.diabetes.extras.Extras;
+import br.com.caelum.diabetes.extras.ParserTools;
 import br.com.caelum.diabetes.extras.PickerDialog;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
@@ -170,7 +171,7 @@ public class NovaRefeicaoFragment extends Fragment {
     }
 
     private void atualizaDadosTotais() {
-        totalCHOText.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
+        totalCHOText.setText(ParserTools.getParseDouble(refeicao.getTotalCHO()) + " g");
 
         SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
         final boolean calculoInsulina = settings.getBoolean(Extras.PREFS_NAME_INSULINA_CORRECAO, false);
@@ -178,7 +179,7 @@ public class NovaRefeicaoFragment extends Fragment {
         if (calculoInsulina) {
             double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
 
-            totalInsulinaText.setText(String.valueOf(valorInsulina) + " U");
+            totalInsulinaText.setText(ParserTools.getParseDouble(valorInsulina) + " U");
         } else {
             TextView texto = (TextView) view.findViewById(R.id.textoTotalInsulina);
             texto.setVisibility(View.INVISIBLE);

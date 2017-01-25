@@ -1,12 +1,19 @@
 package br.com.caelum.diabetes.extras;
 
+import java.math.RoundingMode;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
 /**
  * Created by Fernanda Bernardo on 18/04/2016.
  */
 public class ParserTools {
+    public static String getParseDouble(double value) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        decimalFormat.setRoundingMode(RoundingMode.CEILING);
+        return decimalFormat.format(value);
+    }
     public static String getParseDate(Calendar date) {
         return getParseNumber(date.get(Calendar.DAY_OF_MONTH)) + "/"
                 + getParseNumber(date.get(Calendar.MONTH) + 1) + "/"
