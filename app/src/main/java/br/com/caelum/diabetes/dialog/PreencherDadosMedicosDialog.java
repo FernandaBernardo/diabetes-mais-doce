@@ -13,6 +13,7 @@ import android.widget.Button;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
+import br.com.caelum.diabetes.fragment.perfil.ConfigurarInsulinaCorrecaoFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 
 public class PreencherDadosMedicosDialog extends DialogFragment {
@@ -31,7 +32,7 @@ public class PreencherDadosMedicosDialog extends DialogFragment {
 		confirmarButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
-				setTransaction(R.id.main_view, new ConfigurarPerfilFragment());
+				setTransaction(R.id.main_view, new ConfigurarInsulinaCorrecaoFragment());
 				getDialog().dismiss();
 			}
 		});
