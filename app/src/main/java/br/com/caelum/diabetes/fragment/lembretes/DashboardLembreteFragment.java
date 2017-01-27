@@ -63,6 +63,7 @@ public class DashboardLembreteFragment extends Fragment {
 		DbHelper helper = new DbHelper(getActivity());
 		LembreteDao dao = new LembreteDao(helper);
 
+		dao.deletaLembretesAntigos();
 		List<Lembrete> lembretes = dao.getLembretes(5);
 
 		helper.close();

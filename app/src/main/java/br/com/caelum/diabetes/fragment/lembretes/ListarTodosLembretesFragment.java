@@ -57,7 +57,8 @@ public class ListarTodosLembretesFragment extends Fragment {
 	private void carregaLista() {
 		DbHelper helper = new DbHelper(getActivity());
 		LembreteDao dao = new LembreteDao(helper);
-		
+
+		dao.deletaLembretesAntigos();
 		lembretes = dao.getLembretes();
 		
 		helper.close();

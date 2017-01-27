@@ -1,6 +1,7 @@
 package br.com.caelum.diabetes.dao;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.diabetes.exception.TratadorExcecao;
@@ -31,16 +32,28 @@ public class LembreteDao {
 		dao.update(lembrete);
 	}
 
+	public void deletaLembretesAntigos() {
+		List<Lembrete> lembretes = getLembretes();
+		Calendar hoje = Calendar.getInstance();
+		for (Lembrete lembrete : lembretes) {
+			if(lembrete.getData().before(hoje)) {
+				deletar(lembrete);
+			} else {
+				return;
+			}
+		}
+	}
+
 	public List<Lembrete> getLembretes() {
 		QueryBuilder<Lembrete,Integer> builder = dao.queryBuilder();
-		
+		builder.orderBy("data", true);
 		PreparedQuery<Lembrete> prepare = null;
 		try {
 			prepare = builder.prepare();
 		} catch (SQLException e) {
 			new TratadorExcecao(helper.context).trataSqlException(e);
 		}
-		
+
 		List<Lembrete> lembretes = dao.query(prepare);
 		return lembretes;
 	}

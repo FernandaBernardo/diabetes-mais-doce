@@ -12,20 +12,20 @@
         >
         
         <TextView
-            android:drawableLeft="@drawable/clock"
-            android:drawablePadding="10dp"
-            android:gravity="center_vertical"
-            android:id="@+id/hora_lembrete"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:layout_width="wrap_content"
-	        />
-        
-        <TextView
             android:drawableLeft="@drawable/calendar"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:id="@+id/data_lembrete"
+            android:layout_marginRight="30dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <TextView
+            android:drawableLeft="@drawable/clock"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:id="@+id/hora_lembrete"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             />
