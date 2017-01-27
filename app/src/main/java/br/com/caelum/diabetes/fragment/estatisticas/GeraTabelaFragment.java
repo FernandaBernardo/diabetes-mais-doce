@@ -1,9 +1,11 @@
 package br.com.caelum.diabetes.fragment.estatisticas;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -50,19 +52,31 @@ public class GeraTabelaFragment extends Fragment {
 
         final PickerDialog dataInicialPicker = new PickerDialog(getFragmentManager(), dataInicialText, dataInicial);
         final PickerDialog dataFinalPicker = new PickerDialog(getFragmentManager(), dataFinalText);
+        final ProgressDialog progress = new ProgressDialog(getActivity());
 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DbHelper helper = new DbHelper(getActivity());
-                GlicemiaDao dao = new GlicemiaDao(helper);
-                List<Glicemia> glicemias = dao.getGlicemiasEntre(dataInicialPicker.getDataSelecionada(), dataFinalPicker.getDataSelecionada());
-                helper.close();
+                progress.setTitle("Aguarde...");
+                progress.setMessage("Gerando tabela...");
+                progress.setCancelable(false);
+                progress.show();
 
-                File file = new PlanilhaExcel().criaArquivo(glicemias);
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setDataAndType(Uri.fromFile(file),"application/vnd.ms-excel");
-                startActivity(intent);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        DbHelper helper = new DbHelper(getActivity());
+                        GlicemiaDao dao = new GlicemiaDao(helper);
+                        List<Glicemia> glicemias = dao.getGlicemiasEntre(dataInicialPicker.getDataSelecionada(), dataFinalPicker.getDataSelecionada());
+                        helper.close();
+
+                        File file = new PlanilhaExcel().criaArquivo(glicemias);
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setDataAndType(Uri.fromFile(file),"application/vnd.ms-excel");
+                        startActivity(intent);
+                        progress.dismiss();
+                    }
+                }, 1000);
             }
         });
 
