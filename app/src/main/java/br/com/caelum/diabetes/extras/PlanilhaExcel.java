@@ -123,6 +123,7 @@ public class PlanilhaExcel {
         sheet.addCell(new Label(4, 0, Extras.LANCHE_DA_TARDE));
         sheet.addCell(new Label(5, 0, Extras.JANTAR));
         sheet.addCell(new Label(6, 0, Extras.CEIA));
+        sheet.addCell(new Label(7, 0, Extras.MADRUGADA));
     }
 
     private void autoSizeLabel(WritableSheet sheet) {

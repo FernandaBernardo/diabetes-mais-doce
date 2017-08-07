@@ -74,6 +74,9 @@ public class ListaRefeicaoAdapter extends BaseAdapter{
             case CEIA:
                 imagem.setImageResource(R.drawable.refeicao_ceia);
                 break;
+			case MADRUGADA:
+				imagem.setImageResource(R.drawable.refeicao_madrugada);
+				break;
         }
 
         return item;
