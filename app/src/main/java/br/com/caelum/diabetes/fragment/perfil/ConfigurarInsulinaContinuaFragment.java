@@ -26,6 +26,7 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 	private EditText lancheManha;
 	private EditText lancheTarde;
 	private EditText ceia;
+	private EditText madrugada;
 	private Button salvar;
 	private View view;
 
@@ -50,6 +51,7 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
         ValidaCampos.validateEditText(lancheManha, salvar);
         ValidaCampos.validateEditText(lancheTarde, salvar);
         ValidaCampos.validateEditText(ceia, salvar);
+        ValidaCampos.validateEditText(madrugada, salvar);
 
 		salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar, lancheManha, lancheTarde, ceia));
 		salvar.setOnClickListener(new OnClickListener() {
@@ -62,6 +64,7 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 				dadosMedicos.set(Double.parseDouble(lancheTarde.getText().toString()), TipoRefeicao.LANCHE_DA_TARDE);
 				dadosMedicos.set(Double.parseDouble(jantar.getText().toString()), TipoRefeicao.JANTAR);
 				dadosMedicos.set(Double.parseDouble(ceia.getText().toString()), TipoRefeicao.CEIA);
+				dadosMedicos.set(Double.parseDouble(madrugada.getText().toString()), TipoRefeicao.MADRUGADA);
 
 				DbHelper helper = new DbHelper(getActivity());
 
@@ -89,7 +92,8 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 		almoco.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.ALMOCO)));
 		lancheTarde.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_TARDE)));
 		jantar.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.JANTAR)));
-		ceia.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.CEIA)));
+ 		ceia.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.CEIA)));
+ 		madrugada.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.MADRUGADA)));
 
 		helper.close();
 	}
@@ -101,6 +105,7 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 		lancheTarde = (EditText) view.findViewById(R.id.valor_lanche_tarde_continua);
 		jantar = (EditText) view.findViewById(R.id.valor_jantar_continua);
 		ceia = (EditText) view.findViewById(R.id.valor_ceia_continua);
+		madrugada = (EditText) view.findViewById(R.id.valor_madrugada_continua);
 		salvar = (Button) view.findViewById(R.id.salvar_insulina_continua);
 	}
 }

@@ -78,6 +78,18 @@
             android:inputType="number"
             android:hint="@string/u_g_de_carboidrato"
             />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/madrugada"
+            />
+        <EditText
+            style="@style/edit_text"
+            android:id="@+id/valor_madrugada_correcao"
+            android:inputType="number"
+            android:hint="@string/u_g_de_carboidrato"
+            />
         <Button
             style="@style/action_button"
             android:id="@+id/salvar_insulina_correcao"
