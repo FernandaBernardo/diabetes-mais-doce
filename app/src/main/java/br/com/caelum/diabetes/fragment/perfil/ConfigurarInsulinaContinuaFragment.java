@@ -87,15 +87,23 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 		DadosMedicos dadosMedicosAntigo = dao.getDadosMedicosCom(TipoDadoMedico.CONTINUA);
 		if (dadosMedicosAntigo == null) return;
 
-		cafe.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.CAFE_DA_MANHA)));
-		lancheManha.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_MANHA)));
-		almoco.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.ALMOCO)));
-		lancheTarde.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_TARDE)));
-		jantar.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.JANTAR)));
- 		ceia.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.CEIA)));
- 		madrugada.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.MADRUGADA)));
+		cafe.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.CAFE_DA_MANHA)));
+		lancheManha.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_MANHA)));
+		almoco.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.ALMOCO)));
+		lancheTarde.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_TARDE)));
+		jantar.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.JANTAR)));
+		ceia.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.CEIA)));
+		madrugada.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.MADRUGADA)));
 
 		helper.close();
+	}
+
+	private String getStringOf(Double tipoRefeicao) {
+		if(tipoRefeicao == null) {
+			return "";
+		} else {
+			return String.valueOf(tipoRefeicao);
+		}
 	}
 
 	private void getValoresGlobais() {
