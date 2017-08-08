@@ -22,6 +22,8 @@ public class DadosMedicos implements Serializable {
 	private Double jantar;
 	@DatabaseField
 	private Double ceia;
+	@DatabaseField
+	private Double madrugada;
 	@DatabaseField (columnName="tipoDado")
 	private TipoDadoMedico tipo;
 	
@@ -45,6 +47,8 @@ public class DadosMedicos implements Serializable {
 			return jantar;
 		} else if(tipoRefeicao.equals(TipoRefeicao.CEIA)) {
 			return ceia;
+		} else if(tipoRefeicao.equals(TipoRefeicao.MADRUGADA)) {
+			return madrugada;
 		}
 		return null;
 	}
@@ -62,6 +66,8 @@ public class DadosMedicos implements Serializable {
 			this.jantar = valor;
 		} else if(tipoRefeicao.equals(TipoRefeicao.CEIA)) {
 			this.ceia = valor;
+		} else if(tipoRefeicao.equals(TipoRefeicao.MADRUGADA)) {
+			this.madrugada = valor;
 		}
 	}
 

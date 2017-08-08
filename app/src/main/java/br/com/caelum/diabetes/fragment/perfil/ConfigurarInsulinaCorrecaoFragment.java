@@ -28,6 +28,7 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 	private EditText lancheManha;
 	private EditText lancheTarde;
 	private EditText ceia;
+	private EditText madrugada;
 	private Button salvar;
 	private View view;
 
@@ -51,6 +52,7 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
         ValidaCampos.validateEditText(lancheManha, salvar);
         ValidaCampos.validateEditText(lancheTarde, salvar);
         ValidaCampos.validateEditText(ceia, salvar);
+        ValidaCampos.validateEditText(madrugada, salvar);
 
 		salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar, lancheManha, lancheTarde, ceia));
 		salvar.setOnClickListener(new OnClickListener() {
@@ -63,6 +65,7 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 				dadosMedicos.set(Double.parseDouble(lancheTarde.getText().toString()), TipoRefeicao.LANCHE_DA_TARDE);
 				dadosMedicos.set(Double.parseDouble(jantar.getText().toString()), TipoRefeicao.JANTAR);
 				dadosMedicos.set(Double.parseDouble(ceia.getText().toString()), TipoRefeicao.CEIA);
+				dadosMedicos.set(Double.parseDouble(madrugada.getText().toString()), TipoRefeicao.MADRUGADA);
 
 				DbHelper helper = new DbHelper(getActivity());
 
@@ -90,14 +93,23 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 		DadosMedicos dadosMedicosAntigo = dao.getDadosMedicosCom(TipoDadoMedico.CORRECAO);
 		if (dadosMedicosAntigo == null) return;
 
-		cafe.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.CAFE_DA_MANHA)));
-		lancheManha.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_MANHA)));
-		almoco.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.ALMOCO)));
-		lancheTarde.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_TARDE)));
-		jantar.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.JANTAR)));
-		ceia.setText(String.valueOf(dadosMedicosAntigo.get(TipoRefeicao.CEIA)));
+		cafe.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.CAFE_DA_MANHA)));
+		lancheManha.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_MANHA)));
+		almoco.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.ALMOCO)));
+		lancheTarde.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.LANCHE_DA_TARDE)));
+		jantar.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.JANTAR)));
+		ceia.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.CEIA)));
+		madrugada.setText(getStringOf(dadosMedicosAntigo.get(TipoRefeicao.MADRUGADA)));
 
 		helper.close();
+	}
+
+	private String getStringOf(Double tipoRefeicao) {
+		if(tipoRefeicao == null) {
+			return "";
+		} else {
+			return String.valueOf(tipoRefeicao);
+		}
 	}
 
 	private void getValoresGlobais() {
@@ -107,6 +119,7 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 		lancheTarde = (EditText) view.findViewById(R.id.valor_lanche_tarde_correcao);
 		jantar = (EditText) view.findViewById(R.id.valor_jantar_correcao);
 		ceia = (EditText) view.findViewById(R.id.valor_ceia_correcao);
+		madrugada = (EditText) view.findViewById(R.id.valor_madrugada_correcao);
 		salvar = (Button) view.findViewById(R.id.salvar_insulina_correcao);
 	}
 }

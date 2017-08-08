@@ -144,7 +144,8 @@ public class NovaGlicemiaFragment extends Fragment {
 		boolean configGlicemiaAlvo = settings.getBoolean(Extras.PREFS_NAME_GLICEMIA_ALVO, false);
 
 		if (configFatorCorrecao && configGlicemiaAlvo && !tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_MANHA) &&
-				!tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_TARDE) && !tipoRefeicao.equals(TipoRefeicao.CEIA)) {
+				!tipoRefeicao.equals(TipoRefeicao.LANCHE_DA_TARDE) && !tipoRefeicao.equals(TipoRefeicao.CEIA) &&
+				!tipoRefeicao.equals(TipoRefeicao.MADRUGADA)) {
 			totalInsulinaText.setVisibility(View.VISIBLE);
 			totalInsulina.setVisibility(View.VISIBLE);
 

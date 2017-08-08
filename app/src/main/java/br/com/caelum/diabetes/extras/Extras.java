@@ -8,7 +8,8 @@ public class Extras {
     public static final String LANCHE_DA_TARDE = "Lanche da Tarde";
     public static final String JANTAR = "Jantar";
     public static final String CEIA = "Ceia";
-    
+    public static final String MADRUGADA = "Madrugada";
+
 //	Configurações do Perfil    
     public static final String DIABETES_1 = "Tipo 1";
     public static final String DIABETES_2 = "Tipo 2";

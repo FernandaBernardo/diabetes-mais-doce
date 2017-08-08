@@ -7,8 +7,9 @@ public enum TipoRefeicao{
 	ALMOCO(3, Extras.ALMOCO),
 	LANCHE_DA_TARDE(4, Extras.LANCHE_DA_TARDE),
 	JANTAR(5, Extras.JANTAR),
-	CEIA(6, Extras.CEIA);
-	
+	CEIA(6, Extras.CEIA),
+	MADRUGADA(7, Extras.MADRUGADA);
+
 	private String text;
 	private int excelColumnIndex;
 
