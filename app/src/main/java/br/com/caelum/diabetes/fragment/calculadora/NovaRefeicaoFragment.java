@@ -117,6 +117,7 @@ public class NovaRefeicaoFragment extends Fragment {
 			public void onItemSelected(AdapterView<?> arg0, View view, int pos, long id) {
 				String item = spinnerAdapter.getItem(pos);
 				refeicao.setTipoRefeicao(TipoRefeicao.fromString(item));
+				atualizaDadosTotais();
 			}
 
 			@Override
