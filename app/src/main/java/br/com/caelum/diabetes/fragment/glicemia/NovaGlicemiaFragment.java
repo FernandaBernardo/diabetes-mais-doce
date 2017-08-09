@@ -27,6 +27,7 @@ import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.GlicemiaDao;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.extras.Extras;
+import br.com.caelum.diabetes.extras.ParserTools;
 import br.com.caelum.diabetes.extras.PickerDialog;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 import br.com.caelum.diabetes.extras.ValidaCampos;
@@ -171,7 +172,7 @@ public class NovaGlicemiaFragment extends Fragment {
 			totalInsulina.setVisibility(View.VISIBLE);
 
 			double valorInsulina = CalculaInsulina.getTotalInsulinaFatorCorrecao(paciente, glicemia);
-			totalInsulina.setText(String.valueOf(valorInsulina) + " U");
+			totalInsulina.setText(ParserTools.getParseDouble(valorInsulina) + " U");
 		} else {
 			totalInsulinaText.setVisibility(View.GONE);
 			totalInsulina.setVisibility(View.GONE);
