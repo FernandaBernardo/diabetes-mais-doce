@@ -19,11 +19,13 @@ public class Glicemia implements Serializable, Comparable<Glicemia> {
 	private TipoRefeicao tipoRefeicao;
 	@DatabaseField
 	private int valorGlicemia;
-	
+	@DatabaseField
+	private String observacao;
+
 	public Glicemia() {
 		this.data = Calendar.getInstance();
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -48,12 +50,14 @@ public class Glicemia implements Serializable, Comparable<Glicemia> {
 	public void setValorGlicemia(int valorGlicemia) {
 		this.valorGlicemia = valorGlicemia;
 	}
-	
+	public String getObservacao() {	return observacao; }
+	public void setObservacao(String observacao) { this.observacao = observacao; }
+
 	@Override
 	public String toString() {
 		return ParserTools.getParseDate(data.get(Calendar.DAY_OF_MONTH), data.get(Calendar.MONTH), data.get(Calendar.YEAR)) +
                 " - " + ParserTools.getParseHour(data.get(Calendar.HOUR_OF_DAY), data.get(Calendar.MINUTE))
-				+ " - " + tipoRefeicao + " - " + valorGlicemia;
+				+ " - " + tipoRefeicao + " - " + valorGlicemia + " - " + observacao;
 	}
 
 	@Override
