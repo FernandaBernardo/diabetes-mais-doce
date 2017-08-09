@@ -108,6 +108,8 @@
     <string name="info_continua">"Como basal entende-se uma secreção constante de insulina que permanece em níveis baixos no sangue o tempo todo e é produzida em forma de ‘gotas contínuas’, mantendo a liberação de glicose para as células do organismo"</string>
     <string name="fator_de_correcao">Fator de Correção</string>
     <string name="madrugada">Madrugada</string>
+    <string name="observacao">Observação</string>
+    <string name="adicionar_observacao">Adicionar Observação</string>
 
 
 </resources>

@@ -52,7 +52,13 @@ public class ListaGlicemiaAdapter extends BaseAdapter{
 		TextView campoDia = (TextView) item.findViewById(R.id.glicemia_dia);
 		Calendar data = glicemia.getData();
 		campoDia.setText(ParserTools.getParseDate(data));
-		
+
+		TextView observacao = (TextView) item.findViewById(R.id.glicemia_observacao);
+		if(glicemia.getObservacao() != null) {
+			observacao.setText(glicemia.getObservacao());
+			observacao.setVisibility(View.VISIBLE);
+		}
+
 		TextView campoValor = (TextView) item.findViewById(R.id.glicemia_valor);
 		int valorGlicemia = glicemia.getValorGlicemia();
 		campoValor.setText(valorGlicemia + " mg/DL");

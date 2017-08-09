@@ -183,8 +183,8 @@ public class NovaRefeicaoFragment extends Fragment {
             totalInsulinaText.setText(ParserTools.getParseDouble(valorInsulina) + " U");
         } else {
             TextView texto = (TextView) view.findViewById(R.id.textoTotalInsulina);
-            texto.setVisibility(View.INVISIBLE);
-            totalInsulinaText.setVisibility(View.INVISIBLE);
+            texto.setVisibility(View.GONE);
+            totalInsulinaText.setVisibility(View.GONE);
         }
     }
 

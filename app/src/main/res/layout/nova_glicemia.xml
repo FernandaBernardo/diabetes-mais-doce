@@ -54,6 +54,21 @@
         android:maxLength="3"
         />
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adicionar_observacao"
+        android:layout_gravity="left"
+        android:id="@+id/observacao_check"
+        />
+
+    <EditText
+        style="@style/edit_text"
+        android:id="@+id/observacao_text"
+        android:hint="@string/observacao"
+        android:visibility="gone"
+        />
+
     <LinearLayout
         android:gravity="center"
         android:layout_height="wrap_content"

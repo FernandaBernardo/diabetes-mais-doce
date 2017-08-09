@@ -9,38 +9,50 @@
         android:layout_width="match_parent"
         android:padding="15dp"
         >
+        <ImageView
+            android:id="@+id/glicemia_imagem"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            />
 	    <TextView
             android:id="@+id/glicemia_tipo_refeicao"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/glicemia_imagem"
             android:layout_width="wrap_content"
             />
 	    <TextView
             android:id="@+id/glicemia_dia"
-            android:layout_alignParentLeft="true"
             android:layout_below="@id/glicemia_tipo_refeicao"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/glicemia_imagem"
             android:layout_width="wrap_content"
             android:textColor="#ccc"
             />
+		<TextView
+			android:id="@+id/glicemia_observacao"
+            android:ellipsize="end"
+            android:layout_below="@id/glicemia_dia"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/glicemia_imagem"
+            android:layout_width="wrap_content"
+            android:maxLines="1"
+            android:textColor="#ccc"
+            android:visibility="gone"
+			/>
 	    <TextView
             android:id="@+id/glicemia_valor"
-            android:layout_centerVertical="true"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:layout_toLeftOf="@+id/glicemia_imagem"
-            android:layout_width="wrap_content"
-            android:textStyle="bold"
-            />
-	    <ImageView
-            android:id="@+id/glicemia_imagem"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
-            android:paddingRight="10dp"
+            android:textStyle="bold"
             />
     </RelativeLayout>
 </RelativeLayout>
