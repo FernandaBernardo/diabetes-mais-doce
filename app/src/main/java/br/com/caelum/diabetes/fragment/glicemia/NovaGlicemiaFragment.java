@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,6 +37,7 @@ import br.com.caelum.diabetes.util.ValidatorUtils;
 public class NovaGlicemiaFragment extends Fragment {
 	private Glicemia glicemia;
 	private EditText valorGlicemiaCampo;
+	private EditText observacaoText;
 	private Button salvarGlicemia;
     private PickerDialog pickerDialog;
 	private EditText totalInsulina;
@@ -84,8 +87,9 @@ public class NovaGlicemiaFragment extends Fragment {
 				String text = valorGlicemiaCampo.getText().toString();
 				int valorGlicemia = Integer.parseInt(text.equals("") ? "0" : text);
 				Calendar dataSelecionada = pickerDialog.getDataSelecionada();
+				String observacao = observacaoText.getText().toString();
 
-				atualizaGlicemia(valorGlicemia, tipoRefeicao, dataSelecionada);
+				atualizaGlicemia(valorGlicemia, tipoRefeicao, dataSelecionada, observacao);
 
 				return false;
 			}
@@ -99,12 +103,27 @@ public class NovaGlicemiaFragment extends Fragment {
 				String text = valorGlicemiaCampo.getText().toString();
 				int valorGlicemia = Integer.parseInt(text.equals("") ? "0" : text);
 				Calendar dataSelecionada = pickerDialog.getDataSelecionada();
+				String observacao = observacaoText.getText().toString();
 
-				atualizaGlicemia(valorGlicemia, tipoRefeicao, dataSelecionada);
+				atualizaGlicemia(valorGlicemia, tipoRefeicao, dataSelecionada, observacao);
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
+
+		CheckBox observacaoCheck = (CheckBox) view.findViewById(R.id.observacao_check);
+		observacaoText = (EditText) view.findViewById(R.id.observacao_text);
+
+		observacaoCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+				if(isChecked) {
+					observacaoText.setVisibility(View.VISIBLE);
+				} else {
+					observacaoText.setVisibility(View.GONE);
+				}
 			}
 		});
 
@@ -120,8 +139,9 @@ public class NovaGlicemiaFragment extends Fragment {
 				int valorGlicemia = Integer.parseInt(valorGlicemiaCampo.getText().toString());
 				TipoRefeicao tipoRefeicao = TipoRefeicao.fromString(spinnerAdapter.getItem(pos));
 				Calendar dataSelecionada = pickerDialog.getDataSelecionada();
+				String observacao = observacaoText.getText().toString();
 
-				atualizaGlicemia(valorGlicemia, tipoRefeicao, dataSelecionada);
+				atualizaGlicemia(valorGlicemia, tipoRefeicao, dataSelecionada, observacao);
 
 				DbHelper helper = new DbHelper(getActivity());
 				GlicemiaDao dao = new GlicemiaDao(helper);
@@ -134,10 +154,11 @@ public class NovaGlicemiaFragment extends Fragment {
 		return view;
 	}
 
-	private void atualizaGlicemia(int valorGlicemia, TipoRefeicao tipoRefeicao, Calendar data) {
+	private void atualizaGlicemia(int valorGlicemia, TipoRefeicao tipoRefeicao, Calendar data, String observacao) {
 		glicemia.setValorGlicemia(valorGlicemia);
 		glicemia.setTipoRefeicao(tipoRefeicao);
 		glicemia.setData(data);
+		glicemia.setObservacao(observacao);
 
 		SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
 		boolean configFatorCorrecao = settings.getBoolean(Extras.PREFS_NAME_FATOR_CORRECAO, false);
@@ -152,8 +173,8 @@ public class NovaGlicemiaFragment extends Fragment {
 			double valorInsulina = CalculaInsulina.getTotalInsulinaFatorCorrecao(paciente, glicemia);
 			totalInsulina.setText(String.valueOf(valorInsulina) + " U");
 		} else {
-			totalInsulinaText.setVisibility(View.INVISIBLE);
-			totalInsulina.setVisibility(View.INVISIBLE);
+			totalInsulinaText.setVisibility(View.GONE);
+			totalInsulina.setVisibility(View.GONE);
 		}
 	}
 }

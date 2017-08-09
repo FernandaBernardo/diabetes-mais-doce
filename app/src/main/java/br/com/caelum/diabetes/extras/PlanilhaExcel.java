@@ -27,6 +27,7 @@ import jxl.write.biff.RowsExceededException;
  * Created by Fernanda Bernardo on 26/04/2016.
  */
 public class PlanilhaExcel {
+    private int COLUNA_OBSERVACAO = 8;
     public File criaArquivo(List<Glicemia> glicemias) {
         File file = new File(Environment.getExternalStorageDirectory(), "TabelaGlicemias.xls");
         try {
@@ -100,6 +101,21 @@ public class PlanilhaExcel {
         sheet.addCell(new Label(excelColumnIndex,
                 rowDate,
                 valorGlicemiaTexto));
+
+        Cell cellObservacao = sheet.getCell(COLUNA_OBSERVACAO, rowDate);
+        String observacao = glicemia.getObservacao();
+
+		if(!(observacao == null || "".equals(observacao))) {
+			observacao = glicemia.getTipoRefeicao().getText() + " - " + observacao;
+		}
+
+        if(!("".equals(cellObservacao.getContents()))) {
+            observacao = cellObservacao.getContents() + " / " + observacao;
+        }
+
+        sheet.addCell(new Label(COLUNA_OBSERVACAO,
+                rowDate,
+                observacao));
     }
 
     private List<Glicemia> ordenaLista(List<Glicemia> glicemias) {
@@ -124,6 +140,7 @@ public class PlanilhaExcel {
         sheet.addCell(new Label(5, 0, Extras.JANTAR));
         sheet.addCell(new Label(6, 0, Extras.CEIA));
         sheet.addCell(new Label(7, 0, Extras.MADRUGADA));
+        sheet.addCell(new Label(COLUNA_OBSERVACAO, 0, Extras.OBSERVACAO));
     }
 
     private void autoSizeLabel(WritableSheet sheet) {

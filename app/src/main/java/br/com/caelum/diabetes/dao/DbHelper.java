@@ -26,7 +26,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper{
 	public Context context;
 
 	public DbHelper(Context context) {
-		super(context, DATABASE, null, 2);
+		super(context, DATABASE, null, 3);
 		this.context = context;
 	}
 
@@ -53,9 +53,11 @@ public class DbHelper extends OrmLiteSqliteOpenHelper{
 		Log.i(DbHelper.class.getName(), "onUpgrade");
 		switch (oldVersion) {
 			case 1:
-				String sql = "ALTER TABLE dadosmedicos ADD column madrugada REAL";
-				db.execSQL(sql);
+				db.execSQL("ALTER TABLE dadosmedicos ADD column madrugada REAL");
 				Log.i(DbHelper.class.getName(), "run migration 1");
+			case 2:
+				db.execSQL("ALTER TABLE glicemia ADD column observacao TEXT");
+				Log.i(DbHelper.class.getName(), "run migration 2");
 		}
 	}
 
