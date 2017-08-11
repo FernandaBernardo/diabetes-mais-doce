@@ -124,7 +124,7 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
                     constraint = removeDiacriticalMarks(constraint.toString().toLowerCase().trim());
                     for (int i = 0; i < alimentosTemporario.size(); i++) {
                         AlimentoFisico data = alimentosTemporario.get(i);
-                        if (removeDiacriticalMarks(data.getNome().toLowerCase()).startsWith(constraint.toString())) {
+                        if (removeDiacriticalMarks(data.getNome().toLowerCase()).contains(constraint.toString())) {
                             filteredArrayNames.add(data);
                         }
                     }
