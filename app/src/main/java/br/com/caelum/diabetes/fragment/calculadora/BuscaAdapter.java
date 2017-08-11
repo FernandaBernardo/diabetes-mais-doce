@@ -11,6 +11,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,10 +121,10 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
                     results.count = alimentosTemporario.size();
                     results.values = alimentosTemporario;
                 } else {
-                    constraint = constraint.toString().toLowerCase().trim();
+                    constraint = removeDiacriticalMarks(constraint.toString().toLowerCase().trim());
                     for (int i = 0; i < alimentosTemporario.size(); i++) {
                         AlimentoFisico data = alimentosTemporario.get(i);
-                        if (data.getNome().toLowerCase().startsWith(constraint.toString())) {
+                        if (removeDiacriticalMarks(data.getNome().toLowerCase()).startsWith(constraint.toString())) {
                             filteredArrayNames.add(data);
                         }
                     }
@@ -134,5 +135,9 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
             }
         };
         return filter;
+    }
+
+    private static String removeDiacriticalMarks(String string) {
+        return Normalizer.normalize(string, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
 }
