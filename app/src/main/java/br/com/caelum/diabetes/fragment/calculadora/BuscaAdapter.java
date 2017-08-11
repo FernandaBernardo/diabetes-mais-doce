@@ -54,7 +54,6 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public View getView(final int pos, View v, ViewGroup viewGroup) {
-        final int position = pos;
         view = v;
         LayoutInflater inflater = activity.getLayoutInflater();
 
@@ -111,7 +110,7 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults results = new FilterResults();
-                ArrayList<AlimentoFisico> FilteredArrayNames = new ArrayList<AlimentoFisico>();
+                ArrayList<AlimentoFisico> filteredArrayNames = new ArrayList<AlimentoFisico>();
 
                 if (alimentosTemporario == null) {
                     alimentosTemporario = new ArrayList<AlimentoFisico>(alimentos);
@@ -121,15 +120,15 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
                     results.count = alimentosTemporario.size();
                     results.values = alimentosTemporario;
                 } else {
-                    constraint = constraint.toString().toLowerCase();
+                    constraint = constraint.toString().toLowerCase().trim();
                     for (int i = 0; i < alimentosTemporario.size(); i++) {
                         AlimentoFisico data = alimentosTemporario.get(i);
                         if (data.getNome().toLowerCase().startsWith(constraint.toString())) {
-                            FilteredArrayNames.add(data);
+                            filteredArrayNames.add(data);
                         }
                     }
-                    results.count = FilteredArrayNames.size();
-                    results.values = FilteredArrayNames;
+                    results.count = filteredArrayNames.size();
+                    results.values = filteredArrayNames;
                 }
                 return results;
             }
