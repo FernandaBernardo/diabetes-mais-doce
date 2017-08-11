@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.extras.ParserTools;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
 
 public class ListaAlimentoAdapter extends BaseAdapter{
@@ -47,7 +48,7 @@ public class ListaAlimentoAdapter extends BaseAdapter{
 		campoNome.setText(alimento.getAlimento().getNome());
 		
 		TextView campoCho = (TextView) item.findViewById(R.id.refeicao_alimento_cho);
-		campoCho.setText(alimento.getTotalCarboidrato() + "g");
+		campoCho.setText(ParserTools.getParseDouble(alimento.getTotalCarboidrato()) + "g");
 		
 		return item;
 	}
