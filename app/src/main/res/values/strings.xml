@@ -110,6 +110,8 @@
     <string name="madrugada">Madrugada</string>
     <string name="observacao">Observação</string>
     <string name="adicionar_observacao">Adicionar Observação</string>
+    <string name="search_foods_title">Não conseguiu encontrar um alimento? Cadastre clicando aqui!</string>
+    <string name="search_foods_hint">Buscar alimentos</string>
 
 
 </resources>
