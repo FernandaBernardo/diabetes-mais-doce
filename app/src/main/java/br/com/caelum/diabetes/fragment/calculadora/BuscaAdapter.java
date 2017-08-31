@@ -1,6 +1,7 @@
 package br.com.caelum.diabetes.fragment.calculadora;
 
 import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,32 +21,61 @@ import br.com.caelum.diabetes.model.AlimentoFisico;
 
 /**
  * Created by Fê on 18/03/2015.
+ * Updated by Jeancsanchez on 31/08/2017
  */
-public class BuscaAdapter extends BaseAdapter implements Filterable {
+@SuppressWarnings("SpellCheckingInspection")
+public class BuscaAdapter extends RecyclerView.Adapter<BuscaAdapter.BuscaViewHolder> implements Filterable {
 
     private List<AlimentoFisico> alimentos;
     private Activity activity;
     private List<AlimentoFisico> alimentosTemporario;
-    private View view;
 
-    public BuscaAdapter(List<AlimentoFisico> alimentos, Activity activity) {
-        this.alimentos = alimentos;
+    public BuscaAdapter(Activity activity) {
         this.activity = activity;
+    }
+
+    @Override
+    public BuscaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_busca_alimento, parent, false);
+        return new BuscaViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(BuscaViewHolder holder, int position) {
+        final int currentPosition = position;
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CheckBox checkbox = (CheckBox) view.findViewById(R.id.check_alimento);
+                checkbox.setChecked(!checkbox.isChecked());
+                onClickCheckbox(currentPosition);
+            }
+        });
+
+        AlimentoFisico alimento = alimentos.get(position);
+        holder.campoNome.setText(alimento.getNome());
+        holder.campoCho.setText(alimento.getUnidadeDeMedida() + ": " + alimento.getCarboidrato() + "g");
+
+        if (alimento.isCheck()) holder.checkbox.setChecked(true);
+        else holder.checkbox.setChecked(false);
+
+        holder.checkbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickCheckbox(currentPosition);
+            }
+        });
+    }
+
+    public void setAlimentos(List<AlimentoFisico> alimentos){
         this.alimentosTemporario = alimentos;
+        notifyDataSetChanged();
     }
 
     @Override
-    public int getCount() {
-        return alimentos.size();
-    }
-
-    @Override
-    public Object getItem(int pos) {
-        return alimentos.get(pos);
-    }
-
-    public void setItem (int pos, AlimentoFisico alimento) {
-        alimentos.set(pos, alimento);
+    public int getItemCount() {
+        return alimentos == null ? 0 : alimentos.size();
     }
 
     @Override
@@ -53,45 +83,6 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
         return alimentos.get(pos).getId();
     }
 
-    @Override
-    public View getView(final int pos, View v, ViewGroup viewGroup) {
-        view = v;
-        LayoutInflater inflater = activity.getLayoutInflater();
-
-        if (v == null) {
-            view = inflater.inflate(R.layout.item_busca_alimento, null);
-        }
-
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CheckBox checkbox = (CheckBox) view.findViewById(R.id.check_alimento);
-                checkbox.setChecked(!checkbox.isChecked());
-                onClickCheckbox(pos);
-            }
-        });
-
-        AlimentoFisico alimento = alimentos.get(pos);
-
-        TextView campoNome = (TextView) view.findViewById(R.id.alimento_nome);
-        campoNome.setText(alimento.getNome());
-
-        TextView campoCho = (TextView) view.findViewById(R.id.alimento_cho);
-        campoCho.setText(alimento.getUnidadeDeMedida() + ": " + alimento.getCarboidrato() + "g");
-
-        final CheckBox checkbox = (CheckBox) view.findViewById(R.id.check_alimento);
-        if (alimento.isCheck()) checkbox.setChecked(true);
-        else checkbox.setChecked(false);
-
-        checkbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickCheckbox(pos);
-            }
-        });
-
-        return view;
-    }
 
     public void onClickCheckbox(int position) {
         alimentos.get(position).setCheck(!alimentos.get(position).isCheck());
@@ -103,7 +94,7 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
         Filter filter = new Filter() {
             @SuppressWarnings("unchecked")
             @Override
-            protected void publishResults(CharSequence constraint,FilterResults results) {
+            protected void publishResults(CharSequence constraint, FilterResults results) {
                 alimentos = (List<AlimentoFisico>) results.values;
                 notifyDataSetChanged();
             }
@@ -139,5 +130,19 @@ public class BuscaAdapter extends BaseAdapter implements Filterable {
 
     private static String removeDiacriticalMarks(String string) {
         return Normalizer.normalize(string, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+    }
+
+
+    class BuscaViewHolder extends RecyclerView.ViewHolder {
+        TextView campoNome;
+        TextView campoCho;
+        CheckBox checkbox;
+
+        public BuscaViewHolder(View itemView) {
+            super(itemView);
+            campoNome = (TextView) itemView.findViewById(R.id.alimento_nome);
+            campoCho = (TextView) itemView.findViewById(R.id.alimento_cho);
+            checkbox = (CheckBox) itemView.findViewById(R.id.check_alimento);
+        }
     }
 }

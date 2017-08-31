@@ -30,6 +30,7 @@ import br.com.caelum.diabetes.model.Glicemia;
 /**
  * Created by Fernanda Bernardo on 08/05/2016.
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class GeraTabelaFragment extends Fragment {
     @Override
     public void onResume() {
