@@ -7,7 +7,7 @@
     >
 
     <EditText
-        android:hint="Buscar alimentos"
+        android:hint="@string/search_foods_hint"
         android:id="@+id/busca_alimento"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -24,11 +24,11 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:text="Não conseguiu encontrar um alimento? Cadastre clicando aqui!"
+        android:text="@string/search_foods_title"
         android:textColor="@color/primary"
         />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/lista_busca_alimentos"
         android:layout_height="0dp"
         android:layout_weight="7"
@@ -48,6 +48,7 @@
             android:id="@+id/cancelar_alimentos"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:paddingLeft="5dp"

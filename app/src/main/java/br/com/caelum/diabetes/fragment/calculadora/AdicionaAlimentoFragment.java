@@ -6,6 +6,8 @@ import java.util.List;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -55,11 +57,14 @@ public class AdicionaAlimentoFragment extends Fragment {
 		helper = new DbHelper(getActivity());
 		alimentoDao = new AlimentoFisicoDao(helper);
 
+        // Make sure that this call is on separated thread (async mode) for no block the main UI thread.
 		alimentos = alimentoDao.getAlimentos();
 		
 		helper.close();
 
-        adapter = new BuscaAdapter(alimentos, getActivity());
+        adapter = new BuscaAdapter(getActivity());
+        adapter.setAlimentos(alimentos);
+
         EditText edit = (EditText) view.findViewById(R.id.busca_alimento);
         edit.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -69,8 +74,11 @@ public class AdicionaAlimentoFragment extends Fragment {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             public void afterTextChanged(Editable s) {}
         });
-        ListView listView = (ListView) view.findViewById(R.id.lista_busca_alimentos);
-        listView.setAdapter(adapter);
+
+        // Maybe is more useful to use RecyclerView instead ListView for better performance :) See more: https://goo.gl/6gfk6B
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.lista_busca_alimentos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(adapter);
 
         alimentosSelecionados = new ArrayList<>();
 
