@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.caelum.diabetes"
+    package="br.com.diabetesmaisdoce"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -15,7 +15,7 @@
             android:value="@string/facebook_app_id"/>
 
         <activity
-            android:name="br.com.caelum.diabetes.activity.BemVindoActivity"
+            android:name="br.com.diabetesmaisdoce.activity.BemVindoActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -25,7 +25,7 @@
         </activity>
 		
         <activity
-            android:name="br.com.caelum.diabetes.activity.MainActivity"
+            android:name="br.com.diabetesmaisdoce.activity.MainActivity"
             android:screenOrientation="portrait" />
 
         <activity android:name="com.facebook.FacebookActivity"
