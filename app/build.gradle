@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
 
     defaultConfig {
-        applicationId "br.com.caelum.diabetes"
+        applicationId "br.com.diabetesmaisdoce"
         minSdkVersion 16
         targetSdkVersion 18
     }
