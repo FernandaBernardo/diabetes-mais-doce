@@ -21,17 +21,18 @@
             android:id="@+id/main_glicemia"
             style="@style/main_dashboard_button"
             />
+        
+        <Button
+            android:drawableLeft="@drawable/estatistica"
+            android:id="@+id/main_estatisticas"
+            style="@style/main_dashboard_button"
+            />
 
         <Button
             android:id="@+id/main_lembretes"
             android:drawableLeft="@drawable/lembretes"
             style="@style/main_dashboard_button"
-            />
-
-        <Button
-            android:drawableLeft="@drawable/estatistica"
-            android:id="@+id/main_estatisticas"
-            style="@style/main_dashboard_button"
+            android:background="@color/primary_dark"
             />
 
         <!--<Buttonn

@@ -80,17 +80,20 @@ public class DashboardFragment extends Fragment {
 		});
 
 		Button lembrete = (Button) view.findViewById(R.id.main_lembretes);
-		lembrete.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.main_view, new DashboardLembreteFragment());
-				transaction.addToBackStack(null);
-				transaction.commit();
-			}
-		});
+//		TODO comentado para desabilitar o lembrete
+//		lembrete.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View arg0) {
+//				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//				transaction.replace(R.id.main_view, new DashboardLembreteFragment());
+//				transaction.addToBackStack(null);
+//				transaction.commit();
+//			}
+//		});
+		lembrete.setEnabled(false);
 
-        Button estatisticas = (Button) view.findViewById(R.id.main_estatisticas);
+
+		Button estatisticas = (Button) view.findViewById(R.id.main_estatisticas);
         estatisticas.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,8 +108,10 @@ public class DashboardFragment extends Fragment {
 
         calculadora.setText(Html.fromHtml("<b><big>" + "Calculadora" + "</big></b>" + "<br />" +
                 "<small>" + "Calcule os carboidratos consumidos" + "</small>"));
-        lembrete.setText(Html.fromHtml("<b><big>" + "Lembretes" + "</big></b>" + "<br />" +
-                "<small>" + "Não esqueça de se alimentar de 3 em 3 horas" + "</small>"));
+//        lembrete.setText(Html.fromHtml("<b><big>" + "Lembretes" + "</big></b>" + "<br />" +
+//                "<small>" + "Não esqueça de se alimentar de 3 em 3 horas" + "</small>"));
+		lembrete.setText(Html.fromHtml("<b><big>" + "Lembretes" + "</big></b>" + "<br />" +
+				"<small>" + "Em breve!" + "</small>"));
         medicao.setText(Html.fromHtml("<b><big>" + "Glicemia" + "</big></b>" + "<br />" +
                 "<small>" + "Agora ficou fácil monitorar sua glicemia no decorrer do mês" + "</small>"));
         estatisticas.setText(Html.fromHtml("<b><big>" + "Estatísticas" + "</big></b>" + "<br />" +
