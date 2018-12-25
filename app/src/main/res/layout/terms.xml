@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:gravity="fill"
+              style="@style/container">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Termos de Uso"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dezembro, 2018"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:id="@+id/terms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="fill_horizontal"
+            android:scrollbars="vertical"
+            android:layout_weight="4"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:weightSum="10">
+                <Button
+                    style="@style/action_button"
+                    android:text="Discordo"
+                    android:textSize="14dp"
+                    android:id="@+id/decline_terms"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="5"
+                    android:background="@color/primary_dark"
+                    android:alpha="0.7"
+                    />
+                <Button
+                    style="@style/action_button"
+                    android:text="Eu concordo"
+                    android:textSize="15dp"
+                    android:id="@+id/accept_terms"
+                    android:layout_weight="5"
+                    />
+        </LinearLayout>
+
+
+</LinearLayout>

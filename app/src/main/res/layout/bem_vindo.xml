@@ -25,37 +25,45 @@
         android:paddingRight="50dp"
         android:paddingBottom="20dp"
         >
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/facebook_login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OU"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/primary_text"
-            />
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:text="@string/digite_o_seu_nome"
+			android:textSize="18dp"
+			/>
 
 		<EditText
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:id="@+id/nome_pessoa"
 		    android:inputType="textCapWords"
-            android:hint="@string/digite_o_seu_nome"
+			android:textAlignment="center"
             android:layout_marginBottom="10dp"
 			android:imeOptions="actionDone"
             />
+
+		<CheckBox
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/terms"
+			android:text="Eu li e aceito os Termos de Uso"
+			android:checked="true"/>
 
 		<Button
             style="@style/action_button"
 		    android:text="@string/entrar"
 		    android:id="@+id/botao_entrar"
             />
+
+		<com.facebook.login.widget.LoginButton
+			android:id="@+id/facebook_login_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:textAlignment="center"
+			android:paddingBottom="10dp"
+			android:layout_marginTop="30dp"
+			/>
     </LinearLayout>
 </LinearLayout>

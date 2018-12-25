@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="terms">Disposições Gerais:\n\n
+- O Diabetes Mais Doce poderá sofrer alterações e/ou adquirir novas funcionalidades sem necessidade de autorização de seus usuários.\n\n
+- O sistema Diabetes Mais Doce auxilia no monitoramento e controle dos níveis glicêmicos de pacientes com diabetes tipo 1, tendo suporte à terapia basal-bolus de insulinização e contagem de carboidratos\n\n
+- O Diabetes Mais Doce é um sistema eletrônico inteligente que auxilia no gerenciamento dos controles glicêmicos, e se restringe a automatizar tarefas e gravar o resultado dos cálculos com base nos dados fornecidos pelos usuários. Esses dados são de total responsabilidade do usuário e o Diabetes Mais Doce não é responsável por prescrever nenhum valor ou parâmetro, nem atualizar nenhuma prescrição.\n\n
+- Todas as informações gravadas dentro do aplicativo Diabetes Mais Doce estão salvas somente dentro do celular do usuário. A perda dos dados por limpeza de dados do celular, perda/roubo do celular ou desinstalação do aplicativo são responsabilidade do usuário.\n\n
+- Todos os cálculos de doses de insulina respeitam os dados que são cadastrados pelo usuário. A base dos cálculos respeitam as regras obedecidas pela terapia de Contagem de Carboidratos.\n\n
+- O uso do Diabetes Mais Doce não dispensa nem supre a necessidade do regular acompanhamento do profissional de saúde.\n\n
+- A responsabilidade pela veracidade e atualização de todos os dados pessoais disponibilizados no sistema é do usuário. O usuário declara estar ciente de que a prestação de dados inverídicos ou a sua desatualização podem ter implicações negativas nos resultados obtidos pelo uso do Diabetes Mais Doce.\n\n
+- Fica desde já estabelecido que em nenhuma hipótese caberá ao Diabetes Mais Doce corresponsabilidade de nenhuma ordem, sobre quaisquer dados, prescrições, e/ou dosagens prestados ministrados ou sugeridos equivocadamente.\n\n
+</string>
+</resources>

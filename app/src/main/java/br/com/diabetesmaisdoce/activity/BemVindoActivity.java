@@ -1,9 +1,17 @@
 package br.com.diabetesmaisdoce.activity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,6 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -32,6 +41,8 @@ import br.com.diabetesmaisdoce.R;
 import br.com.diabetesmaisdoce.dao.DbHelper;
 import br.com.diabetesmaisdoce.dao.PacienteDao;
 import br.com.diabetesmaisdoce.dao.PopulaAlimento;
+import br.com.diabetesmaisdoce.dialog.InfoDialog;
+import br.com.diabetesmaisdoce.dialog.TermsDialog;
 import br.com.diabetesmaisdoce.model.Paciente;
 
 public class BemVindoActivity extends AppCompatActivity {
@@ -43,6 +54,7 @@ public class BemVindoActivity extends AppCompatActivity {
     private LoginButton facebookLogin;
     private EditText nomeUsuario;
     private ProgressDialog progressDialog;
+    private Button botaoEntrar;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +72,46 @@ public class BemVindoActivity extends AppCompatActivity {
 		helper = new DbHelper(BemVindoActivity.this);
 		dao = new PacienteDao(helper);
 		pacienteBanco = dao.getPaciente();
+        botaoEntrar = (Button) findViewById(R.id.botao_entrar);
 
-		if(pacienteBanco != null) {
+        final CheckBox termsCheckbox = (CheckBox) findViewById(R.id.terms);
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View widget) {
+                widget.cancelPendingInputEvents();
+                TermsDialog terms = new TermsDialog();
+                FragmentManager fm = BemVindoActivity.this.getSupportFragmentManager();
+                terms.show(fm, "header");
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(true);
+            }
+        };
+
+        SpannableString linkText = new SpannableString("Termos de Uso");
+        linkText.setSpan(clickableSpan, 0, linkText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        CharSequence cs = TextUtils.expandTemplate("Eu li e aceito os ^1", linkText);
+
+        termsCheckbox.setText(cs);
+        termsCheckbox.setMovementMethod(LinkMovementMethod.getInstance());
+
+        termsCheckbox.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                botaoEntrar.setEnabled(termsCheckbox.isChecked());
+                if(!botaoEntrar.isEnabled()) {
+                    botaoEntrar.setAlpha(.5f);
+                } else {
+                    botaoEntrar.setAlpha(1f);
+                }
+            }
+        });
+
+        if(pacienteBanco != null) {
 			Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
 			intent.putExtra("paciente", pacienteBanco);
 			startActivity(intent);
@@ -95,8 +145,7 @@ public class BemVindoActivity extends AppCompatActivity {
                 return false;
             }
         });
-        Button botao = (Button) findViewById(R.id.botao_entrar);
-        botao.setOnClickListener(new OnClickListener() {
+        botaoEntrar.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
             submitNativeLogin();

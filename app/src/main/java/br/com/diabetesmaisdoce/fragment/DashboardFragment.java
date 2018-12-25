@@ -80,6 +80,8 @@ public class DashboardFragment extends Fragment {
 		});
 
 		Button lembrete = (Button) view.findViewById(R.id.main_lembretes);
+		lembrete.setCompoundDrawablesWithIntrinsicBounds(R.drawable.lembretes, 0, 0, 0);
+
 //		TODO comentado para desabilitar o lembrete
 //		lembrete.setOnClickListener(new OnClickListener() {
 //			@Override
