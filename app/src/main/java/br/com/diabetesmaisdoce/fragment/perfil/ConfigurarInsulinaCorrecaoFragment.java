@@ -35,7 +35,7 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-        ((MainActivity) getActivity()).setTitleHeader("Insulina Correção");
+        ((MainActivity) getActivity()).setTitleHeader("Insulina Bolus (Para Correção)");
         ((MainActivity) getActivity()).setBackArrowIcon();
         ((MainActivity) getActivity()).showInfo(getResources().getString(R.string.info_correcao), getResources().getString(R.string.diabetes_org));
 	}

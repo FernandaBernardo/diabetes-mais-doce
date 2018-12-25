@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 26
 
     defaultConfig {
         applicationId "br.com.diabetesmaisdoce"
-        minSdkVersion 16
-        targetSdkVersion 18
+        minSdkVersion 18
+        targetSdkVersion 26
     }
 
     buildTypes {
@@ -29,7 +29,6 @@ dependencies {
     compile files('libs/ormlite-core-4.48.jar')
     compile files('libs/jxl.jar')
     compile 'com.github.flavienlaurent:datetimepicker:0f5d399995'
-    compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.mikepenz:materialdrawer:5.1.6'
-    compile 'com.facebook.android:facebook-android-sdk:4.15.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.39.0'
 }

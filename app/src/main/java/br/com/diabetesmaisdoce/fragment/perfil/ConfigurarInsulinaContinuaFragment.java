@@ -33,7 +33,7 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-        ((MainActivity) getActivity()).setTitleHeader("Insulina Contínua");
+        ((MainActivity) getActivity()).setTitleHeader("Insulina Basal (Fixa)");
         ((MainActivity) getActivity()).setBackArrowIcon();
 		((MainActivity) getActivity()).showInfo(getResources().getString(R.string.info_continua), getResources().getString(R.string.diabetes_org));
 	}

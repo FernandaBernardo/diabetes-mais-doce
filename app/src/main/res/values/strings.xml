@@ -27,8 +27,8 @@
     <string name="ceia">Ceia</string>
     <string name="perfil">Perfil</string>
     <string name="dados_pessoais">Dados Pessoais</string>
-    <string name="bolus">Valores Correção (Bolus)</string>
-    <string name="basal">Valores Contínuos (Basal)</string>
+    <string name="bolus">Insulina Bolus (Para Correção)</string>
+    <string name="basal">Insulina Basal (Fixa)</string>
     <string name="u_g_de_carboidrato">U/g de carboidrato</string>
     <string name="mg_dl">mg/DL</string>
     <string name="kg">kg</string>
