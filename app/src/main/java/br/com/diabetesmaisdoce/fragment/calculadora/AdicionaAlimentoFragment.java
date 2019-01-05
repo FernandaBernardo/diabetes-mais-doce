@@ -74,6 +74,7 @@ public class AdicionaAlimentoFragment extends Fragment {
         // Maybe is more useful to use RecyclerView instead ListView for better performance :) See more: https://goo.gl/6gfk6B
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.lista_busca_alimentos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        adapter.getFilter().filter("");
         recyclerView.setAdapter(adapter);
 
         alimentosSelecionados = new ArrayList<>();
