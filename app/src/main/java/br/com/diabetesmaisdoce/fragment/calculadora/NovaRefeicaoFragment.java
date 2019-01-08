@@ -177,14 +177,20 @@ public class NovaRefeicaoFragment extends Fragment {
         SharedPreferences settings = getActivity().getSharedPreferences(Extras.PREFS_NAME, 0);
         final boolean calculoInsulina = settings.getBoolean(Extras.PREFS_NAME_INSULINA_CORRECAO, false);
 
-        if (calculoInsulina) {
-            double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
-
-            totalInsulinaText.setText(ParserTools.getParseDouble(valorInsulina) + " U");
+		TextView texto = (TextView) view.findViewById(R.id.textoTotalInsulina);
+		if (calculoInsulina) {
+			double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
+			if(Double.isNaN(valorInsulina)) {
+				texto.setVisibility(View.GONE);
+				totalInsulinaText.setVisibility(View.GONE);
+			} else {
+				texto.setVisibility(View.VISIBLE);
+				totalInsulinaText.setVisibility(View.VISIBLE);
+				totalInsulinaText.setText(ParserTools.getParseDouble(valorInsulina) + " U");
+			}
         } else {
-            TextView texto = (TextView) view.findViewById(R.id.textoTotalInsulina);
             texto.setVisibility(View.GONE);
-            totalInsulinaText.setVisibility(View.GONE);
+			totalInsulinaText.setVisibility(View.GONE);
         }
     }
 

@@ -59,13 +59,13 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				DadosMedicos dadosMedicos = new DadosMedicos(TipoDadoMedico.CORRECAO);
-				dadosMedicos.set(Double.parseDouble(cafe.getText().toString()), TipoRefeicao.CAFE_DA_MANHA);
-				dadosMedicos.set(Double.parseDouble(lancheManha.getText().toString()), TipoRefeicao.LANCHE_DA_MANHA);
-				dadosMedicos.set(Double.parseDouble(almoco.getText().toString()), TipoRefeicao.ALMOCO);
-				dadosMedicos.set(Double.parseDouble(lancheTarde.getText().toString()), TipoRefeicao.LANCHE_DA_TARDE);
-				dadosMedicos.set(Double.parseDouble(jantar.getText().toString()), TipoRefeicao.JANTAR);
-				dadosMedicos.set(Double.parseDouble(ceia.getText().toString()), TipoRefeicao.CEIA);
-				dadosMedicos.set(Double.parseDouble(madrugada.getText().toString()), TipoRefeicao.MADRUGADA);
+				dadosMedicos.set(Double.parseDouble(verificaValor(cafe)), TipoRefeicao.CAFE_DA_MANHA);
+				dadosMedicos.set(Double.parseDouble(verificaValor(lancheManha)), TipoRefeicao.LANCHE_DA_MANHA);
+				dadosMedicos.set(Double.parseDouble(verificaValor(almoco)), TipoRefeicao.ALMOCO);
+				dadosMedicos.set(Double.parseDouble(verificaValor(lancheTarde)), TipoRefeicao.LANCHE_DA_TARDE);
+				dadosMedicos.set(Double.parseDouble(verificaValor(jantar)), TipoRefeicao.JANTAR);
+				dadosMedicos.set(Double.parseDouble(verificaValor(ceia)), TipoRefeicao.CEIA);
+				dadosMedicos.set(Double.parseDouble(verificaValor(madrugada)), TipoRefeicao.MADRUGADA);
 
 				DbHelper helper = new DbHelper(getActivity());
 
@@ -84,6 +84,15 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 		});
 
 		return view;
+	}
+
+	private String verificaValor(EditText text) {
+		String valor = text.getText().toString();
+		if(valor.equals("")) {
+			return "0";
+		} else {
+			return valor;
+		}
 	}
 
 	private void settarTextos() {
