@@ -1,9 +1,12 @@
 package br.com.diabetesmaisdoce.extras;
 
+import android.content.Context;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -24,8 +27,8 @@ import jxl.write.WriteException;
  */
 public class PlanilhaExcel {
     private int COLUNA_OBSERVACAO = 8;
-    public File criaArquivo(List<Glicemia> glicemias) {
-        File file = new File(Environment.getExternalStorageDirectory(), "TabelaGlicemias.xls");
+    public File criaArquivo(Context context, List<Glicemia> glicemias) {
+        File file = new File(Environment.getExternalStorageDirectory(),"TabelaGlicemias.xls");
         try {
             WritableWorkbook wb = Workbook.createWorkbook(file);
 
