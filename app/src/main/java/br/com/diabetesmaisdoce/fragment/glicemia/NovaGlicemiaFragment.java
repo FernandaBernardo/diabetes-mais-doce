@@ -40,7 +40,7 @@ public class NovaGlicemiaFragment extends Fragment {
 	private EditText valorGlicemiaCampo;
 	private EditText observacaoText;
 	private Button salvarGlicemia;
-    private PickerDialog pickerDialog;
+	private PickerDialog pickerDialog;
 	private EditText totalInsulina;
 	private Paciente paciente;
 	private TextView totalInsulinaText;
@@ -48,11 +48,11 @@ public class NovaGlicemiaFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-        ((MainActivity) getActivity()).setTitleHeader("Nova Glicemia");
-        ((MainActivity) getActivity()).setBackArrowIcon();
+		((MainActivity) getActivity()).setTitleHeader("Nova Glicemia");
+		((MainActivity) getActivity()).setBackArrowIcon();
 	}
 
-    @Override
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.nova_glicemia, null);
 
@@ -63,7 +63,7 @@ public class NovaGlicemiaFragment extends Fragment {
 		final TextView horario = (TextView) view.findViewById(R.id.hora_glicemia);
 		final TextView data = (TextView) view.findViewById(R.id.data_glicemia);
 
-        pickerDialog = new PickerDialog(getFragmentManager(), data, horario);
+		pickerDialog = new PickerDialog(getFragmentManager(), data, horario);
 
 		final Spinner tipoRefeicao = (Spinner) view.findViewById(R.id.tipo_refeicao);
 		final ArrayAdapter<String> spinnerAdapter = (ArrayAdapter<String>) tipoRefeicao.getAdapter();
@@ -120,7 +120,7 @@ public class NovaGlicemiaFragment extends Fragment {
 		observacaoCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-				if(isChecked) {
+				if (isChecked) {
 					observacaoText.setVisibility(View.VISIBLE);
 				} else {
 					observacaoText.setVisibility(View.GONE);
@@ -131,7 +131,7 @@ public class NovaGlicemiaFragment extends Fragment {
 		salvarGlicemia = (Button) view.findViewById(R.id.salvar_glicemia);
 		salvarGlicemia.setEnabled(ValidatorUtils.checkEmptyEditText(valorGlicemiaCampo));
 
-        ValidaCampos.validateEditText(valorGlicemiaCampo, salvarGlicemia);
+		ValidaCampos.validateEditText(valorGlicemiaCampo, salvarGlicemia);
 
 		salvarGlicemia.setOnClickListener(new OnClickListener() {
 			@Override

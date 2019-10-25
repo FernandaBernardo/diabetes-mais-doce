@@ -3,6 +3,7 @@ package br.com.diabetesmaisdoce.activity;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -81,9 +82,8 @@ public class BemVindoActivity extends AppCompatActivity {
             @Override
             public void onClick(View widget) {
                 widget.cancelPendingInputEvents();
-                TermsDialog terms = new TermsDialog();
-                FragmentManager fm = BemVindoActivity.this.getSupportFragmentManager();
-                terms.show(fm, "header");
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://fernandabernardo.com.br/privacy-policy.html"));
+                startActivity(browserIntent);
             }
             @Override
             public void updateDrawState(TextPaint ds) {
