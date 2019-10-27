@@ -20,11 +20,11 @@
     <string name="salvar">Salvar</string>
     <string name="selecione_refeicao">Selecione a Refeição</string>
     <string name="cafe_da_manha">Café da Manhã</string>
-    <string name="lanche_da_manha">Lanche da Manhã</string>
+    <string name="pos_cafe">Pós Café</string>
     <string name="almoco">Almoço</string>
-    <string name="lanche_da_tarde">Lanche da Tarde</string>
+    <string name="pos_almoco">Pós Almoço</string>
     <string name="jantar">Jantar</string>
-    <string name="ceia">Ceia</string>
+    <string name="pos_jantar">Pós Jantar</string>
     <string name="perfil">Perfil</string>
     <string name="dados_pessoais">Dados Pessoais</string>
     <string name="bolus">Insulina Bolus (Para Correção)</string>
@@ -72,11 +72,11 @@
 
     <string-array name="refeicoes_array">
         <item>@string/cafe_da_manha</item>
-        <item>@string/lanche_da_manha</item>
+        <item>@string/pos_cafe</item>
         <item>@string/almoco</item>
-        <item>@string/lanche_da_tarde</item>
+        <item>@string/pos_almoco</item>
         <item>@string/jantar</item>
-        <item>@string/ceia</item>
+        <item>@string/pos_jantar</item>
         <item>@string/madrugada</item>
     </string-array>
 

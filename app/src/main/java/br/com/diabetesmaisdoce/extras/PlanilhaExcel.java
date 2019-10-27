@@ -3,10 +3,8 @@ package br.com.diabetesmaisdoce.extras;
 import android.content.Context;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -133,11 +131,11 @@ public class PlanilhaExcel {
     private void criaHeader(WritableSheet sheet) throws WriteException {
         sheet.addCell(new Label(0, 0, "Data"));
         sheet.addCell(new Label(1, 0, Extras.CAFE_DA_MANHA));
-        sheet.addCell(new Label(2, 0, Extras.LANCHE_DA_MANHA));
+        sheet.addCell(new Label(2, 0, Extras.POS_CAFE));
         sheet.addCell(new Label(3, 0, Extras.ALMOCO));
-        sheet.addCell(new Label(4, 0, Extras.LANCHE_DA_TARDE));
+        sheet.addCell(new Label(4, 0, Extras.POS_ALMOCO));
         sheet.addCell(new Label(5, 0, Extras.JANTAR));
-        sheet.addCell(new Label(6, 0, Extras.CEIA));
+        sheet.addCell(new Label(6, 0, Extras.POS_JANTAR));
         sheet.addCell(new Label(7, 0, Extras.MADRUGADA));
         sheet.addCell(new Label(COLUNA_OBSERVACAO, 0, Extras.OBSERVACAO));
     }

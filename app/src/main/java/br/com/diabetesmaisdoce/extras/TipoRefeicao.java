@@ -3,11 +3,11 @@ package br.com.diabetesmaisdoce.extras;
 
 public enum TipoRefeicao{
 	CAFE_DA_MANHA(1, Extras.CAFE_DA_MANHA),
-	LANCHE_DA_MANHA(2, Extras.LANCHE_DA_MANHA),
+	LANCHE_DA_MANHA(2, Extras.POS_CAFE),
 	ALMOCO(3, Extras.ALMOCO),
-	LANCHE_DA_TARDE(4, Extras.LANCHE_DA_TARDE),
+	LANCHE_DA_TARDE(4, Extras.POS_ALMOCO),
 	JANTAR(5, Extras.JANTAR),
-	CEIA(6, Extras.CEIA),
+	CEIA(6, Extras.POS_JANTAR),
 	MADRUGADA(7, Extras.MADRUGADA);
 
 	private String text;

@@ -22,7 +22,7 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="@string/lanche_da_manha"
+            android:text="@string/pos_cafe"
             />
         <EditText
             style="@style/edit_text"
@@ -46,7 +46,7 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="@string/lanche_da_tarde"
+            android:text="@string/pos_almoco"
             />
         <EditText
             style="@style/edit_text"
@@ -70,7 +70,7 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="@string/ceia"
+            android:text="@string/pos_jantar"
             />
         <EditText
             style="@style/edit_text"

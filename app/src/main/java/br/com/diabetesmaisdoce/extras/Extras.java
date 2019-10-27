@@ -3,11 +3,11 @@ package br.com.diabetesmaisdoce.extras;
 public class Extras {
 //	Refeições	
 	public static final String CAFE_DA_MANHA = "Café da Manhã";
-	public static final String LANCHE_DA_MANHA = "Lanche da Manhã";
+	public static final String POS_CAFE = "Pós Café";
     public static final String ALMOCO = "Almoço";
-    public static final String LANCHE_DA_TARDE = "Lanche da Tarde";
+    public static final String POS_ALMOCO = "Pós Almoço";
     public static final String JANTAR = "Jantar";
-	public static final String CEIA = "Ceia";
+	public static final String POS_JANTAR = "Pós Jantar";
     public static final String MADRUGADA = "Madrugada";
 
 	public static final String OBSERVACAO = "Observação";
